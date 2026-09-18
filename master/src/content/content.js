@@ -229,7 +229,10 @@
           <span class="haytool-spinner"></span>
           <span>Sayfa Çevriliyor${engineLabel}...</span>
         </div>
-        <span class="haytool-progress-percent">0%</span>
+        <div style="display:flex;align-items:center;gap:6px;">
+          <span class="haytool-progress-percent">0%</span>
+          <button type="button" class="haytool-hud-close" style="background:transparent;border:none;color:#94a3b8;cursor:pointer;font-size:14px;padding:0 2px;line-height:1;" title="Kapat">×</button>
+        </div>
       </div>
       <div class="haytool-progress-track">
         <div class="haytool-progress-fill" style="width: 0%;"></div>
@@ -247,6 +250,14 @@
     const statusLabel = hud.querySelector(".haytool-status-label");
     const countLabel = hud.querySelector(".haytool-count-label");
     const titleEl = hud.querySelector(".haytool-progress-title");
+    const closeBtn = hud.querySelector(".haytool-hud-close");
+
+    if (closeBtn) {
+      closeBtn.addEventListener("click", () => {
+        hud.classList.add("fade-out");
+        setTimeout(() => hud.remove(), 300);
+      });
+    }
 
     return {
       update: (percent, currentCount, total, currentBatch, totalBatches) => {
@@ -264,17 +275,45 @@
           percentEl.textContent = "100%";
           percentEl.style.color = "#34d399";
         }
-        const timeText = durationSec ? ` (${durationSec}s)` : "";
-        if (titleEl) {
-          titleEl.innerHTML = `<span style="color:#34d399;font-weight:bold;font-size:15px;">✓</span> <span style="color:#34d399;">Tamamlandı${timeText}!</span>`;
-        }
-        if (statusLabel) statusLabel.textContent = `Çevrildi${engineLabel}`;
-        if (countLabel) countLabel.textContent = `${totalDone} bölüm`;
+        const timeText = durationSec ? ` (${durationSec} sn)` : "";
+        const engineShort = specificEngine ? `[${engineNames[specificEngine] || specificEngine}] ` : "";
 
-        setTimeout(() => {
-          hud.classList.add("fade-out");
-          setTimeout(() => hud.remove(), 400);
-        }, 3000);
+        // 1. Tarayıcı Sekme Başlığına Kalıcı Olarak Yaz (Sekmeler arasında gezerken anında görünür!)
+        if (specificEngine) {
+          const cleanTitle = document.title.replace(/^\[.*?\]\s*/, "");
+          document.title = `[⚡ ${durationSec}s | ${engineNames[specificEngine]}] ${cleanTitle}`;
+        }
+
+        // 2. HUD'u Şık ve Kalıcı Sonuç Rozetine Dönüştür
+        if (titleEl) {
+          titleEl.innerHTML = `<span style="color:#34d399;font-weight:bold;font-size:15px;">✓</span> <span style="color:#34d399;font-weight:700;">${engineNames[specificEngine] || "Çeviri"}</span>`;
+        }
+        if (statusLabel) {
+          statusLabel.innerHTML = `<span style="color:#38bdf8;font-weight:700;font-size:12px;">⚡ Süre: ${durationSec || '0.5'} saniye</span>`;
+        }
+        if (countLabel) {
+          countLabel.textContent = `${totalDone} bölüm`;
+        }
+
+        // Çoklu sekme modunda (specificEngine varsa) hemen kaybolmasın, kullanıcı inceleyene kadar (veya kapat butonuna basana kadar) ekranda kalsın!
+        if (specificEngine) {
+          hud.style.borderColor = "rgba(16, 185, 129, 0.4)";
+          hud.style.boxShadow = "0 12px 30px rgba(0, 0, 0, 0.6), 0 0 20px rgba(16, 185, 129, 0.25)";
+          // 40 saniye sonra yavaşça kaybolur, kapatmak isterse '×' butonu var
+          setTimeout(() => {
+            if (hud && hud.parentNode) {
+              hud.classList.add("fade-out");
+              setTimeout(() => hud.remove(), 400);
+            }
+          }, 40000);
+        } else {
+          setTimeout(() => {
+            if (hud && hud.parentNode) {
+              hud.classList.add("fade-out");
+              setTimeout(() => hud.remove(), 400);
+            }
+          }, 3500);
+        }
       }
     };
   }
