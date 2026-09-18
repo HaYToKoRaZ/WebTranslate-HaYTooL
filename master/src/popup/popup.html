@@ -223,19 +223,24 @@
       </div>
     </div>
 
-    <!-- 6 Motorlu Benchmark / Karşılaştırma Arenası Butonu -->
-    <button id="btn-open-arena" class="arena-launch-btn" title="6 Çeviri Motorunu Aynı Anda Yarıştır & Karşılaştır">
-      <div class="arena-btn-content">
-        <span class="arena-btn-icon">🏁</span>
-        <div class="arena-btn-text">
-          <span class="arena-btn-title">6 Motoru Karşılaştır (Arena)</span>
-          <span class="arena-btn-desc">Hız & Kalite Testi Yap</span>
+    <!-- 6 Motorlu Test Butonları (50% - 50% İkili Grid) -->
+    <div class="arena-split-grid">
+      <button type="button" id="btn-open-arena" class="arena-split-btn" title="6 Çeviri Motorunu Aynı Anda Yarıştır & Karşılaştır">
+        <span class="split-btn-icon">🏁</span>
+        <div class="split-btn-text">
+          <span class="split-btn-title">Motor Arenası</span>
+          <span class="split-btn-desc">Hız & Kalite Testi</span>
         </div>
-      </div>
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <polyline points="9 18 15 12 9 6"></polyline>
-      </svg>
-    </button>
+      </button>
+
+      <button type="button" id="btn-open-6tabs" class="arena-split-btn split-btn-tabs" title="Aktif Web Sayfasını 6 Sekmede 6 Farklı Motorla Açıp Çevir">
+        <span class="split-btn-icon">🌐</span>
+        <div class="split-btn-text">
+          <span class="split-btn-title">Sayfayı 6 Sekmede Aç</span>
+          <span class="split-btn-desc">Canlı Çoklu Çeviri</span>
+        </div>
+      </button>
+    </div>
   </div>
 
   <script src="popup.js"></script>

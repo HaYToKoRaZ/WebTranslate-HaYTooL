@@ -601,68 +601,91 @@ textarea:focus {
   color: var(--text-muted);
 }
 
-/* Arena Launch Button */
-.arena-launch-btn {
+/* 50% - 50% Arena & 6 Sekmeli Canlı Çeviri Butonları */
+.arena-split-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.arena-split-btn {
   background: linear-gradient(135deg, rgba(30, 41, 59, 0.8), rgba(15, 23, 42, 0.95));
   border: 1px solid rgba(56, 189, 248, 0.25);
-  border-radius: 12px;
-  padding: 10px 14px;
+  border-radius: 11px;
+  padding: 8px 10px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  gap: 8px;
   cursor: pointer;
   transition: all 0.2s ease;
   color: var(--text-main);
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
-.arena-launch-btn:hover {
+.arena-split-btn:hover {
   background: linear-gradient(135deg, rgba(30, 41, 59, 0.95), rgba(2, 132, 199, 0.2));
   border-color: var(--accent);
   transform: translateY(-1px);
-  box-shadow: 0 6px 20px rgba(56, 189, 248, 0.2);
+  box-shadow: 0 6px 18px rgba(56, 189, 248, 0.2);
 }
 
-.arena-btn-content {
-  display: flex;
-  align-items: center;
-  gap: 10px;
+.arena-split-btn.split-btn-tabs {
+  border-color: rgba(16, 185, 129, 0.25);
 }
 
-.arena-btn-icon {
-  font-size: 18px;
+.arena-split-btn.split-btn-tabs:hover {
+  border-color: #10b981;
+  background: linear-gradient(135deg, rgba(30, 41, 59, 0.95), rgba(16, 185, 129, 0.18));
+  box-shadow: 0 6px 18px rgba(16, 185, 129, 0.2);
 }
 
-.arena-btn-text {
+.split-btn-icon {
+  font-size: 16px;
+  flex-shrink: 0;
+}
+
+.split-btn-text {
   display: flex;
   flex-direction: column;
   text-align: left;
+  overflow: hidden;
 }
 
-.arena-btn-title {
-  font-size: 12.5px;
+.split-btn-title {
+  font-size: 11.5px;
   font-weight: 700;
   color: #fff;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-.arena-btn-desc {
-  font-size: 10px;
+.split-btn-desc {
+  font-size: 9.5px;
   color: var(--text-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-[data-theme="light"] .arena-launch-btn {
+[data-theme="light"] .arena-split-btn {
   background: #ffffff;
   border-color: #cbd5e1;
   color: #0f172a;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
 }
 
-[data-theme="light"] .arena-launch-btn:hover {
+[data-theme="light"] .arena-split-btn:hover {
   border-color: #0284c7;
   background: #f0f9ff;
 }
 
-[data-theme="light"] .arena-btn-title {
+[data-theme="light"] .arena-split-btn.split-btn-tabs:hover {
+  border-color: #10b981;
+  background: #ecfdf5;
+}
+
+[data-theme="light"] .split-btn-title {
   color: #0f172a;
 }
 

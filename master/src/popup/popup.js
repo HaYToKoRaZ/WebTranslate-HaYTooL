@@ -178,17 +178,23 @@ document.addEventListener("DOMContentLoaded", async () => {
     window.close();
   });
 
-  // Swap (⇄) Dilleri Değiştirme Mantığı
+  // Swap (⇄) Dilleri Değiştirme Mantığı (Sadece Hızlı Çeviri İçin Geçici Yön Değişimi)
   const btnSwapLang = document.getElementById("btn-swap-lang");
   const quickSourceTag = document.getElementById("quick-source-tag");
   const quickTargetTag = document.getElementById("quick-target-tag");
   const charCount = document.getElementById("char-count");
   const btnOpenArena = document.getElementById("btn-open-arena");
+  const btnOpen6Tabs = document.getElementById("btn-open-6tabs");
 
-  function updateQuickLangTags(target) {
-    if (quickTargetTag) quickTargetTag.textContent = target.toUpperCase();
+  // Hızlı çeviri için o anki hedef dil (Global ayarı bozmadan bağımsız çalışır)
+  let quickActiveTarget = targetLang || "tr";
+  let quickActiveSource = "auto";
+
+  function updateQuickLangTags() {
+    if (quickTargetTag) quickTargetTag.textContent = quickActiveTarget.toUpperCase();
+    if (quickSourceTag) quickSourceTag.textContent = quickActiveSource === "auto" ? "Otomatik" : quickActiveSource.toUpperCase();
   }
-  updateQuickLangTags(targetLang);
+  updateQuickLangTags();
 
   if (quickInput && charCount) {
     quickInput.addEventListener("input", () => {
@@ -198,30 +204,56 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   if (btnSwapLang) {
     btnSwapLang.addEventListener("click", () => {
-      const currentTarget = selectTargetLang.value || "tr";
-      // Hedef Türkçe ise İngilizce yap; hedef İngilizce (veya başka dil) ise Türkçe yap
-      const newTarget = currentTarget === "tr" ? "en" : "tr";
-      setCustomLanguage(newTarget);
-      updateQuickLangTags(newTarget);
+      // Sadece hızlı çeviri kutusu için kaynak ve hedef dili takas et
+      // Genel "Target Language" (Sayfa çevirisi ve eklenti ayarı) DEĞİŞMEZ!
+      if (quickActiveTarget === "tr") {
+        quickActiveTarget = "en";
+        quickActiveSource = "tr";
+      } else {
+        quickActiveTarget = "tr";
+        quickActiveSource = "en";
+      }
+      updateQuickLangTags();
 
-      // Metin kutusunda veya sonuç kutusunda metin varsa yer değiştir
+      // Metin kutusunda veya sonuç kutusunda metin varsa yer değiştir ve anında ters çevir
       if (resultText && resultText.textContent && quickInput) {
         const tempText = quickInput.value;
         quickInput.value = resultText.textContent;
         resultText.textContent = tempText;
         if (charCount) charCount.textContent = quickInput.value.length;
-        // Ters yönde anında çevir
+        performQuickTranslate();
+      } else if (quickInput && quickInput.value.trim()) {
         performQuickTranslate();
       }
     });
   }
 
-  // 6 Motorlu Arena Karşılaştırma Sayfasını Aç
+  // 1. Buton: 6 Motorlu Arena Karşılaştırma Sayfasını Aç
   if (btnOpenArena) {
     btnOpenArena.addEventListener("click", () => {
       const textToPass = quickInput && quickInput.value.trim() ? encodeURIComponent(quickInput.value.trim()) : "";
       const arenaUrl = chrome.runtime.getURL(`src/arena/arena.html${textToPass ? `?text=${textToPass}` : ""}`);
       chrome.tabs.create({ url: arenaUrl });
+      window.close();
+    });
+  }
+
+  // 2. Buton: Aktif Sayfayı 6 Sekmede 6 Farklı Motorla Doğrudan Aç
+  if (btnOpen6Tabs) {
+    btnOpen6Tabs.addEventListener("click", async () => {
+      const allTabs = await chrome.tabs.query({ active: true, currentWindow: true });
+      let currentTab = allTabs[0];
+      let targetUrl = currentTab && currentTab.url ? currentTab.url : "https://en.wikipedia.org/wiki/Artificial_intelligence";
+
+      const engines = ["google", "deepl", "bing", "duckduckgo", "mymemory", "lingva"];
+      for (const eng of engines) {
+        chrome.runtime.sendMessage({
+          action: "OPEN_ENGINE_TAB",
+          url: targetUrl,
+          engine: eng,
+          targetLang: selectTargetLang.value || "tr"
+        });
+      }
       window.close();
     });
   }
@@ -237,7 +269,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     chrome.runtime.sendMessage({
       action: "QUICK_TRANSLATE",
       text: text,
-      targetLang: selectTargetLang.value
+      targetLang: quickActiveTarget
     }, (response) => {
       btnQuickTranslate.disabled = false;
       btnQuickTranslate.style.opacity = "1";
@@ -250,8 +282,6 @@ document.addEventListener("DOMContentLoaded", async () => {
         resultCard.classList.remove("hidden");
       }
     });
-  }
-
   btnQuickTranslate.addEventListener("click", performQuickTranslate);
   quickInput.addEventListener("keydown", (e) => {
     if (e.key === "Enter" && !e.shiftKey) {
