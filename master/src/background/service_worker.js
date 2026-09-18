@@ -59,6 +59,11 @@ const LANG_NAMES = {
   ka: { tr: "Gürcüce", en: "Georgian" }
 };
 
+// Tarayıcı her yeniden başlatıldığında (restart) popup taslağını temizle
+chrome.runtime.onStartup.addListener(() => {
+  chrome.storage.local.remove(["popupQuickDraft"]);
+});
+
 // İlk kurulum veya güncelleme
 chrome.runtime.onInstalled.addListener(async (details) => {
   // Tarayıcı / Sistem dilini algıla (örneğin "tr-TR" -> "tr", "en-US" -> "en")

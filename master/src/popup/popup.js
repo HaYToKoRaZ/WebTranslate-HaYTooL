@@ -15,6 +15,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   const resultCard = document.getElementById("quick-result-card");
   const resultText = document.getElementById("quick-result-text");
   const btnCopyResult = document.getElementById("btn-copy-result");
+  const btnClearQuick = document.getElementById("btn-clear-quick");
 
   // Sistem / Tarayıcı Dilini Algıla
   let detectedTarget = "tr";
@@ -196,9 +197,66 @@ document.addEventListener("DOMContentLoaded", async () => {
   }
   updateQuickLangTags();
 
-  if (quickInput && charCount) {
+  // Oturum Taslağını Geri Yükle (Popup kapansa bile son yazılan metin ve sonuç korunur)
+  function updateClearBtnVisibility() {
+    if (!btnClearQuick || !quickInput) return;
+    if (quickInput.value && quickInput.value.length > 0) {
+      btnClearQuick.classList.remove("hidden");
+    } else {
+      btnClearQuick.classList.add("hidden");
+    }
+  }
+
+  function saveQuickDraft() {
+    const draft = {
+      text: quickInput ? quickInput.value : "",
+      result: (resultText && !resultCard.classList.contains("hidden")) ? resultText.textContent : "",
+      source: quickActiveSource,
+      target: quickActiveTarget
+    };
+    chrome.storage.local.set({ popupQuickDraft: draft });
+  }
+
+  try {
+    const { popupQuickDraft } = await chrome.storage.local.get("popupQuickDraft");
+    if (popupQuickDraft) {
+      if (popupQuickDraft.text && quickInput) {
+        quickInput.value = popupQuickDraft.text;
+        if (charCount) charCount.textContent = popupQuickDraft.text.length;
+      }
+      if (popupQuickDraft.result && resultText && resultCard) {
+        resultText.textContent = popupQuickDraft.result;
+        resultCard.classList.remove("hidden");
+      }
+      if (popupQuickDraft.source) quickActiveSource = popupQuickDraft.source;
+      if (popupQuickDraft.target) quickActiveTarget = popupQuickDraft.target;
+      updateQuickLangTags();
+      updateClearBtnVisibility();
+    }
+  } catch (e) {
+    console.warn("Taslak yüklenirken hata:", e);
+  }
+
+  if (quickInput) {
     quickInput.addEventListener("input", () => {
-      charCount.textContent = quickInput.value.length;
+      if (charCount) charCount.textContent = quickInput.value.length;
+      updateClearBtnVisibility();
+      saveQuickDraft();
+    });
+  }
+
+  // Temizle Butonu (Kullanıcı metni ve sonucu sıfırlamak istediğinde)
+  if (btnClearQuick) {
+    btnClearQuick.addEventListener("click", () => {
+      if (quickInput) {
+        quickInput.value = "";
+        quickInput.focus();
+      }
+      if (charCount) charCount.textContent = "0";
+      if (resultCard) resultCard.classList.add("hidden");
+      if (resultText) resultText.textContent = "";
+      updateClearBtnVisibility();
+      chrome.storage.local.remove(["popupQuickDraft"]);
     });
   }
 
@@ -221,9 +279,14 @@ document.addEventListener("DOMContentLoaded", async () => {
         quickInput.value = resultText.textContent;
         resultText.textContent = tempText;
         if (charCount) charCount.textContent = quickInput.value.length;
+        updateClearBtnVisibility();
+        saveQuickDraft();
         performQuickTranslate();
       } else if (quickInput && quickInput.value.trim()) {
+        saveQuickDraft();
         performQuickTranslate();
+      } else {
+        saveQuickDraft();
       }
     });
   }
@@ -277,9 +340,11 @@ document.addEventListener("DOMContentLoaded", async () => {
       if (response && response.success) {
         resultText.textContent = response.translated;
         resultCard.classList.remove("hidden");
+        saveQuickDraft();
       } else {
         resultText.textContent = "Hata oluştu veya çevrilemedi.";
         resultCard.classList.remove("hidden");
+        saveQuickDraft();
       }
     });
   }
