@@ -7,8 +7,10 @@
 **Lightning Fast Full-Page & Selection Web Translator**  
 *Işık Hızında Web Sayfası ve Seçili Metin Çevirmeni*
 
-[![Web Store Ready](https://img.shields.io/badge/Web_Store-Ready-4285F4?style=flat-square)](https://github.com/HaYToKoRaZ/WebTranslate-HaYTooL/releases/latest)
-[![Latest Release](https://img.shields.io/github/v/release/HaYToKoRaZ/WebTranslate-HaYTooL?label=Download%20ZIP&color=10b981&style=flat-square)](https://github.com/HaYToKoRaZ/WebTranslate-HaYTooL/releases/latest)
+[![GitHub Release](https://img.shields.io/github/v/release/HaYToKoRaZ/WebTranslate-HaYTooL?color=38bdf8&style=flat-square&logo=github)](https://github.com/HaYToKoRaZ/WebTranslate-HaYTooL/releases/latest)
+[![GitHub Downloads (latest release)](https://img.shields.io/github/downloads/HaYToKoRaZ/WebTranslate-HaYTooL/latest/total?color=10b981&style=flat-square&logo=github)](https://github.com/HaYToKoRaZ/WebTranslate-HaYTooL/releases/latest)
+[![GitHub Downloads (all assets, all releases)](https://img.shields.io/github/downloads/HaYToKoRaZ/WebTranslate-HaYTooL/total?color=0284c7&style=flat-square&logo=github)](https://github.com/HaYToKoRaZ/WebTranslate-HaYTooL/releases)
+[![Stars](https://img.shields.io/github/stars/HaYToKoRaZ/WebTranslate-HaYTooL?color=eab308&style=flat-square&logo=github)](https://github.com/HaYToKoRaZ/WebTranslate-HaYTooL/stargazers)
 [![License: MIT](https://img.shields.io/badge/License-MIT-emerald?style=flat-square)](LICENSE)
 [![Manifest V3](https://img.shields.io/badge/Manifest-V3-orange?style=flat-square)](https://developer.chrome.com/docs/extensions/mv3/intro/)
 
