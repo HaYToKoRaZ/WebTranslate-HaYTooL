@@ -222,5 +222,121 @@
   "langEnglish": {
     "message": "İngilizce",
     "description": "İngilizce dil adı"
+  },
+  "arenaTitle": {
+    "message": "HaYTooL Engine Arena",
+    "description": "Arena başlığı"
+  },
+  "arenaBadge": {
+    "message": "Hız & Kalite Kıyaslaması",
+    "description": "Arena rozeti"
+  },
+  "arenaSubtitle": {
+    "message": "6 Çeviri Motorunu Aynı Anda Yarıştırın, Hızlarını ve Kalitelerini Karşılaştırın",
+    "description": "Arena alt başlığı"
+  },
+  "arenaBtnComparePage": {
+    "message": "Sayfayı 6 Sekmede Canlı Aç",
+    "description": "6 Sekmede Aç butonu"
+  },
+  "arenaInputLabel": {
+    "message": "Test Edilecek Metin:",
+    "description": "Metin etiketi"
+  },
+  "arenaTargetLabel": {
+    "message": "Hedef Dil:",
+    "description": "Hedef dil etiketi"
+  },
+  "arenaPlaceholder": {
+    "message": "Karşılaştırmak istediğiniz bir cümle veya paragraf yazın...",
+    "description": "Placeholder"
+  },
+  "arenaSampleTitle": {
+    "message": "Örnek Metinler:",
+    "description": "Örnek metinler başlığı"
+  },
+  "arenaSampleTech": {
+    "message": "Teknoloji",
+    "description": "Örnek teknoloji"
+  },
+  "arenaSampleLit": {
+    "message": "Edebiyat",
+    "description": "Örnek edebiyat"
+  },
+  "arenaSampleCasual": {
+    "message": "Günlük Konuşma",
+    "description": "Örnek günlük konuşma"
+  },
+  "arenaBtnStart": {
+    "message": "6 Motoru Yarıştır (Başlat)",
+    "description": "Yarış başlat butonu"
+  },
+  "arenaBtnRestart": {
+    "message": "Yeniden Yarıştır (Başlat)",
+    "description": "Yeniden yarıştır"
+  },
+  "arenaRunning": {
+    "message": "Yarış Devam Ediyor...",
+    "description": "Yarış devam ediyor"
+  },
+  "arenaWaiting": {
+    "message": "Bekleniyor",
+    "description": "Bekleniyor"
+  },
+  "arenaReady": {
+    "message": "Hazır...",
+    "description": "Hazır"
+  },
+  "arenaStatusReady": {
+    "message": "⚪ Hazır",
+    "description": "Durum hazır"
+  },
+  "arenaStatusMeasuring": {
+    "message": "⏱ Ölçülüyor...",
+    "description": "Ölçülüyor"
+  },
+  "arenaStatusSent": {
+    "message": "🟡 İstek Gönderildi",
+    "description": "İstek gönderildi"
+  },
+  "arenaStatusTranslating": {
+    "message": "Çevriliyor, lütfen bekleyin...",
+    "description": "Çevriliyor"
+  },
+  "arenaSetDefault": {
+    "message": "Varsayılan Yap",
+    "description": "Varsayılan yap butonu"
+  },
+  "arenaIsDefault": {
+    "message": "✓ Varsayılan",
+    "description": "Varsayılan rozeti"
+  },
+  "arenaFastest": {
+    "message": "(En Hızlı)",
+    "description": "En hızlı etiketi"
+  },
+  "arenaTagDefault": {
+    "message": "Varsayılan Motor",
+    "description": "Google etiketi"
+  },
+  "arenaTagAi": {
+    "message": "AI Nöral Çeviri",
+    "description": "DeepL etiketi"
+  },
+  "arenaTagGlobal": {
+    "message": "Microsoft Küresel Ağ",
+    "description": "Bing etiketi"
+  },
+  "arenaTagPrivacy": {
+    "message": "Gizlilik Odaklı",
+    "description": "DDG etiketi"
+  },
+  "arenaTagMemory": {
+    "message": "Çok Dilli Hafıza Bankası",
+    "description": "MyMemory etiketi"
+  },
+  "arenaTagOpenSource": {
+    "message": "Açık Kaynak Ayna",
+    "description": "Lingva etiketi"
   }
 }

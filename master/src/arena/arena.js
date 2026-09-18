@@ -6,10 +6,47 @@ document.addEventListener("DOMContentLoaded", async () => {
   const benchmarkText = document.getElementById("benchmark-text");
   const arenaTargetLang = document.getElementById("arena-target-lang");
   const btnStart = document.getElementById("btn-start-benchmark");
+  const startBtnLabel = document.getElementById("start-btn-label");
   const btnComparePage = document.getElementById("btn-compare-page");
   const toast = document.getElementById("toast");
 
   const engines = ["google", "deepl", "bing", "duckduckgo", "mymemory", "lingva"];
+
+  // Eklenti Arayüz Dilini Al ve Yerelleştirmeyi Uygula
+  const { appLang } = await chrome.storage.local.get({ appLang: "tr" });
+  let currentMsgs = {};
+
+  async function loadLocalization() {
+    try {
+      const url = chrome.runtime.getURL(`_locales/${appLang}/messages.json`);
+      const res = await fetch(url);
+      if (res.ok) {
+        currentMsgs = await res.json();
+        document.querySelectorAll("[data-i18n]").forEach(elem => {
+          const key = elem.getAttribute("data-i18n");
+          if (currentMsgs[key] && currentMsgs[key].message) {
+            elem.textContent = currentMsgs[key].message;
+          }
+        });
+        document.querySelectorAll("[data-i18n-placeholder]").forEach(elem => {
+          const key = elem.getAttribute("data-i18n-placeholder");
+          if (currentMsgs[key] && currentMsgs[key].message) {
+            elem.setAttribute("placeholder", currentMsgs[key].message);
+          }
+        });
+        if (currentMsgs["arenaTitle"] && currentMsgs["arenaTitle"].message) {
+          document.title = `${currentMsgs["arenaTitle"].message} - Benchmark`;
+        }
+      }
+    } catch (e) {
+      console.warn("Arena locale error:", e);
+    }
+  }
+  await loadLocalization();
+
+  function t(key, fallback) {
+    return (currentMsgs[key] && currentMsgs[key].message) || fallback;
+  }
 
   // Varsayılan kayıtlı hedef dili ve aktif motoru yükle
   const { targetLang, engine: defaultEngine } = await chrome.storage.local.get({
@@ -53,11 +90,11 @@ document.addEventListener("DOMContentLoaded", async () => {
       const eng = btn.getAttribute("data-engine");
       const card = btn.closest(".engine-card");
       if (eng === active) {
-        btn.textContent = "✓ Varsayılan";
+        btn.textContent = t("arenaIsDefault", "✓ Varsayılan");
         btn.classList.add("is-default");
         if (card) card.classList.add("active-default");
       } else {
-        btn.textContent = "Varsayılan Yap";
+        btn.textContent = t("arenaSetDefault", "Varsayılan Yap");
         btn.classList.remove("is-default");
         if (card) card.classList.remove("active-default");
       }
@@ -70,7 +107,10 @@ document.addEventListener("DOMContentLoaded", async () => {
       const selected = btn.getAttribute("data-engine");
       chrome.storage.local.set({ engine: selected });
       updateDefaultEngineBadges(selected);
-      showToast(`🎉 ${selected.toUpperCase()} artık varsayılan çeviri motorunuz!`);
+      const toastMsg = appLang === "en" 
+        ? `🎉 ${selected.toUpperCase()} is now your default translation engine!`
+        : `🎉 ${selected.toUpperCase()} artık varsayılan çeviri motorunuz!`;
+      showToast(toastMsg);
     });
   });
 
@@ -82,7 +122,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   async function runBenchmark() {
     const text = benchmarkText.value.trim();
     if (!text) {
-      showToast("Lütfen test edilecek bir metin girin!");
+      showToast(appLang === "en" ? "Please enter text to benchmark!" : "Lütfen test edilecek bir metin girin!");
       return;
     }
 
@@ -90,7 +130,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     btnStart.disabled = true;
     btnStart.style.opacity = "0.6";
-    btnStart.querySelector("span").textContent = "Yarış Devam Ediyor...";
+    if (startBtnLabel) startBtnLabel.textContent = t("arenaRunning", "Yarış Devam Ediyor...");
 
     // Tüm kartları 'Çalışıyor' durumuna getir
     engines.forEach(eng => {
@@ -100,10 +140,10 @@ document.addEventListener("DOMContentLoaded", async () => {
 
       if (speedEl) {
         speedEl.className = "speed-badge";
-        speedEl.textContent = "⏱ Ölçülüyor...";
+        speedEl.textContent = t("arenaStatusMeasuring", "⏱ Ölçülüyor...");
       }
-      if (outputEl) outputEl.textContent = "Çevriliyor, lütfen bekleyin...";
-      if (statusEl) statusEl.textContent = "🟡 İstek Gönderildi";
+      if (outputEl) outputEl.textContent = t("arenaStatusTranslating", "Çevriliyor, lütfen bekleyin...");
+      if (statusEl) statusEl.textContent = t("arenaStatusSent", "🟡 İstek Gönderildi");
     });
 
     const startTime = performance.now();
@@ -131,16 +171,18 @@ document.addEventListener("DOMContentLoaded", async () => {
         if (res && res.success && res.translated) {
           if (speedEl) speedEl.textContent = `⚡ ${elapsed} ms`;
           if (outputEl) outputEl.textContent = res.translated;
-          if (statusEl) statusEl.textContent = `🟢 Başarılı (${res.translated.length} karakter)`;
+          const okMsg = appLang === "en" ? `🟢 Success (${res.translated.length} chars)` : `🟢 Başarılı (${res.translated.length} karakter)`;
+          if (statusEl) statusEl.textContent = okMsg;
 
           if (elapsed < fastestTime) {
             fastestTime = elapsed;
             fastestEngine = eng;
           }
         } else {
-          if (speedEl) speedEl.textContent = `❌ Hata (${elapsed}ms)`;
-          if (outputEl) outputEl.textContent = res && res.error ? `Hata: ${res.error}` : "Çeviri yanıtı alınamadı veya API anahtarı eksik.";
-          if (statusEl) statusEl.textContent = "🔴 Başarısız";
+          if (speedEl) speedEl.textContent = `❌ (${elapsed}ms)`;
+          const failMsg = appLang === "en" ? "Translation response failed or API key missing." : "Çeviri yanıtı alınamadı veya API anahtarı eksik.";
+          if (outputEl) outputEl.textContent = res && res.error ? `Error: ${res.error}` : failMsg;
+          if (statusEl) statusEl.textContent = appLang === "en" ? "🔴 Failed" : "🔴 Başarısız";
         }
       } catch (err) {
         const elapsed = Math.round(performance.now() - engineStart);
@@ -149,8 +191,8 @@ document.addEventListener("DOMContentLoaded", async () => {
         const statusEl = document.getElementById(`status-${eng}`);
 
         if (speedEl) speedEl.textContent = `❌ ${elapsed}ms`;
-        if (outputEl) outputEl.textContent = `Bağlantı hatası: ${err.message}`;
-        if (statusEl) statusEl.textContent = "🔴 Hata";
+        if (outputEl) outputEl.textContent = `${appLang === "en" ? 'Connection error' : 'Bağlantı hatası'}: ${err.message}`;
+        if (statusEl) statusEl.textContent = appLang === "en" ? "🔴 Error" : "🔴 Hata";
       }
     });
 
@@ -161,14 +203,17 @@ document.addEventListener("DOMContentLoaded", async () => {
       const fastestBadge = document.getElementById(`speed-${fastestEngine}`);
       if (fastestBadge) {
         fastestBadge.classList.add("fastest");
-        fastestBadge.textContent = `🏆 ${fastestBadge.textContent} (En Hızlı)`;
+        fastestBadge.textContent = `🏆 ${fastestBadge.textContent} ${t("arenaFastest", "(En Hızlı)")}`;
       }
     }
 
     btnStart.disabled = false;
     btnStart.style.opacity = "1";
-    btnStart.querySelector("span").textContent = "Yeniden Yarıştır (Başlat)";
-    showToast(`🏁 Karşılaştırma tamamlandı! En hızlı motor: ${fastestEngine ? fastestEngine.toUpperCase() : 'Bilinmiyor'}`);
+    if (startBtnLabel) startBtnLabel.textContent = t("arenaBtnRestart", "Yeniden Yarıştır (Başlat)");
+    const finMsg = appLang === "en"
+      ? `🏁 Benchmark finished! Fastest engine: ${fastestEngine ? fastestEngine.toUpperCase() : 'Unknown'}`
+      : `🏁 Karşılaştırma tamamlandı! En hızlı motor: ${fastestEngine ? fastestEngine.toUpperCase() : 'Bilinmiyor'}`;
+    showToast(finMsg);
   }
 
   // 2. Özellik: Aktif Sayfayı 6 Sekmede 6 Farklı Motorla Açma

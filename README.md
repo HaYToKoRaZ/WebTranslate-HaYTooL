@@ -46,12 +46,14 @@
 ### ✨ Key Features
 - **🌐 One-Click Page Translation with Live Progress HUD:** Right-click anywhere on a webpage and choose **"Translate this page"**. Watch real-time completion with a sleek progress bar (%0-%100) as paragraphs translate on the fly!
 - **🔤 Selection Translation (Floating HUD):** Highlight any text or paragraph, right-click **"Translate selection"**, and an elegant glassmorphic balloon pops up beside your cursor displaying both original and translated text.
+- **🏁 HaYTooL Engine Arena (Benchmark & Speed Test):** Benchmark all 6 translation engines side-by-side in real-time! Compare millisecond response times, side-by-side translation quality, and set your favorite engine as the default with one click.
+- **📑 Multi-Tab Live Comparison (6 Tabs Simultaneously):** Launch the active webpage into 6 independent tabs simultaneously across all 6 engines. Each tab displays permanent translation durations in its tab title (`[⚡ 0.8s | Google] Title`) and includes a persistent comparison HUD so you can easily compare speed and quality by switching tabs.
+- **🔄 Bidirectional Quick Language Swap (⇄):** Seamlessly flip source and target languages with a single click in the popup to translate Turkish to English, German to Turkish, and vice versa.
+- **💾 Automatic Popup Translation Drafts:** Typed text and translated results in the popup are automatically remembered across clicks and window closures until browser restart, accompanied by a clean `×` reset button.
 - **🌓 Dark & Light Theme:** Automatically detects system theme upon installation with customizable dark/light modes.
 - **🛡️ 100% Privacy & Zero Telemetry:** No user analytics, no background tracking.
 - **⚡ Super Lightweight:** Built with vanilla modern JavaScript; opens instantly with zero memory bloat.
 - **🌍 45+ Target Languages:** Supports Turkish, English, German, French, Spanish, Russian, Arabic, Japanese, and more.
-- **🏁 HaYTooL Engine Arena (Benchmark & Speed Test):** Benchmark all 6 translation engines side-by-side in real-time! Compare millisecond speeds, translation outputs, and easily pick your default engine with one click.
-- **🔄 Bidirectional Language Swap (⇄):** Seamlessly flip source and target languages with a single click in the popup to translate Turkish to English, German to Turkish, and vice versa.
 - **🚀 6 Powerful Translation Engines:**
   - **Google Translate (Default):** High-speed, robust translation with built-in Chrome extension API endpoints.
   - **DeepL Translate:** State-of-the-art AI translation quality (optional free/pro API key support).
@@ -76,12 +78,14 @@
 ### ✨ Temel Özellikler
 - **🌐 Canlı İlerleme Çubuklu Sayfa Çevirisi (Live Progress HUD):** Sayfada sağ tıklayıp **"Bu Sayfayı Çevir"** dediğinizde sayfanın sağ alt köşesinde canlı yüzde çubuğu (%0-%100) belirir; paragraflar çevrildikçe anında sayfaya işlenir ve tamamlandığında garanti bildirim verir!
 - **🔤 Seçili Metin Çevirisi (Floating HUD):** Herhangi bir cümleyi veya kelimeyi seçip sağ tıkladığınızda hemen imlecin yanında zarif cam efektli bir baloncuk belirir.
+- **🏁 HaYTooL Engine Arena (Hız & Kalite Kıyaslama Arenası):** 6 çeviri motorunu aynı anda yan yana yarıştırın! Milisaniye cinsinden hızlarını ve çeviri kalitelerini karşılaştırıp tek tıkla en beğendiğiniz motoru varsayılan yapın.
+- **📑 Sayfayı 6 Sekmede Canlı Açma & Kıyaslama:** O anki web sayfasını tek tıkla 6 ayrı sekmede 6 farklı motorla açar. Her sekmenin başlığına motor adı ve çeviri süresi kalıcı yazılır (`[⚡ 0.8s | Google] Başlık`) ve sayfa üzerinde kapatılabilir kalıcı HUD sunulur; böylece sekmeler arasında gezinerek motorların başarısını gözünüzle kıyaslayabilirsiniz!
+- **🔄 Çift Yönlü Dil Değiştirme (Swap ⇄):** Popup'ta tek tıkla hedef ve kaynak dili tersine çevirerek Türkçe'den İngilizce'ye ya da tersine ışık hızında çeviri yapın.
+- **💾 Otomatik Popup Taslak Koruma:** Popup penceresine yazdığınız metinler ve çeviri sonuçları popup kapansa bile kaybolmaz; tarayıcı yeniden başlatılana kadar saklanır ve tek tıkla temizleme (`×`) butonu içerir.
 - **🌓 Koyu & Açık Tema:** İlk yüklendiğinde işletim sisteminizin açık/koyu temasını otomatik algılar ve uyum sağlar.
 - **🛡️ Sıfır Telemetri & %100 Gizlilik:** Hiçbir geçmiş kaydı tutulmaz veya sunuculara iletilmez.
 - **⚡ Ultra Hafif:** Ağır framework'ler içermez, tarayıcınızı asla yavaşlatmaz.
 - **🌍 45+ Dil Desteği:** Türkçe, İngilizce, Almanca, Fransızca, İspanyolca, Rusça, Arapça ve çok daha fazlası.
-- **🏁 HaYTooL Engine Arena (Hız & Kalite Kıyaslama Arenası):** 6 çeviri motorunu aynı anda yan yana yarıştırın! Milisaniye hızlarını ve çeviri kalitelerini karşılaştırıp tek tıkla en beğendiğiniz motoru varsayılan yapın.
-- **🔄 Çift Yönlü Dil Değiştirme (Swap ⇄):** Popup'ta tek tıkla hedef ve kaynak dili tersine çevirerek Türkçe'den İngilizce'ye ya da tersine ışık hızında çeviri yapın.
 - **🚀 6 Güçlü Çeviri Motoru Desteği:**
   - **Google Translate (Varsayılan):** Işık hızında, kesintisiz ve resmi uzantı uç noktalarıyla en güvenilir motor.
   - **DeepL Translate:** Dünyanın en doğal yapay zeka çeviri motoru (ücretsiz API Key desteğiyle).

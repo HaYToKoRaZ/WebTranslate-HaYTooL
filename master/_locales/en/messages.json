@@ -222,5 +222,121 @@
   "langEnglish": {
     "message": "English",
     "description": "English language name"
+  },
+  "arenaTitle": {
+    "message": "HaYTooL Engine Arena",
+    "description": "Arena title"
+  },
+  "arenaBadge": {
+    "message": "Speed & Quality Benchmark",
+    "description": "Arena badge"
+  },
+  "arenaSubtitle": {
+    "message": "Race 6 Translation Engines Side-by-Side, Compare Speeds and Outputs",
+    "description": "Arena subtitle"
+  },
+  "arenaBtnComparePage": {
+    "message": "Open Page in 6 Tabs Live",
+    "description": "Open in 6 tabs button"
+  },
+  "arenaInputLabel": {
+    "message": "Benchmark Text:",
+    "description": "Input label"
+  },
+  "arenaTargetLabel": {
+    "message": "Target Language:",
+    "description": "Target language label"
+  },
+  "arenaPlaceholder": {
+    "message": "Type or paste any text or paragraph to benchmark...",
+    "description": "Placeholder"
+  },
+  "arenaSampleTitle": {
+    "message": "Sample Texts:",
+    "description": "Sample texts title"
+  },
+  "arenaSampleTech": {
+    "message": "Technology",
+    "description": "Sample tech"
+  },
+  "arenaSampleLit": {
+    "message": "Literature",
+    "description": "Sample literature"
+  },
+  "arenaSampleCasual": {
+    "message": "Casual Conversation",
+    "description": "Sample casual"
+  },
+  "arenaBtnStart": {
+    "message": "Race 6 Engines (Start)",
+    "description": "Start race button"
+  },
+  "arenaBtnRestart": {
+    "message": "Restart Benchmark",
+    "description": "Restart button"
+  },
+  "arenaRunning": {
+    "message": "Racing Engines...",
+    "description": "Racing in progress"
+  },
+  "arenaWaiting": {
+    "message": "Pending",
+    "description": "Waiting"
+  },
+  "arenaReady": {
+    "message": "Ready...",
+    "description": "Ready"
+  },
+  "arenaStatusReady": {
+    "message": "⚪ Ready",
+    "description": "Status ready"
+  },
+  "arenaStatusMeasuring": {
+    "message": "⏱ Measuring...",
+    "description": "Measuring"
+  },
+  "arenaStatusSent": {
+    "message": "🟡 Request Sent",
+    "description": "Sent"
+  },
+  "arenaStatusTranslating": {
+    "message": "Translating, please wait...",
+    "description": "Translating"
+  },
+  "arenaSetDefault": {
+    "message": "Set as Default",
+    "description": "Set default button"
+  },
+  "arenaIsDefault": {
+    "message": "✓ Default",
+    "description": "Is default"
+  },
+  "arenaFastest": {
+    "message": "(Fastest)",
+    "description": "Fastest label"
+  },
+  "arenaTagDefault": {
+    "message": "Default Engine",
+    "description": "Google tag"
+  },
+  "arenaTagAi": {
+    "message": "AI Neural Translation",
+    "description": "DeepL tag"
+  },
+  "arenaTagGlobal": {
+    "message": "Microsoft Global Network",
+    "description": "Bing tag"
+  },
+  "arenaTagPrivacy": {
+    "message": "Privacy-Focused",
+    "description": "DDG tag"
+  },
+  "arenaTagMemory": {
+    "message": "Multilingual Memory Bank",
+    "description": "MyMemory tag"
+  },
+  "arenaTagOpenSource": {
+    "message": "Open-Source Mirror",
+    "description": "Lingva tag"
   }
 }
