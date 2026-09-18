@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WebTranslate HaYTooL - Ayarlar</title>
+  <link rel="stylesheet" href="options.css">
+</head>
+<body>
+  <div class="options-wrapper">
+    <!-- Header -->
+    <header class="options-header">
+      <div class="brand-group">
+        <img src="../assets/icons/icon48.png" alt="Logo" class="logo">
+        <div>
+          <div class="title-row">
+            <h1 class="heading" data-i18n="optionsHeading">WebTranslate Ayarları</h1>
+            <span class="version-badge" id="app-version">v1.0.0</span>
+          </div>
+          <p class="subheading" data-i18n="optionsSubheading">Kişiselleştirme ve Çeviri Tercihleri</p>
+        </div>
+      </div>
+      <div class="header-links">
+        <a href="https://haytokoraz.github.io/WebTranslate-HaYTooL/" target="_blank" class="header-link" title="Web Sitesi" data-i18n="websiteLink">
+          🌐 Tanıtım Sitesi
+        </a>
+        <a href="https://haytokoraz.github.io/" target="_blank" class="header-link portal-link" title="Diğer Uygulamalar" data-i18n="portalLink">
+          ✨ HaYTooL Portal
+        </a>
+      </div>
+    </header>
+
+    <!-- Main Form -->
+    <main class="settings-card">
+      <!-- 1. Varsayılan Çevrilecek Dil (Hedef Dil - Kapsamlı Açılır Menü) -->
+      <div class="setting-item">
+        <div class="setting-info">
+          <label class="setting-label" for="targetLang" data-i18n="targetLanguageHeading">Varsayılan Çevrilecek Dil (Hedef Dil)</label>
+          <span class="setting-desc" data-i18n="targetLanguageDesc">Sayfalar ve metinler sağ tıklandığında çevrilmesini istediğiniz hedef dil.</span>
+        </div>
+        <select id="targetLang" class="setting-control select-input select-large">
+          <option value="tr">Türkçe (Turkish)</option>
+          <option value="en">English (İngilizce)</option>
+          <option value="az">Azərbaycan (Azerbaycan Türkçesi)</option>
+          <option value="de">Deutsch (Almanca)</option>
+          <option value="fr">Français (Fransızca)</option>
+          <option value="es">Español (İspanyolca)</option>
+          <option value="it">Italiano (İtalyanca)</option>
+          <option value="pt">Português (Portekizce)</option>
+          <option value="ru">Русский (Rusça)</option>
+          <option value="uk">Українська (Ukraynaca)</option>
+          <option value="pl">Polski (Lehçe)</option>
+          <option value="nl">Nederlands (Felemenkçe)</option>
+          <option value="ar">العربية (Arapça)</option>
+          <option value="fa">فارسی (Farsça)</option>
+          <option value="ja">日本語 (Japonca)</option>
+          <option value="ko">한국어 (Korece)</option>
+          <option value="zh">中文 (Çince - Basitleştirilmiş)</option>
+          <option value="el">Ελληνικά (Yunanca)</option>
+          <option value="hi">हिन्दी (Hintçe)</option>
+          <option value="ur">اردو (Urduca)</option>
+          <option value="bn">বাংলা (Bengalce)</option>
+          <option value="sv">Svenska (İsveççe)</option>
+          <option value="no">Norsk (Norveççe)</option>
+          <option value="da">Dansk (Danca)</option>
+          <option value="fi">Suomi (Fince)</option>
+          <option value="cs">Čeština (Çekçe)</option>
+          <option value="ro">Română (Romence)</option>
+          <option value="hu">Magyar (Macarca)</option>
+          <option value="bg">Български (Bulgarca)</option>
+          <option value="sr">Српски (Sırpça)</option>
+          <option value="hr">Hrvatski (Hırvatça)</option>
+          <option value="sk">Slovenčina (Slovakça)</option>
+          <option value="sl">Slovenščina (Slovence)</option>
+          <option value="id">Bahasa Indonesia (Endonezce)</option>
+          <option value="ms">Bahasa Melayu (Malayca)</option>
+          <option value="vi">Tiếng Việt (Vietnamca)</option>
+          <option value="th">ไทย (Tayca)</option>
+          <option value="he">עברית (İbranice)</option>
+          <option value="kk">Қазақ тілі (Kazakça)</option>
+          <option value="uz">Oʻzbekcha (Özbekçe)</option>
+          <option value="lt">Lietuvių (Litvanca)</option>
+          <option value="lv">Latviešu (Letonca)</option>
+          <option value="et">Eesti (Estonca)</option>
+          <option value="ka">ქართული (Gürcüce)</option>
+        </select>
+      </div>
+
+      <!-- 2. Çeviri Motoru -->
+      <div class="setting-item">
+        <div class="setting-info">
+          <label class="setting-label" for="engine" data-i18n="translationEngine">Çeviri Motoru</label>
+          <span class="setting-desc" data-i18n="engineDesc">Sayfa ve metin çevirisinde kullanılacak servis sağlayıcı.</span>
+        </div>
+        <select id="engine" class="setting-control select-input">
+          <option value="lingva" data-i18n="engineLingva" selected>Lingva Translate (Varsayılan - Gizlilik Odaklı & Hızlı)</option>
+          <option value="google" data-i18n="engineGoogle">Google Translate (Hızlı & Kapsamlı)</option>
+          <option value="mymemory" data-i18n="engineMyMemory">MyMemory Translator (Çok Dilli Hafıza)</option>
+        </select>
+      </div>
+
+      <!-- 3. Seçili Metin HUD Balonu -->
+      <div class="setting-item">
+        <div class="setting-info">
+          <label class="setting-label" for="showSelectionHUD" data-i18n="showSelectionHUD">Seçim Çeviri Baloncuğu</label>
+          <span class="setting-desc" data-i18n="hudDesc">Sağ tık ile metin çevrildiğinde sayfa üzerinde zarif popup balonu göster.</span>
+        </div>
+        <label class="switch">
+          <input type="checkbox" id="showSelectionHUD" checked>
+          <span class="slider round"></span>
+        </label>
+      </div>
+
+      <!-- 4. Sağ Tık Menüsü -->
+      <div class="setting-item">
+        <div class="setting-info">
+          <label class="setting-label" for="showContextMenu" data-i18n="showContextMenu">Tarayıcı Sağ Tık Menüsü</label>
+          <span class="setting-desc" data-i18n="contextMenuDesc">Sayfada veya seçili metinde sağ tık menü seçeneklerini etkinleştir.</span>
+        </div>
+        <label class="switch">
+          <input type="checkbox" id="showContextMenu" checked>
+          <span class="slider round"></span>
+        </label>
+      </div>
+
+      <!-- 5. Görünüm Teması -->
+      <div class="setting-item">
+        <div class="setting-info">
+          <label class="setting-label" for="theme" data-i18n="theme">Görünüm Teması</label>
+          <span class="setting-desc" data-i18n="themeDesc">Eklenti pencerelerinin renk düzeni.</span>
+        </div>
+        <select id="theme" class="setting-control select-input">
+          <option value="system" data-i18n="themeSystem">Sistemle Eşle (Otomatik)</option>
+          <option value="dark" data-i18n="themeDark">Koyu Tema</option>
+          <option value="light" data-i18n="themeLight">Açık Tema</option>
+        </select>
+      </div>
+
+      <!-- 6. Eklenti Arayüz Dili (Sayfanın Altında - SVG Bayraklı) -->
+      <div class="setting-item column-layout">
+        <div class="setting-info full-width">
+          <label class="setting-label" data-i18n="appLanguage">Eklenti Arayüz Dili</label>
+          <span class="setting-desc" data-i18n="appLanguageDesc">Eklentinin menü ve ayar ekranlarının görüntüleneceği dil.</span>
+        </div>
+        
+        <input type="hidden" id="appLang" value="tr">
+        <div class="flag-grid two-cols" id="app-lang-grid">
+          <!-- Türkçe Kartı -->
+          <button type="button" class="flag-card active" data-applang="tr">
+            <div class="svg-flag-wrap">
+              <svg viewBox="0 0 1200 800" class="flag-svg-img">
+                <rect width="1200" height="800" fill="#E30A17" />
+                <circle cx="425" cy="400" r="200" fill="#FFFFFF" />
+                <circle cx="475" cy="400" r="160" fill="#E30A17" />
+                <polygon fill="#FFFFFF" points="583.33,400 706.87,440.14 659.73,319.86 659.73,480.14 706.87,359.86" />
+              </svg>
+            </div>
+            <span class="flag-name">Türkçe</span>
+            <span class="flag-sub" data-i18n="langTurkish">Türkçe</span>
+          </button>
+
+          <!-- İngilizce Kartı -->
+          <button type="button" class="flag-card" data-applang="en">
+            <div class="svg-flag-wrap">
+              <svg viewBox="0 0 60 30" class="flag-svg-img">
+                <clipPath id="s1"><path d="M0,0 v30 h60 v-30 z" /></clipPath>
+                <clipPath id="t1"><path d="M30,15 h30 v15 z v15 h-30 z h-30 v-15 z v-15 h30 z" /></clipPath>
+                <g clip-path="url(#s1)">
+                  <path d="M0,0 v30 h60 v-30 z" fill="#012169" />
+                  <path d="M0,0 L60,30 M60,0 L0,30" stroke="#fff" stroke-width="6" />
+                  <path d="M0,0 L60,30 M60,0 L0,30" clip-path="url(#t1)" stroke="#C8102E" stroke-width="4" />
+                  <path d="M30,0 v30 M0,15 h60" stroke="#fff" stroke-width="10" />
+                  <path d="M30,0 v30 M0,15 h60" stroke="#C8102E" stroke-width="6" />
+                </g>
+              </svg>
+            </div>
+            <span class="flag-name">English</span>
+            <span class="flag-sub" data-i18n="langEnglish">İngilizce</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Auto-save Status & Links Footer -->
+      <div class="action-footer">
+        <div class="autosave-pill">
+          <span class="pulse-dot"></span>
+          <span data-i18n="autoSaveNotice">Tüm değişiklikler anında kaydedilir</span>
+        </div>
+        <div id="save-status" class="status-msg hidden">
+          ✓ <span data-i18n="savedSuccessfully">Kaydedildi</span>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="options.js"></script>
+</body>
+</html>

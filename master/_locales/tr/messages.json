@@ -1,0 +1,186 @@
+{
+  "appName": {
+    "message": "WebTranslate HaYTooL",
+    "description": "Eklentinin adı"
+  },
+  "appDesc": {
+    "message": "Web sayfalarını ve seçili metinleri tek tıkla ışık hızında çeviren modern, gizlilik odaklı tarayıcı çevirmeni.",
+    "description": "Eklentinin açıklaması"
+  },
+  "contextTranslatePage": {
+    "message": "🌐 Bu Sayfayı Çevir ($TARGET_LANG$)",
+    "description": "Sayfa sağ tık çeviri menüsü",
+    "placeholders": {
+      "target_lang": {
+        "content": "$1",
+        "example": "Türkçe"
+      }
+    }
+  },
+  "contextTranslateSelection": {
+    "message": "🔤 Seçili Metni Çevir ($TARGET_LANG$)",
+    "description": "Seçili metin sağ tık çeviri menüsü",
+    "placeholders": {
+      "target_lang": {
+        "content": "$1",
+        "example": "Türkçe"
+      }
+    }
+  },
+  "contextOptions": {
+    "message": "⚙️ Çeviri Ayarları",
+    "description": "Sağ tık ayarlar menüsü"
+  },
+  "contextOpenPortal": {
+    "message": "✨ HaYTooL Portal (Web Sitemiz)",
+    "description": "Sağ tık web portal bağlantısı"
+  },
+  "popupTitle": {
+    "message": "WebTranslate HaYTooL",
+    "description": "Popup başlığı"
+  },
+  "popupSubtitle": {
+    "message": "Işık hızında sayfa ve metin çevirisi",
+    "description": "Popup alt başlığı"
+  },
+  "btnTranslatePage": {
+    "message": "Bu Sayfayı Çevir",
+    "description": "Sayfayı çevir butonu"
+  },
+  "btnRestorePage": {
+    "message": "Orijinal Sayfayı Göster",
+    "description": "Orijinali göster butonu"
+  },
+  "targetLanguage": {
+    "message": "Hedef Dil",
+    "description": "Hedef dil etiketi"
+  },
+  "quickTranslatePlaceholder": {
+    "message": "Hızlı çevrilecek metni yazın...",
+    "description": "Hızlı çeviri metin alanı"
+  },
+  "btnTranslate": {
+    "message": "Çevir",
+    "description": "Çevir butonu"
+  },
+  "btnCopy": {
+    "message": "Kopyala",
+    "description": "Kopyala butonu"
+  },
+  "copied": {
+    "message": "Kopyalandı!",
+    "description": "Kopyalandı bildirimi"
+  },
+  "settings": {
+    "message": "Ayarlar",
+    "description": "Ayarlar menüsü"
+  },
+  "optionsHeading": {
+    "message": "WebTranslate Ayarları",
+    "description": "Ayarlar başlığı"
+  },
+  "appLanguage": {
+    "message": "Eklenti Arayüz Dili",
+    "description": "Eklenti arayüz dili başlığı"
+  },
+  "appLanguageDesc": {
+    "message": "Eklentinin menü ve ayar ekranlarının görüntüleneceği dil.",
+    "description": "Arayüz dili açıklaması"
+  },
+  "targetLanguageHeading": {
+    "message": "Varsayılan Çevrilecek Dil (Hedef Dil)",
+    "description": "Çevrilecek dil başlığı"
+  },
+  "targetLanguageDesc": {
+    "message": "Sayfalar ve metinler sağ tıklandığında çevrilmesini istediğiniz dil.",
+    "description": "Çevrilecek dil açıklaması"
+  },
+  "optionsSave": {
+    "message": "Ayarları Kaydet",
+    "description": "Ayarları kaydet butonu"
+  },
+  "savedSuccessfully": {
+    "message": "Kaydedildi!",
+    "description": "Başarı mesajı"
+  },
+  "autoSaveNotice": {
+    "message": "Tüm değişiklikler anında kaydedilir",
+    "description": "Otomatik kaydetme bilgilendirmesi"
+  },
+  "theme": {
+    "message": "Tema Seçimi",
+    "description": "Tema seçimi etiketi"
+  },
+  "themeDark": {
+    "message": "Koyu Tema",
+    "description": "Koyu tema"
+  },
+  "themeLight": {
+    "message": "Açık Tema",
+    "description": "Açık tema"
+  },
+  "themeSystem": {
+    "message": "Sistemle Eşle",
+    "description": "Sistem teması"
+  },
+  "showSelectionHUD": {
+    "message": "Metin seçildiğinde hızlı çeviri balonunu göster",
+    "description": "Seçim HUD ayarı"
+  },
+  "showContextMenu": {
+    "message": "Tarayıcı sağ tık menüsünde göster",
+    "description": "Sağ tık menü ayarı"
+  },
+  "translationEngine": {
+    "message": "Çeviri Motoru",
+    "description": "Çeviri motoru"
+  },
+  "engineGoogle": {
+    "message": "Google Translate (Hızlı & Kapsamlı)",
+    "description": "Google Çeviri motoru"
+  },
+  "engineMyMemory": {
+    "message": "MyMemory Translator (Çok Dilli Hafıza)",
+    "description": "MyMemory Çeviri motoru"
+  },
+  "engineLingva": {
+    "message": "Lingva Translate (Varsayılan - Gizlilik Odaklı & Hızlı)",
+    "description": "Lingva Çeviri motoru"
+  },
+  "optionsSubheading": {
+    "message": "Kişiselleştirme ve Çeviri Tercihleri",
+    "description": "Ayarlar alt başlığı"
+  },
+  "websiteLink": {
+    "message": "🌐 Tanıtım Sitesi",
+    "description": "Tanıtım sitesi bağlantısı"
+  },
+  "portalLink": {
+    "message": "✨ HaYTooL Portal",
+    "description": "Portal bağlantısı"
+  },
+  "engineDesc": {
+    "message": "Sayfa ve metin çevirisinde kullanılacak servis sağlayıcı.",
+    "description": "Çeviri motoru açıklaması"
+  },
+  "hudDesc": {
+    "message": "Sağ tık ile metin çevrildiğinde sayfa üzerinde zarif popup balonu göster.",
+    "description": "Seçim HUD açıklaması"
+  },
+  "contextMenuDesc": {
+    "message": "Sayfada veya seçili metinde sağ tık menü seçeneklerini etkinleştir.",
+    "description": "Sağ tık menüsü açıklaması"
+  },
+  "themeDesc": {
+    "message": "Eklenti pencerelerinin renk düzeni.",
+    "description": "Tema açıklaması"
+  },
+  "langTurkish": {
+    "message": "Türkçe",
+    "description": "Türkçe dil adı"
+  },
+  "langEnglish": {
+    "message": "İngilizce",
+    "description": "İngilizce dil adı"
+  }
+}

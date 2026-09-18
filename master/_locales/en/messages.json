@@ -1,0 +1,186 @@
+{
+  "appName": {
+    "message": "WebTranslate HaYTooL",
+    "description": "The name of the extension"
+  },
+  "appDesc": {
+    "message": "Fast, lightweight and privacy-focused full-page and selection translator. Translate any webpage instantly with a right-click.",
+    "description": "The description of the extension"
+  },
+  "contextTranslatePage": {
+    "message": "🌐 Translate this page ($TARGET_LANG$)",
+    "description": "Context menu full page translation",
+    "placeholders": {
+      "target_lang": {
+        "content": "$1",
+        "example": "Turkish"
+      }
+    }
+  },
+  "contextTranslateSelection": {
+    "message": "🔤 Translate selection ($TARGET_LANG$)",
+    "description": "Context menu selection translation",
+    "placeholders": {
+      "target_lang": {
+        "content": "$1",
+        "example": "Turkish"
+      }
+    }
+  },
+  "contextOptions": {
+    "message": "⚙️ Translation Settings",
+    "description": "Right click settings menu"
+  },
+  "contextOpenPortal": {
+    "message": "✨ HaYTooL Portal (Website)",
+    "description": "Right click web portal link"
+  },
+  "popupTitle": {
+    "message": "WebTranslate HaYTooL",
+    "description": "Popup title"
+  },
+  "popupSubtitle": {
+    "message": "Lightning fast page & text translation",
+    "description": "Popup subtitle"
+  },
+  "btnTranslatePage": {
+    "message": "Translate This Page",
+    "description": "Translate page button"
+  },
+  "btnRestorePage": {
+    "message": "Show Original Page",
+    "description": "Show original button"
+  },
+  "targetLanguage": {
+    "message": "Target Language",
+    "description": "Target language label"
+  },
+  "quickTranslatePlaceholder": {
+    "message": "Type or paste text to translate...",
+    "description": "Quick translate placeholder"
+  },
+  "btnTranslate": {
+    "message": "Translate",
+    "description": "Translate button"
+  },
+  "btnCopy": {
+    "message": "Copy",
+    "description": "Copy button"
+  },
+  "copied": {
+    "message": "Copied!",
+    "description": "Copied notification"
+  },
+  "settings": {
+    "message": "Settings",
+    "description": "Settings label"
+  },
+  "optionsHeading": {
+    "message": "WebTranslate Settings",
+    "description": "Options heading"
+  },
+  "appLanguage": {
+    "message": "Extension Interface Language",
+    "description": "Interface language title"
+  },
+  "appLanguageDesc": {
+    "message": "Language displayed in extension menus and options screens.",
+    "description": "Interface language description"
+  },
+  "targetLanguageHeading": {
+    "message": "Default Translation Target Language",
+    "description": "Target language title"
+  },
+  "targetLanguageDesc": {
+    "message": "The language you want pages and texts to be translated into.",
+    "description": "Target language description"
+  },
+  "optionsSave": {
+    "message": "Save Settings",
+    "description": "Save settings button"
+  },
+  "savedSuccessfully": {
+    "message": "Saved!",
+    "description": "Success message"
+  },
+  "autoSaveNotice": {
+    "message": "All changes are saved automatically",
+    "description": "Auto-save notification notice"
+  },
+  "theme": {
+    "message": "Theme",
+    "description": "Theme selection"
+  },
+  "themeDark": {
+    "message": "Dark Theme",
+    "description": "Dark theme"
+  },
+  "themeLight": {
+    "message": "Light Theme",
+    "description": "Light theme"
+  },
+  "themeSystem": {
+    "message": "System Default",
+    "description": "System theme"
+  },
+  "showSelectionHUD": {
+    "message": "Show floating translation tooltip on text selection",
+    "description": "Floating HUD setting"
+  },
+  "showContextMenu": {
+    "message": "Show in browser right-click context menu",
+    "description": "Context menu setting"
+  },
+  "translationEngine": {
+    "message": "Translation Engine",
+    "description": "Translation engine setting"
+  },
+  "engineGoogle": {
+    "message": "Google Translate (Fast & Comprehensive)",
+    "description": "Google engine"
+  },
+  "engineMyMemory": {
+    "message": "MyMemory Translator (Multilingual Memory)",
+    "description": "MyMemory engine"
+  },
+  "engineLingva": {
+    "message": "Lingva Translate (Default - Privacy Focused & Fast)",
+    "description": "Lingva engine"
+  },
+  "optionsSubheading": {
+    "message": "Customization and Translation Preferences",
+    "description": "Options subheading"
+  },
+  "websiteLink": {
+    "message": "🌐 Official Website",
+    "description": "Official website link"
+  },
+  "portalLink": {
+    "message": "✨ HaYTooL Portal",
+    "description": "Portal link"
+  },
+  "engineDesc": {
+    "message": "Service provider used for web page and text translation.",
+    "description": "Translation engine description"
+  },
+  "hudDesc": {
+    "message": "Display an elegant floating balloon over selected text when translated.",
+    "description": "Floating HUD description"
+  },
+  "contextMenuDesc": {
+    "message": "Enable quick translation in right-click context menus.",
+    "description": "Context menu description"
+  },
+  "themeDesc": {
+    "message": "Color scheme of extension dialogs and options.",
+    "description": "Theme description"
+  },
+  "langTurkish": {
+    "message": "Turkish",
+    "description": "Turkish language name"
+  },
+  "langEnglish": {
+    "message": "English",
+    "description": "English language name"
+  }
+}
