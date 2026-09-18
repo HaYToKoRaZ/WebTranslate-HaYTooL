@@ -171,6 +171,10 @@
     "message": "Microsoft küresel çeviri ağı",
     "description": "Bing motor açıklaması"
   },
+  "engineDDGSub": {
+    "message": "Gizlilik odaklı arama ve çeviri motoru",
+    "description": "DuckDuckGo motor açıklaması"
+  },
   "deeplKeyLabel": {
     "message": "DeepL API Anahtarı (Ücretsiz / Pro)",
     "description": "DeepL API key etiketi"

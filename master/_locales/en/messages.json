@@ -164,12 +164,16 @@
     "description": "Lingva engine subtext"
   },
   "engineDeepLSub": {
-    "message": "Natural AI translation (Requires API Key)",
+    "message": "Natural AI translation (with API Key)",
     "description": "DeepL engine subtext"
   },
   "engineBingSub": {
     "message": "Microsoft global translation network",
     "description": "Bing engine subtext"
+  },
+  "engineDDGSub": {
+    "message": "Privacy-focused search & translation engine",
+    "description": "DuckDuckGo subtext"
   },
   "deeplKeyLabel": {
     "message": "DeepL API Key (Free / Pro)",

@@ -259,7 +259,43 @@ async function translateText(text, targetLang = "tr", engine = "google") {
     }
   }
 
-  // 3. MyMemory Translator
+  // 3. DuckDuckGo Translate
+  else if (engine === "duckduckgo") {
+    try {
+      const homeRes = await fetch("https://duckduckgo.com/?q=translate&ia=translate", {
+        headers: {
+          "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+        }
+      });
+      if (homeRes.ok) {
+        const html = await homeRes.text();
+        const mVqd = html.match(/vqd=([a-zA-Z0-9_\-]+)/);
+        const vqd = mVqd ? mVqd[1] : "";
+        if (vqd) {
+          const transUrl = `https://duckduckgo.com/translation.js?query=translate&vqd=${encodeURIComponent(vqd)}&to=${encodeURIComponent(targetLang)}`;
+          const transRes = await fetch(transUrl, {
+            method: "POST",
+            headers: {
+              "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36",
+              "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
+              "Referer": "https://duckduckgo.com/"
+            },
+            body: text
+          });
+          if (transRes.ok) {
+            const transData = await transRes.json();
+            if (transData && transData.translated) {
+              return transData.translated;
+            }
+          }
+        }
+      }
+    } catch (e) {
+      console.warn("DuckDuckGo Translate failed, fallback to Google:", e);
+    }
+  }
+
+  // 4. MyMemory Translator
   else if (engine === "mymemory") {
     try {
       const url = `https://api.mymemory.translated.net/get?q=${encodeURIComponent(text)}&langpair=autodetect|${encodeURIComponent(targetLang)}`;

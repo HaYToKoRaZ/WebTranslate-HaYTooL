@@ -50,7 +50,8 @@
     "https://lingva.lunar.icu/*",
     "https://api-free.deepl.com/*",
     "https://api.deepl.com/*",
-    "https://www.bing.com/*"
+    "https://www.bing.com/*",
+    "https://duckduckgo.com/*"
   ],
   "web_accessible_resources": [
     {

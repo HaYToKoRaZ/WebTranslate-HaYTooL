@@ -50,10 +50,11 @@
 - **🛡️ 100% Privacy & Zero Telemetry:** No user analytics, no background tracking.
 - **⚡ Super Lightweight:** Built with vanilla modern JavaScript; opens instantly with zero memory bloat.
 - **🌍 45+ Target Languages:** Supports Turkish, English, German, French, Spanish, Russian, Arabic, Japanese, and more.
-- **🚀 5 Powerful Translation Engines:**
+- **🚀 6 Powerful Translation Engines:**
   - **Google Translate (Default):** High-speed, robust translation with built-in Chrome extension API endpoints.
   - **DeepL Translate:** State-of-the-art AI translation quality (optional free/pro API key support).
   - **Bing / Microsoft Translator:** Microsoft's global translation engine.
+  - **DuckDuckGo Translate:** Privacy-focused web translation engine.
   - **MyMemory Translator:** Vast multilingual human & machine memory database.
   - **Lingva Translate:** Decentralized, privacy-first open-source mirror engine.
 
@@ -77,10 +78,11 @@
 - **🛡️ Sıfır Telemetri & %100 Gizlilik:** Hiçbir geçmiş kaydı tutulmaz veya sunuculara iletilmez.
 - **⚡ Ultra Hafif:** Ağır framework'ler içermez, tarayıcınızı asla yavaşlatmaz.
 - **🌍 45+ Dil Desteği:** Türkçe, İngilizce, Almanca, Fransızca, İspanyolca, Rusça, Arapça ve çok daha fazlası.
-- **🚀 5 Güçlü Çeviri Motoru Desteği:**
+- **🚀 6 Güçlü Çeviri Motoru Desteği:**
   - **Google Translate (Varsayılan):** Işık hızında, kesintisiz ve resmi uzantı uç noktalarıyla en güvenilir motor.
   - **DeepL Translate:** Dünyanın en doğal yapay zeka çeviri motoru (ücretsiz API Key desteğiyle).
   - **Bing / Microsoft Translator:** Microsoft'un küresel kurumsal çeviri ağı.
+  - **DuckDuckGo Translate:** Gizlilik odaklı arama ve çeviri motoru.
   - **MyMemory Translator:** Geniş dil hafıza bankası ve insan/makine eşleştirmeli çeviri.
   - **Lingva Translate:** Merkeziyetsiz, ayna sunuculu gizlilik odaklı açık kaynak motor.
 
