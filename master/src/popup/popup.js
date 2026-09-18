@@ -16,6 +16,24 @@ document.addEventListener("DOMContentLoaded", async () => {
   const resultText = document.getElementById("quick-result-text");
   const btnCopyResult = document.getElementById("btn-copy-result");
   const btnClearQuick = document.getElementById("btn-clear-quick");
+  const brandLink = document.getElementById("brand-link");
+  const appVersionSpan = document.getElementById("app-version");
+
+  // Manifest'ten sürüm bilgisini dinamik al
+  try {
+    const manifest = chrome.runtime.getManifest();
+    if (manifest && manifest.version && appVersionSpan) {
+      appVersionSpan.textContent = `v${manifest.version}`;
+    }
+  } catch (e) {}
+
+  // Brand logosu / başlığına tıklandığında web sitesini yeni sekmede aç
+  if (brandLink) {
+    brandLink.addEventListener("click", (e) => {
+      e.preventDefault();
+      chrome.tabs.create({ url: "https://haytokoraz.github.io/" });
+    });
+  }
 
   // Sistem / Tarayıcı Dilini Algıla
   let detectedTarget = "tr";

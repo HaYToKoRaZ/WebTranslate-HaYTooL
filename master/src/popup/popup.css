@@ -74,6 +74,20 @@ body {
   display: flex;
   align-items: center;
   gap: 10px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 0.15s ease, opacity 0.15s ease;
+}
+
+.brand:hover {
+  opacity: 0.92;
+  transform: translateY(-1px);
+}
+
+.title-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
 }
 
 .logo-img {
@@ -88,6 +102,25 @@ body {
   font-weight: 700;
   letter-spacing: 0.2px;
   color: #fff;
+  transition: color 0.2s ease;
+}
+
+.brand:hover .title {
+  color: var(--accent);
+}
+
+.version-badge {
+  font-size: 9.5px;
+  font-weight: 700;
+  padding: 1.5px 5px;
+  border-radius: 6px;
+  background: rgba(56, 189, 248, 0.12);
+  color: var(--accent);
+  border: 1px solid rgba(56, 189, 248, 0.3);
+  letter-spacing: 0.3px;
+  line-height: 1.1;
+  display: inline-block;
+  vertical-align: middle;
 }
 
 .subtitle {
