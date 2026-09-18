@@ -66,7 +66,8 @@ const translations = {
     privSec3Desc: "Çevrilmesini istediğiniz metinler doğrudan seçtiğiniz resmi sağlayıcılara (Google, DeepL, Bing, DuckDuckGo, MyMemory, Lingva) şifreli (HTTPS) olarak anlık iletilir ve sonuç tarayıcınızda görüntülenir. Hiçbir çeviri kaydı veya arama günlüğü tarafımızca tutulmaz.",
     privSec4Title: "4. İletişim & Açık Kaynak",
     privSec4Desc: "Sorularınız, katkılarınız ve geri bildirimleriniz için",
-    privSec4End: "üzerinden bizimle iletişime geçebilirsiniz."
+    privSec4End: "üzerinden bizimle iletişime geçebilirsiniz.",
+    footerText: "© 2026 WebTranslate <a href=\"https://github.com/HaYToKoRaZ\" target=\"_blank\" class=\"footer-brand-link\">HaYTooL</a> | HaYTo tarafından sevgiyle geliştirilmiştir."
   },
   en: {
     navFeatures: "Features",
@@ -130,7 +131,8 @@ const translations = {
     privSec3Desc: "Text translation requests are sent directly via encrypted HTTPS connections to official endpoints (Google, DeepL, Bing, DuckDuckGo, MyMemory, Lingva). No translation history is logged.",
     privSec4Title: "4. Contact & Open Source",
     privSec4Desc: "For questions, contributions, and feedback, please visit our",
-    privSec4End: "on GitHub."
+    privSec4End: "on GitHub.",
+    footerText: "© 2026 WebTranslate <a href=\"https://github.com/HaYToKoRaZ\" target=\"_blank\" class=\"footer-brand-link\">HaYTooL</a> | Developed with love by HaYTo."
   }
 };
 
@@ -149,7 +151,7 @@ function setLanguage(lang) {
   document.querySelectorAll("[data-i18n]").forEach(elem => {
     const key = elem.getAttribute("data-i18n");
     if (dict[key]) {
-      if (key === "heroTitle") {
+      if (key === "heroTitle" || key === "footerText") {
         elem.innerHTML = dict[key];
       } else {
         elem.textContent = dict[key];
