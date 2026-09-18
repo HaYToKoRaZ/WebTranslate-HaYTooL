@@ -17,10 +17,19 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   const appLangCards = document.querySelectorAll("[data-applang]");
 
+  // Tarayıcı/Sistem dilini algıla
+  let detectedTarget = "tr";
+  try {
+    const sysLang = (chrome.i18n.getUILanguage() || "tr").toLowerCase().split("-")[0];
+    if (TARGET_LANG_MAP && TARGET_LANG_MAP[sysLang]) {
+      detectedTarget = sysLang;
+    }
+  } catch (e) {}
+
   // Mevcut ayarları çek
   const defaults = {
-    appLang: "tr",
-    targetLang: "tr",
+    appLang: detectedTarget === "en" ? "en" : "tr",
+    targetLang: detectedTarget,
     engine: "google",
     theme: "system",
     showSelectionHUD: true,
@@ -35,6 +44,11 @@ document.addEventListener("DOMContentLoaded", async () => {
   themeSelect.value = current.theme || "system";
   showSelectionHUDCheck.checked = current.showSelectionHUD;
   showContextMenuCheck.checked = current.showContextMenu;
+
+  const optBadge = document.getElementById("opt-detected-badge");
+  if (optBadge) {
+    optBadge.textContent = `${(chrome.i18n.getUILanguage() || detectedTarget).toUpperCase()}`;
+  }
 
   const deeplKeyInput = document.getElementById("deeplApiKey");
   const btnToggleKey = document.getElementById("btn-toggle-key");

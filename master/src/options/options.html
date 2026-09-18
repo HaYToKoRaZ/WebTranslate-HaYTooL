@@ -35,7 +35,10 @@
       <!-- 1. Varsayılan Çevrilecek Dil (Hedef Dil - Kapsamlı Açılır Menü) -->
       <div class="setting-item">
         <div class="setting-info">
-          <label class="setting-label" for="targetLang" data-i18n="targetLanguageHeading">Varsayılan Çevrilecek Dil (Hedef Dil)</label>
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <label class="setting-label" for="targetLang" data-i18n="targetLanguageHeading">Varsayılan Çevrilecek Dil (Hedef Dil)</label>
+            <span class="detected-badge" id="opt-detected-badge" style="font-size: 10px; font-weight: 600; color: #38bdf8; background: rgba(56, 189, 248, 0.12); border: 1px solid rgba(56, 189, 248, 0.3); padding: 2px 7px; border-radius: 10px;">Sistem</span>
+          </div>
           <span class="setting-desc" data-i18n="targetLanguageDesc">Sayfalar ve metinler sağ tıklandığında çevrilmesini istediğiniz hedef dil.</span>
         </div>
         <select id="targetLang" class="setting-control select-input select-large">

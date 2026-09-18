@@ -25,61 +25,69 @@
       </button>
     </header>
 
-    <!-- Hızlı Eylemler (Sayfa Çevirisi) -->
+    <!-- Quick Page Translation Hero Card -->
     <div class="actions-card">
-      <div class="lang-selector-row">
-        <label for="select-target-lang" class="label" data-i18n="targetLanguage">Hedef Dil</label>
-        <select id="select-target-lang" class="select-box">
-          <option value="tr">🇹🇷 Türkçe</option>
-          <option value="en">🇬🇧 English</option>
-          <option value="az">🇦🇿 Azərbaycan</option>
-          <option value="de">🇩🇪 Deutsch</option>
-          <option value="fr">🇫🇷 Français</option>
-          <option value="es">🇪🇸 Español</option>
-          <option value="it">🇮🇹 Italiano</option>
-          <option value="pt">🇵🇹 Português</option>
-          <option value="ru">🇷🇺 Русский</option>
-          <option value="uk">🇺🇦 Українська</option>
-          <option value="pl">🇵🇱 Polski</option>
-          <option value="nl">🇳🇱 Nederlands</option>
-          <option value="ar">🇸🇦 العربية</option>
-          <option value="ja">🇯🇵 日本語</option>
-          <option value="ko">🇰🇷 한국어</option>
-          <option value="zh">🇨🇳 中文</option>
-        </select>
+      <div class="control-group">
+        <div class="field-header">
+          <label for="select-target-lang" class="field-label" data-i18n="targetLanguage">Hedef Dil</label>
+          <span class="detected-badge" id="detected-badge" title="Sistem Dili">Sistem</span>
+        </div>
+        <div class="select-wrapper">
+          <select id="select-target-lang" class="select-box">
+            <option value="tr">🇹🇷 Türkçe (Turkish)</option>
+            <option value="en">🇬🇧 English (İngilizce)</option>
+            <option value="az">🇦🇿 Azərbaycan (Azerice)</option>
+            <option value="de">🇩🇪 Deutsch (Almanca)</option>
+            <option value="fr">🇫🇷 Français (Fransızca)</option>
+            <option value="es">🇪🇸 Español (İspanyolca)</option>
+            <option value="it">🇮🇹 Italiano (İtalyanca)</option>
+            <option value="pt">🇵🇹 Português (Portekizce)</option>
+            <option value="ru">🇷🇺 Русский (Rusça)</option>
+            <option value="uk">🇺🇦 Українська (Ukraynaca)</option>
+            <option value="pl">🇵🇱 Polski (Lehçe)</option>
+            <option value="nl">🇳🇱 Nederlands (Felemenkçe)</option>
+            <option value="ar">🇸🇦 العربية (Arapça)</option>
+            <option value="ja">🇯🇵 日本語 (Japonca)</option>
+            <option value="ko">🇰🇷 한국어 (Korece)</option>
+            <option value="zh">🇨🇳 中文 (Çince)</option>
+          </select>
+        </div>
       </div>
 
-      <!-- Çeviri Motoru Seçici (Favicon İkonlu 5 Motor) -->
-      <div class="engine-selector-row">
-        <label class="label" data-i18n="translationEngine">Motor</label>
-        <div class="popup-engine-pills">
+      <!-- Çeviri Motoru Seçici (3x2 Temiz Izgara) -->
+      <div class="control-group">
+        <div class="field-header">
+          <label class="field-label" data-i18n="translationEngine">Çeviri Motoru</label>
+        </div>
+        <div class="popup-engine-grid">
           <button type="button" class="engine-pill active" data-engine="google" title="Google Translate">
             <img src="../assets/icons/engine-google.png" alt="Google" class="pill-favicon">
-            <span>Google</span>
+            <span class="pill-name">Google</span>
           </button>
           <button type="button" class="engine-pill" data-engine="deepl" title="DeepL Translate">
             <img src="../assets/icons/engine-deepl.png" alt="DeepL" class="pill-favicon">
-            <span>DeepL</span>
+            <span class="pill-name">DeepL</span>
           </button>
           <button type="button" class="engine-pill" data-engine="bing" title="Bing Translator">
             <img src="../assets/icons/engine-bing.png" alt="Bing" class="pill-favicon">
-            <span>Bing</span>
-          </button>
-          <button type="button" class="engine-pill" data-engine="mymemory" title="MyMemory">
-            <img src="../assets/icons/engine-mymemory.png" alt="MyMemory" class="pill-favicon">
-            <span>MyMem</span>
+            <span class="pill-name">Bing</span>
           </button>
           <button type="button" class="engine-pill" data-engine="duckduckgo" title="DuckDuckGo Translate">
             <img src="../assets/icons/engine-duckduckgo.png" alt="DuckDuckGo" class="pill-favicon">
-            <span>DDG</span>
+            <span class="pill-name">DuckDuckGo</span>
+          </button>
+          <button type="button" class="engine-pill" data-engine="mymemory" title="MyMemory">
+            <img src="../assets/icons/engine-mymemory.png" alt="MyMemory" class="pill-favicon">
+            <span class="pill-name">MyMemory</span>
           </button>
           <button type="button" class="engine-pill" data-engine="lingva" title="Lingva Translate">
             <img src="../assets/icons/engine-lingva.png" alt="Lingva" class="pill-favicon">
-            <span>Lingva</span>
+            <span class="pill-name">Lingva</span>
           </button>
         </div>
       </div>
 
+      <!-- Sayfa Çeviri Eylemleri -->
       <div class="btn-group">
         <button id="btn-translate-page" class="primary-btn">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -95,7 +103,7 @@
             <polyline points="1 4 1 10 7 10"></polyline>
             <path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"></path>
           </svg>
-          <span data-i18n="btnRestorePage">Orijinal Sayfa</span>
+          <span data-i18n="btnRestorePage">Orijinal</span>
         </button>
       </div>
     </div>

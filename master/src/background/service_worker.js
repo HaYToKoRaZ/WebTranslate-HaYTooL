@@ -60,8 +60,28 @@ const LANG_NAMES = {
 };
 
 // İlk kurulum veya güncelleme
-chrome.runtime.onInstalled.addListener(async () => {
-  const data = await chrome.storage.local.get(DEFAULT_SETTINGS);
+chrome.runtime.onInstalled.addListener(async (details) => {
+  // Tarayıcı / Sistem dilini algıla (örneğin "tr-TR" -> "tr", "en-US" -> "en")
+  let detectedLang = "tr";
+  try {
+    const uiLang = (chrome.i18n.getUILanguage() || "tr").toLowerCase().split("-")[0];
+    if (LANG_NAMES[uiLang]) {
+      detectedLang = uiLang;
+    }
+  } catch (e) {
+    console.warn("Language detection error:", e);
+  }
+
+  const existing = await chrome.storage.local.get(null);
+  const data = {
+    appLang: existing.appLang || (detectedLang === "en" ? "en" : "tr"),
+    targetLang: existing.targetLang || detectedLang,
+    theme: existing.theme || DEFAULT_SETTINGS.theme,
+    showSelectionHUD: existing.showSelectionHUD !== undefined ? existing.showSelectionHUD : DEFAULT_SETTINGS.showSelectionHUD,
+    showContextMenu: existing.showContextMenu !== undefined ? existing.showContextMenu : DEFAULT_SETTINGS.showContextMenu,
+    engine: existing.engine || DEFAULT_SETTINGS.engine,
+    deeplApiKey: existing.deeplApiKey || ""
+  };
   await chrome.storage.local.set(data);
   setupContextMenus(data.targetLang, data.showContextMenu, data.appLang);
 });

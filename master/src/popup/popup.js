@@ -16,8 +16,25 @@ document.addEventListener("DOMContentLoaded", async () => {
   const resultText = document.getElementById("quick-result-text");
   const btnCopyResult = document.getElementById("btn-copy-result");
 
+  // Sistem / Tarayıcı Dilini Algıla
+  let detectedTarget = "tr";
+  try {
+    const sysLang = (chrome.i18n.getUILanguage() || "tr").toLowerCase().split("-")[0];
+    if (sysLang) detectedTarget = sysLang;
+  } catch (e) {}
+
   // Kayıtlı ayarları çek (Dil, Tema ve Çeviri Motoru)
-  const { targetLang, theme, engine } = await chrome.storage.local.get({ targetLang: "tr", theme: "system", engine: "google" });
+  const { targetLang, theme, engine } = await chrome.storage.local.get({
+    targetLang: detectedTarget,
+    theme: "system",
+    engine: "google"
+  });
+
+  const detectedBadge = document.getElementById("detected-badge");
+  if (detectedBadge) {
+    detectedBadge.textContent = `${(chrome.i18n.getUILanguage() || detectedTarget).toUpperCase()}`;
+  }
+
   if (selectTargetLang) {
     selectTargetLang.value = targetLang;
   }
