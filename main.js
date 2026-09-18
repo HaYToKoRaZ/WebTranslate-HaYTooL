@@ -37,7 +37,11 @@ const translations = {
     step3Title: "Sağ Tıklayın & Çevirin",
     step3Desc: "Sayfada herhangi bir yere veya seçtiğiniz bir metne sağ tıklayıp çeviriye başlayın!",
     themeDark: "Koyu Tema",
-    themeLight: "Açık Tema"
+    themeLight: "Açık Tema",
+    supportedBrowsers: "Desteklenen Tarayıcılar:",
+    browserChromeTitle: "Chrome Web Store (Yakında / Releases)",
+    browserEdgeTitle: "Microsoft Edge Add-ons (Yakında / Releases)",
+    browserHeliumTitle: "Helium Browser (Yakında / Releases)"
   },
   en: {
     navFeatures: "Features",
@@ -72,7 +76,11 @@ const translations = {
     step3Title: "Right Click & Translate",
     step3Desc: "Right-click anywhere on the page or on selected text to start translating immediately!",
     themeDark: "Dark Mode",
-    themeLight: "Light Mode"
+    themeLight: "Light Mode",
+    supportedBrowsers: "Supported Browsers:",
+    browserChromeTitle: "Chrome Web Store (Coming Soon / Releases)",
+    browserEdgeTitle: "Microsoft Edge Add-ons (Coming Soon / Releases)",
+    browserHeliumTitle: "Helium Browser (Coming Soon / Releases)"
   }
 };
 
@@ -96,6 +104,14 @@ function setLanguage(lang) {
       } else {
         elem.textContent = dict[key];
       }
+    }
+  });
+
+  // Tooltip / Title özniteliklerini değiştir
+  document.querySelectorAll("[data-i18n-title]").forEach(elem => {
+    const key = elem.getAttribute("data-i18n-title");
+    if (dict[key]) {
+      elem.setAttribute("title", dict[key]);
     }
   });
 
