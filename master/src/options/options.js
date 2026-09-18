@@ -52,7 +52,8 @@ document.addEventListener("DOMContentLoaded", async () => {
     theme: "system",
     showSelectionHUD: true,
     showContextMenu: true,
-    deeplApiKey: ""
+    deeplApiKey: "",
+    blacklistDomains: []
   };
 
   const current = await chrome.storage.local.get(defaults);
@@ -62,6 +63,37 @@ document.addEventListener("DOMContentLoaded", async () => {
   themeSelect.value = current.theme || "system";
   showSelectionHUDCheck.checked = current.showSelectionHUD;
   showContextMenuCheck.checked = current.showContextMenu;
+
+  const blacklistTextarea = document.getElementById("blacklistDomains");
+  const blacklistBadge = document.getElementById("blacklist-count-badge");
+
+  function updateBlacklistUI(list) {
+    if (blacklistTextarea && list) {
+      blacklistTextarea.value = Array.isArray(list) ? list.join("\n") : "";
+    }
+    if (blacklistBadge) {
+      const count = Array.isArray(list) ? list.filter(d => d && d.trim()).length : 0;
+      blacklistBadge.textContent = `${count} site`;
+    }
+  }
+
+  updateBlacklistUI(current.blacklistDomains || []);
+
+  if (blacklistTextarea) {
+    blacklistTextarea.addEventListener("input", () => {
+      const domains = blacklistTextarea.value
+        .split("\n")
+        .map(d => d.trim().toLowerCase())
+        .filter(d => d.length > 0);
+      
+      // Tekrarları kaldır
+      const uniqueDomains = Array.from(new Set(domains));
+      chrome.storage.local.set({ blacklistDomains: uniqueDomains }, () => {
+        if (blacklistBadge) blacklistBadge.textContent = `${uniqueDomains.length} site`;
+        showSavedToast();
+      });
+    });
+  }
 
   const optBadge = document.getElementById("opt-detected-badge");
   if (optBadge) {
@@ -263,6 +295,13 @@ document.addEventListener("DOMContentLoaded", async () => {
           const key = elem.getAttribute("data-i18n");
           if (msgs[key] && msgs[key].message) {
             elem.textContent = msgs[key].message;
+          }
+        });
+
+        document.querySelectorAll("[data-i18n-placeholder]").forEach(elem => {
+          const key = elem.getAttribute("data-i18n-placeholder");
+          if (msgs[key] && msgs[key].message) {
+            elem.setAttribute("placeholder", msgs[key].message);
           }
         });
 

@@ -11,8 +11,31 @@
   let isPageTranslated = false;
   let originalHtmlLang = document.documentElement.lang;
 
+  // Kara liste kontrolü
+  async function isCurrentDomainBlacklisted() {
+    try {
+      const { blacklistDomains } = await chrome.storage.local.get({ blacklistDomains: [] });
+      const currentHost = window.location.hostname.toLowerCase();
+      return (blacklistDomains || []).some(d => {
+        const cleaned = d.trim().toLowerCase();
+        return cleaned && (currentHost === cleaned || currentHost.endsWith("." + cleaned));
+      });
+    } catch (e) {
+      return false;
+    }
+  }
+
   // Background servisinden gelen komutları dinle
-  chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
+  chrome.runtime.onMessage.addListener(async (request, sender, sendResponse) => {
+    const isBlocked = await isCurrentDomainBlacklisted();
+    if (isBlocked) {
+      if (request.action === "TRANSLATE_PAGE") {
+        showNotificationBadge("Bu web sitesi hariç tutulanlar listesinde (kara liste).");
+      }
+      sendResponse({ status: "blocked_by_blacklist" });
+      return;
+    }
+
     if (request.action === "TRANSLATE_PAGE") {
       injectPageTranslator(request.targetLang || "tr", request.engine || null);
       sendResponse({ status: "started" });
@@ -79,8 +102,8 @@
       const batch = textNodes.slice(i, i + BATCH_SIZE);
       const textsToTranslate = batch.map(node => node.nodeValue.trim());
 
-      // Metinleri özel bir ayırıcı ile birleştir
-      const combinedText = textsToTranslate.join("\n\n---\n\n");
+      // Metinleri motorların bozamayacağı güvenli indeksli belirteç ile birleştir
+      const combinedText = textsToTranslate.map((t, idx) => `<<<HT_SEP_${idx}>>>\n${t}`).join("\n");
 
       try {
         const response = await new Promise((resolve) => {
@@ -93,14 +116,26 @@
         });
 
         if (response && response.success && response.translated) {
-          const translatedParts = response.translated.split(/\n\s*---\s*\n/);
+          const rawTranslated = response.translated;
           batch.forEach((node, idx) => {
-            if (translatedParts[idx]) {
-              // Orijinal metni data niteliğinde sakla
+            // Belirteci ara: <<<HT_SEP_0>>>, <<<HT_SEP_1>>> vb.
+            const tokenRegex = new RegExp(`<<<\\s*HT_SEP_${idx}\\s*>>>([\\s\\S]*?)(?=(<<<\\s*HT_SEP_\\d+\\s*>>>|$))`, "i");
+            const match = rawTranslated.match(tokenRegex);
+            let partText = "";
+
+            if (match && match[1]) {
+              partText = match[1].trim();
+            } else {
+              // Fallback: Eğer motor belirteci kaldırmışsa eski ayırıcı veya satır bazlı dene
+              const parts = rawTranslated.split(/\n\s*---\s*\n/);
+              if (parts[idx]) partText = parts[idx].trim();
+            }
+
+            if (partText) {
               if (!node.__haytool_original) {
                 node.__haytool_original = node.nodeValue;
               }
-              node.nodeValue = translatedParts[idx].trim();
+              node.nodeValue = partText;
             }
           });
           translatedCount += batch.length;

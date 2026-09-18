@@ -157,7 +157,28 @@ chrome.contextMenus.onClicked.addListener(async (info, tab) => {
 
   if (!tab || !tab.id) return;
 
-  const settings = await chrome.storage.local.get(DEFAULT_SETTINGS);
+  const storageData = await chrome.storage.local.get({
+    ...DEFAULT_SETTINGS,
+    blacklistDomains: []
+  });
+
+  // Kara liste (Blacklist) kontrolü
+  if (tab.url) {
+    try {
+      const urlObj = new URL(tab.url);
+      const host = urlObj.hostname.toLowerCase();
+      const isBlacklisted = (storageData.blacklistDomains || []).some(d => {
+        const cleaned = d.trim().toLowerCase();
+        return cleaned && (host === cleaned || host.endsWith("." + cleaned));
+      });
+      if (isBlacklisted) {
+        console.log(`[WebTranslate] Site kara listede olduğu için çeviri engellendi: ${host}`);
+        return;
+      }
+    } catch (e) {}
+  }
+
+  const settings = storageData;
 
   if (info.menuItemId === "translate_full_page") {
     // Sayfaya tam sayfa çevirisi mesajı yolla
@@ -194,6 +215,47 @@ chrome.contextMenus.onClicked.addListener(async (info, tab) => {
     }
   }
 });
+
+// Bing Oturum / Kimlik Önbelleği (10 Dakika TTL)
+let bingAuthCache = {
+  ig: "",
+  iid: "translator.5028",
+  key: "",
+  token: "",
+  expiresAt: 0
+};
+
+async function getBingCredentials() {
+  const now = Date.now();
+  if (bingAuthCache.ig && bingAuthCache.token && bingAuthCache.expiresAt > now) {
+    return bingAuthCache;
+  }
+
+  const homeRes = await fetch("https://www.bing.com/translator", {
+    headers: {
+      "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+    }
+  });
+
+  if (!homeRes.ok) throw new Error("Bing home page fetch failed");
+  const html = await homeRes.text();
+  const mIg = html.match(/IG:"([A-Za-z0-9]+)"/);
+  const mIid = html.match(/data-iid="([^"]+)"/);
+  const mKey = html.match(/var\s+params_AbusePreventionHelper\s*=\s*\[([0-9]+),\s*"([^"]+)",\s*([0-9]+)\];/);
+
+  if (mIg && mKey) {
+    bingAuthCache = {
+      ig: mIg[1],
+      iid: mIid ? mIid[1] : "translator.5028",
+      key: mKey[1],
+      token: mKey[2],
+      expiresAt: now + 10 * 60 * 1000 // 10 dakika geçerli
+    };
+    return bingAuthCache;
+  }
+
+  throw new Error("Bing tokens could not be parsed");
+}
 
 // Çoklu Çeviri Motoru Sağlayıcısı (Google, DeepL, Bing, MyMemory, Lingva)
 async function translateText(text, targetLang = "tr", engine = "google") {
@@ -234,52 +296,37 @@ async function translateText(text, targetLang = "tr", engine = "google") {
   // 2. Bing / Microsoft Translator
   else if (engine === "bing") {
     try {
-      // Bing translator oturum anahtarlarını al
-      const homeRes = await fetch("https://www.bing.com/translator", {
-        headers: {
-          "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
-        }
+      const creds = await getBingCredentials();
+      const postUrl = `https://www.bing.com/ttranslatev3?isVertical=1&&IG=${creds.ig}&IID=${creds.iid}`;
+      const formBody = new URLSearchParams({
+        fromLang: "auto-detect",
+        to: targetLang,
+        text: text,
+        tryFetchingGenderDebiasedTranslations: "true",
+        key: creds.key,
+        token: creds.token
       });
-      if (homeRes.ok) {
-        const html = await homeRes.text();
-        const mIg = html.match(/IG:"([A-Za-z0-9]+)"/);
-        const mIid = html.match(/data-iid="([^"]+)"/);
-        const mKey = html.match(/var\s+params_AbusePreventionHelper\s*=\s*\[([0-9]+),\s*"([^"]+)",\s*([0-9]+)\];/);
 
-        const ig = mIg ? mIg[1] : "";
-        const iid = mIid ? mIid[1] : "translator.5028";
-        const key = mKey ? mKey[1] : "";
-        const token = mKey ? mKey[2] : "";
+      const transRes = await fetch(postUrl, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+          "Referer": "https://www.bing.com/translator"
+        },
+        body: formBody.toString()
+      });
 
-        if (ig && token) {
-          const postUrl = `https://www.bing.com/ttranslatev3?isVertical=1&&IG=${ig}&IID=${iid}`;
-          const formBody = new URLSearchParams({
-            fromLang: "auto-detect",
-            to: targetLang,
-            text: text,
-            tryFetchingGenderDebiasedTranslations: "true",
-            key: key,
-            token: token
-          });
-
-          const transRes = await fetch(postUrl, {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/x-www-form-urlencoded",
-              "Referer": "https://www.bing.com/translator"
-            },
-            body: formBody.toString()
-          });
-
-          if (transRes.ok) {
-            const transData = await transRes.json();
-            if (Array.isArray(transData) && transData[0] && transData[0].translations && transData[0].translations[0]) {
-              return transData[0].translations[0].text;
-            }
-          }
+      if (transRes.ok) {
+        const transData = await transRes.json();
+        if (Array.isArray(transData) && transData[0] && transData[0].translations && transData[0].translations[0]) {
+          return transData[0].translations[0].text;
         }
+      } else {
+        // Oturum süresi dolmuş olabilir, önbelleği sıfırla
+        bingAuthCache.expiresAt = 0;
       }
     } catch (e) {
+      bingAuthCache.expiresAt = 0;
       console.warn("Bing Translator failed, fallback to Google:", e);
     }
   }
@@ -431,13 +478,6 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
         .catch(error => sendResponse({ success: false, error: error.message }));
     });
     return true; // Asenkron cevap için true dönmeli
-  }
-
-  if (request.action === "GET_SETTINGS") {
-    chrome.storage.local.get(DEFAULT_SETTINGS, (data) => {
-      sendResponse(data);
-    });
-    return true;
   }
 
   if (request.action === "OPEN_ENGINE_TAB") {

@@ -338,5 +338,33 @@
   "arenaTagOpenSource": {
     "message": "Açık Kaynak Ayna",
     "description": "Lingva etiketi"
+  },
+  "blacklistHeading": {
+    "message": "Hariç Tutulan Web Siteleri (Kara Liste)",
+    "description": "Kara liste ayar başlığı"
+  },
+  "blacklistDesc": {
+    "message": "Bu sitelerde sayfa çevirisi ve seçim balonu otomatik olarak devre dışı bırakılır (her satıra bir alan adı yazın, örn: github.com).",
+    "description": "Kara liste açıklaması"
+  },
+  "blacklistPlaceholder": {
+    "message": "ornek.com\nbankam.com.tr\ngithub.com",
+    "description": "Kara liste örnek yer tutucu"
+  },
+  "popupSiteActive": {
+    "message": "Bu sitede aktif",
+    "description": "Popup site aktif durumu"
+  },
+  "popupSiteExcluded": {
+    "message": "Bu sitede devre dışı",
+    "description": "Popup site hariç tutuldu durumu"
+  },
+  "popupDisableOnSite": {
+    "message": "Bu sitede devre dışı bırak",
+    "description": "Bu sitede kapat butonu"
+  },
+  "popupEnableOnSite": {
+    "message": "Bu sitede etkinleştir",
+    "description": "Bu sitede aç butonu"
   }
 }

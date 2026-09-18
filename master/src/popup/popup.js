@@ -197,6 +197,88 @@ document.addEventListener("DOMContentLoaded", async () => {
     window.close();
   });
 
+  // Aktif Sekme Kara Liste (Blacklist) Kontrolü ve Aç/Kapat Butonu
+  const siteBlacklistBar = document.getElementById("site-blacklist-bar");
+  const siteStatusIndicator = document.getElementById("site-status-indicator");
+  const siteHostLabel = document.getElementById("site-host-label");
+  const btnToggleBlacklist = document.getElementById("btn-toggle-blacklist");
+  const siteToggleBtnText = document.getElementById("site-toggle-btn-text");
+
+  let currentTabHost = "";
+  try {
+    const [activeTab] = await chrome.tabs.query({ active: true, currentWindow: true });
+    if (activeTab && activeTab.url && (activeTab.url.startsWith("http://") || activeTab.url.startsWith("https://"))) {
+      const urlObj = new URL(activeTab.url);
+      currentTabHost = urlObj.hostname.toLowerCase();
+    }
+  } catch (e) {}
+
+  async function refreshSiteBlacklistStatus() {
+    if (!currentTabHost) {
+      if (siteBlacklistBar) siteBlacklistBar.style.display = "none";
+      return;
+    }
+
+    if (siteHostLabel) {
+      siteHostLabel.textContent = currentTabHost;
+      siteHostLabel.title = currentTabHost;
+    }
+
+    const { blacklistDomains, appLang } = await chrome.storage.local.get({ blacklistDomains: [], appLang: "tr" });
+    const isExcluded = (blacklistDomains || []).some(d => {
+      const cleaned = d.trim().toLowerCase();
+      return cleaned && (currentTabHost === cleaned || currentTabHost.endsWith("." + cleaned));
+    });
+
+    const isTr = appLang !== "en";
+
+    if (isExcluded) {
+      if (siteStatusIndicator) siteStatusIndicator.classList.add("excluded");
+      if (btnToggleBlacklist) btnToggleBlacklist.classList.add("is-excluded");
+      if (siteToggleBtnText) {
+        siteToggleBtnText.textContent = isTr ? "Bu sitede aç" : "Enable on this site";
+      }
+      if (btnTranslatePage) {
+        btnTranslatePage.disabled = true;
+        btnTranslatePage.style.opacity = "0.5";
+        btnTranslatePage.title = isTr ? "Bu site kara listede" : "This site is excluded";
+      }
+    } else {
+      if (siteStatusIndicator) siteStatusIndicator.classList.remove("excluded");
+      if (btnToggleBlacklist) btnToggleBlacklist.classList.remove("is-excluded");
+      if (siteToggleBtnText) {
+        siteToggleBtnText.textContent = isTr ? "Bu sitede kapat" : "Disable on this site";
+      }
+      if (btnTranslatePage) {
+        btnTranslatePage.disabled = false;
+        btnTranslatePage.style.opacity = "1";
+        btnTranslatePage.title = "";
+      }
+    }
+  }
+
+  await refreshSiteBlacklistStatus();
+
+  if (btnToggleBlacklist) {
+    btnToggleBlacklist.addEventListener("click", async () => {
+      if (!currentTabHost) return;
+      const { blacklistDomains } = await chrome.storage.local.get({ blacklistDomains: [] });
+      let list = Array.isArray(blacklistDomains) ? [...blacklistDomains] : [];
+
+      const existsIdx = list.findIndex(d => d.trim().toLowerCase() === currentTabHost);
+      if (existsIdx >= 0) {
+        // Listeden çıkar (Aktif et)
+        list.splice(existsIdx, 1);
+      } else {
+        // Listeye ekle (Hariç tut)
+        list.push(currentTabHost);
+      }
+
+      await chrome.storage.local.set({ blacklistDomains: list });
+      await refreshSiteBlacklistStatus();
+    });
+  }
+
   // Swap (⇄) Dilleri Değiştirme Mantığı (Sadece Hızlı Çeviri İçin Geçici Yön Değişimi)
   const btnSwapLang = document.getElementById("btn-swap-lang");
   const quickSourceTag = document.getElementById("quick-source-tag");

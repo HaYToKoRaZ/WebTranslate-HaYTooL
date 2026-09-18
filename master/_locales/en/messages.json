@@ -338,5 +338,33 @@
   "arenaTagOpenSource": {
     "message": "Open-Source Mirror",
     "description": "Lingva tag"
+  },
+  "blacklistHeading": {
+    "message": "Excluded Websites (Blacklist)",
+    "description": "Blacklist setting heading"
+  },
+  "blacklistDesc": {
+    "message": "Page translation and floating selection HUD are automatically disabled on these domains (one domain per line, e.g. github.com).",
+    "description": "Blacklist setting description"
+  },
+  "blacklistPlaceholder": {
+    "message": "example.com\nmybank.com\ngithub.com",
+    "description": "Blacklist placeholder"
+  },
+  "popupSiteActive": {
+    "message": "Active on this site",
+    "description": "Popup site active status"
+  },
+  "popupSiteExcluded": {
+    "message": "Disabled on this site",
+    "description": "Popup site excluded status"
+  },
+  "popupDisableOnSite": {
+    "message": "Disable on this site",
+    "description": "Disable on this site button"
+  },
+  "popupEnableOnSite": {
+    "message": "Enable on this site",
+    "description": "Enable on this site button"
   }
 }

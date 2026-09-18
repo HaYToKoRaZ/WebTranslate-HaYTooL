@@ -15,7 +15,7 @@
         <div>
           <div class="title-row">
             <h1 class="heading" data-i18n="optionsHeading">WebTranslate Ayarları</h1>
-            <span class="version-badge" id="app-version">v2.1.0</span>
+            <span class="version-badge" id="app-version">v2.2.0</span>
           </div>
           <p class="subheading" data-i18n="optionsSubheading">Kişiselleştirme ve Çeviri Tercihleri</p>
         </div>
@@ -233,6 +233,20 @@
           <option value="dark" data-i18n="themeDark">Koyu Tema</option>
           <option value="light" data-i18n="themeLight">Açık Tema</option>
         </select>
+      </div>
+
+      <!-- 6. Hariç Tutulan Web Siteleri (Kara Liste / Blacklist) -->
+      <div class="setting-item column-layout">
+        <div class="setting-info full-width">
+          <div style="display: flex; align-items: center; justify-content: space-between;">
+            <label class="setting-label" for="blacklistDomains" data-i18n="blacklistHeading">Hariç Tutulan Web Siteleri (Kara Liste)</label>
+            <span id="blacklist-count-badge" style="font-size: 11px; font-weight: 600; color: #38bdf8; background: rgba(56, 189, 248, 0.12); border: 1px solid rgba(56, 189, 248, 0.3); padding: 2px 8px; border-radius: 10px;">0 site</span>
+          </div>
+          <span class="setting-desc" data-i18n="blacklistDesc">Bu sitelerde sayfa çevirisi ve seçim balonu otomatik olarak devre dışı bırakılır (her satıra bir alan adı yazın, örn: github.com).</span>
+        </div>
+        <div class="blacklist-input-wrap" style="width: 100%; margin-top: 8px;">
+          <textarea id="blacklistDomains" class="setting-control select-input text-input" rows="4" style="width: 100%; font-family: monospace; font-size: 12.5px; line-height: 1.5; resize: vertical;" placeholder="ornek.com&#10;bankam.com.tr&#10;github.com" data-i18n-placeholder="blacklistPlaceholder"></textarea>
+        </div>
       </div>
 
       <!-- 6. Eklenti Arayüz Dili (Sayfanın Altında - SVG Bayraklı) -->
