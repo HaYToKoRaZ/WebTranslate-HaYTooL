@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WebTranslate HaYTooL | Web Sayfalarını ve Metinleri Işık Hızında Çevirin</title>
+  <meta name="description" content="Tüm modern tarayıcılar için ultra hafif, çift dilli web sayfası ve seçili metin çevirmeni. Sağ tık menüsü ile sayfaları bozmadan anında çevirin." />
+  <link rel="icon" type="image/png" href="favicon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="glow glow-1"></div>
+  <div class="glow glow-2"></div>
+
+  <!-- Üst Menü / Navbar -->
+  <nav class="navbar">
+    <div class="container nav-content">
+      <div class="logo">
+        <span class="logo-badge"><img src="icon.png" alt="Logo" width="28" height="28" style="vertical-align: middle;" /></span>
+        <span class="logo-text">WebTranslate<span> HaYTooL</span></span>
+      </div>
+
+      <div class="nav-right">
+        <!-- Dil Değiştirici (TR / EN) -->
+        <div class="lang-switcher">
+          <button type="button" class="lang-btn active" onclick="setLanguage('tr')" title="Türkçe">
+            <svg viewBox="0 0 1200 800" class="flag-svg">
+              <rect width="1200" height="800" fill="#E30A17" />
+              <circle cx="425" cy="400" r="200" fill="#FFFFFF" />
+              <circle cx="475" cy="400" r="160" fill="#E30A17" />
+              <polygon fill="#FFFFFF" points="583.33,400 706.87,440.14 659.73,319.86 659.73,480.14 706.87,359.86" />
+            </svg>
+          </button>
+          <button type="button" class="lang-btn" onclick="setLanguage('en')" title="English">
+            <svg viewBox="0 0 60 30" class="flag-svg">
+              <clipPath id="s1"><path d="M0,0 v30 h60 v-30 z" /></clipPath>
+              <clipPath id="t1"><path d="M30,15 h30 v15 z v15 h-30 z h-30 v-15 z v-15 h30 z" /></clipPath>
+              <g clip-path="url(#s1)">
+                <path d="M0,0 v30 h60 v-30 z" fill="#012169" />
+                <path d="M0,0 L60,30 M60,0 L0,30" stroke="#fff" stroke-width="6" />
+                <path d="M0,0 L60,30 M60,0 L0,30" clip-path="url(#t1)" stroke="#C8102E" stroke-width="4" />
+                <path d="M30,0 v30 M0,15 h60" stroke="#fff" stroke-width="10" />
+                <path d="M30,0 v30 M0,15 h60" stroke="#C8102E" stroke-width="6" />
+              </g>
+            </svg>
+          </button>
+        </div>
+
+        <div class="nav-links">
+          <a href="#features" data-i18n="navFeatures">Özellikler</a>
+          <a href="#how" data-i18n="navHow">Nasıl Çalışır?</a>
+          <a href="privacy.html" data-i18n="navPrivacy">Gizlilik</a>
+          
+          <!-- Tema Değiştirici Buton (Koyu / Açık - Açıklayıcı ve Şık) -->
+          <button type="button" id="theme-toggle" class="theme-toggle-pill" title="Koyu / Açık Tema Değiştir">
+            <span class="theme-icon-wrap">
+              <svg id="moon-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+              </svg>
+              <svg id="sun-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="display:none;">
+                <circle cx="12" cy="12" r="5"></circle>
+                <line x1="12" y1="1" x2="12" y2="3"></line>
+                <line x1="12" y1="21" x2="12" y2="23"></line>
+                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                <line x1="1" y1="12" x2="3" y2="12"></line>
+                <line x1="21" y1="12" x2="23" y2="12"></line>
+                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+              </svg>
+            </span>
+            <span id="theme-text" class="theme-label" data-i18n="themeDark">Koyu Tema</span>
+          </button>
+
+          <a href="https://haytokoraz.github.io/" target="_blank" class="portal-btn" data-i18n="navOtherApps" title="HaYTooL Portal">
+            🌐 Diğer Uygulamalar
+          </a>
+          <a href="https://github.com/HaYToKoRaZ/WebTranslate-HaYTooL" target="_blank" class="github-btn">
+            <svg height="16" width="16" viewBox="0 0 16 16" fill="currentColor">
+              <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/>
+            </svg>
+            GitHub
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Bölümü -->
+  <header class="hero">
+    <div class="container hero-content">
+      <div class="badge" data-i18n="heroBadge">⚡ Manifest V3 & Modern Tarayıcı Uyumlu</div>
+      <h1 class="hero-title" data-i18n="heroTitle">
+        Web Sayfalarını <br />
+        <span class="gradient-text">Işık Hızında</span> Çevirin
+      </h1>
+      <p class="hero-subtitle" data-i18n="heroSubtitle">
+        Tarayıcınızda dilediğiniz sayfada sağ tıklayarak sayfayı tek tıkla çevirin veya seçtiğiniz metinleri zarif bir baloncuk içinde anında görüntüleyin.
+      </p>
+
+      <!-- Web Sayfalarını Gezen Akıllı Çizgi-Sanatı Kedi Görsel Vitrini -->
+      <div class="cat-showcase-wrap">
+        <img src="cat.jpg" alt="Web Sitelerini Gezen Çevirmen Kedi - WebTranslate HaYTooL" class="cat-img" />
+        <div class="cat-glow"></div>
+      </div>
+
+      <!-- Tarayıcı Eklenti Butonları (Nötr ve Profesyonel) -->
+      <div class="store-buttons">
+        <a href="https://github.com/HaYToKoRaZ/WebTranslate-HaYTooL" target="_blank" class="store-btn primary-store-btn" title="WebTranslate HaYTooL">
+          <img src="icon.png" alt="Logo" width="28" height="28" style="object-fit:contain;">
+          <div class="store-text">
+            <span class="store-sub" data-i18n="storeSubStore">Resmi Mağazadan</span>
+            <span class="store-name" data-i18n="storeNameStore">Eklentiyi İndir</span>
+          </div>
+        </a>
+
+        <a href="https://github.com/HaYToKoRaZ/WebTranslate-HaYTooL" target="_blank" class="store-btn" title="GitHub Deposu">
+          <svg height="24" width="24" viewBox="0 0 16 16" fill="currentColor">
+            <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/>
+          </svg>
+          <div class="store-text">
+            <span class="store-sub">Açık Kaynak Kodlar</span>
+            <span class="store-name">GitHub Repository</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Özellikler Bölümü -->
+  <section id="features" class="features-section">
+    <div class="container">
+      <div class="section-title-wrap">
+        <h2 class="section-title" data-i18n="featHeading">Neler Sunuyor?</h2>
+        <p class="section-subtitle" data-i18n="featSub">Hızlı, gizlilik odaklı ve modern tarayıcı çevirmeni.</p>
+      </div>
+
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">🌐</div>
+          <h3 data-i18n="feat1Title">Tek Tıkla Sayfa Çevirisi</h3>
+          <p data-i18n="feat1Desc">Sağ tıklayıp "Bu Sayfayı Çevir" demeniz yeterli. Sayfa düzenini bozmadan anında hedef dilinize çevirir.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">🔤</div>
+          <h3 data-i18n="feat2Title">Seçili Metin Çevirisi (Floating HUD)</h3>
+          <p data-i18n="feat2Desc">Bir kelime veya paragraf seçin; hemen yanında beliren şık cam efektli baloncukta orijinal ve çeviri metnini anında görün.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">🚀</div>
+          <h3 data-i18n="feat3Title">Helium Browser Desteği</h3>
+          <p data-i18n="feat3Desc">Dahili çeviri özelliği bulunmayan Helium Browser kullanıcıları için eksiksiz ve akıcı yerel sayfa çevirisi sağlar.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">🛡️</div>
+          <h3 data-i18n="feat4Title">Sıfır Telemetri & %100 Gizlilik</h3>
+          <p data-i18n="feat4Desc">Ziyaret ettiğiniz siteler veya çevirdiğiniz metinler asla üçüncü taraf sunucularda saklanmaz. Yalnızca tarayıcınızda çalışır.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">🌍</div>
+          <h3 data-i18n="feat5Title">10+ Popüler Dil Desteği</h3>
+          <p data-i18n="feat5Desc">Türkçe, İngilizce, Almanca, Fransızca, İspanyolca, Rusça, Arapça ve daha fazlası arasında tek tıkla geçiş yapın.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">⚡</div>
+          <h3 data-i18n="feat6Title">Ultra Hafif & Hızlı</h3>
+          <p data-i18n="feat6Desc">Ağır kütüphaneler içermez, sıfır gecikmeyle açılır ve tarayıcınızı asla yormaz.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Nasıl Çalışır -->
+  <section id="how" class="how-section">
+    <div class="container">
+      <div class="section-title-wrap">
+        <h2 class="section-title" data-i18n="howHeading">Nasıl Kullanılır?</h2>
+        <p class="section-subtitle" data-i18n="howSub">Saniyeler içinde kurun ve kullanmaya başlayın.</p>
+      </div>
+
+      <div class="steps-grid">
+        <div class="step-card">
+          <div class="step-number">1</div>
+          <h4 data-i18n="step1Title">Eklentiyi Ekleyin</h4>
+          <p data-i18n="step1Desc">WebTranslate HaYTooL'u tarayıcınıza tek tıkla yükleyin.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-number">2</div>
+          <h4 data-i18n="step2Title">Hedef Dili Seçin</h4>
+          <p data-i18n="step2Desc">Popup menüsünden veya ayarlardan hedef dilinizi (örneğin Türkçe) belirleyin.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-number">3</div>
+          <h4 data-i18n="step3Title">Sağ Tıklayın & Çevirin</h4>
+          <p data-i18n="step3Desc">Sayfada herhangi bir yere veya seçtiğiniz bir metne sağ tıklayıp çeviriye başlayın!</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-content">
+      <p>© 2026 WebTranslate <a href="https://github.com/HaYToKoRaZ" target="_blank" class="footer-brand-link">HaYTooL</a> | HaYTo tarafından sevgiyle geliştirilmiştir.</p>
+      <div class="footer-links">
+        <a href="https://haytokoraz.github.io/" target="_blank">🌐 HaYTooL Portal</a>
+        <a href="privacy.html" data-i18n="navPrivacy">Gizlilik Politikası</a>
+        <a href="https://github.com/HaYToKoRaZ/WebTranslate-HaYTooL" target="_blank">GitHub</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>
