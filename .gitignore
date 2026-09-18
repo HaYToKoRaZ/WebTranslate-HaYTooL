@@ -1,0 +1,15 @@
+# Yerel çalışma ortamı ve kurallar (Anayasa)
+.agents/
+
+# İşletim sistemi ve editör dosyaları
+.DS_Store
+Thumbs.db
+desktop.ini
+*.log
+.vscode/
+.idea/
+
+# Arşivler ve dist
+*.zip
+*.7z
+*.crx
