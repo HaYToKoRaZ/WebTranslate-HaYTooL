@@ -156,6 +156,75 @@ body {
   border-color: var(--accent);
 }
 
+/* Çeviri Motoru Pill Seçici */
+.engine-selector-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.popup-engine-pills {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.engine-pill {
+  background: #090d16;
+  border: 1px solid var(--border-color);
+  color: var(--text-muted);
+  padding: 5px 8px;
+  border-radius: 8px;
+  font-size: 11px;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.engine-pill:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(56, 189, 248, 0.4);
+  color: var(--text-main);
+}
+
+.engine-pill.active {
+  background: rgba(56, 189, 248, 0.15);
+  border-color: var(--accent);
+  color: var(--accent);
+  font-weight: 600;
+  box-shadow: 0 0 10px rgba(56, 189, 248, 0.2);
+}
+
+.pill-favicon {
+  width: 14px;
+  height: 14px;
+  object-fit: contain;
+  border-radius: 2px;
+}
+
+[data-theme="light"] .engine-pill {
+  background: #f8fafc;
+  border-color: #cbd5e1;
+  color: #64748b;
+}
+
+[data-theme="light"] .engine-pill:hover {
+  background: #f1f5f9;
+  border-color: #38bdf8;
+  color: #0f172a;
+}
+
+[data-theme="light"] .engine-pill.active {
+  background: #f0f9ff;
+  border-color: #0284c7;
+  color: #0284c7;
+}
+
 .btn-group {
   display: grid;
   grid-template-columns: 1.8fr 1fr;

@@ -147,6 +147,22 @@
     "message": "Lingva Translate (Privacy Focused Alternative)",
     "description": "Lingva engine"
   },
+  "engineDefaultBadge": {
+    "message": "Default",
+    "description": "Default badge"
+  },
+  "engineGoogleSub": {
+    "message": "Fast, comprehensive, and high accuracy",
+    "description": "Google engine subtext"
+  },
+  "engineMyMemorySub": {
+    "message": "Large multilingual translation memory",
+    "description": "MyMemory engine subtext"
+  },
+  "engineLingvaSub": {
+    "message": "Open-source & privacy-focused alternative",
+    "description": "Lingva engine subtext"
+  },
   "optionsSubheading": {
     "message": "Customization and Translation Preferences",
     "description": "Options subheading"

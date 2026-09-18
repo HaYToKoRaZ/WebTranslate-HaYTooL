@@ -16,11 +16,33 @@ document.addEventListener("DOMContentLoaded", async () => {
   const resultText = document.getElementById("quick-result-text");
   const btnCopyResult = document.getElementById("btn-copy-result");
 
-  // Kayıtlı ayarları çek (Dil ve Tema)
-  const { targetLang, theme } = await chrome.storage.local.get({ targetLang: "tr", theme: "system" });
+  // Kayıtlı ayarları çek (Dil, Tema ve Çeviri Motoru)
+  const { targetLang, theme, engine } = await chrome.storage.local.get({ targetLang: "tr", theme: "system", engine: "google" });
   if (selectTargetLang) {
     selectTargetLang.value = targetLang;
   }
+
+  // Çeviri Motoru Pill Seçimi
+  const enginePills = document.querySelectorAll(".engine-pill");
+  function updatePopupEnginePills(activeEngine) {
+    enginePills.forEach(pill => {
+      if (pill.getAttribute("data-engine") === activeEngine) {
+        pill.classList.add("active");
+      } else {
+        pill.classList.remove("active");
+      }
+    });
+  }
+
+  updatePopupEnginePills(engine || "google");
+
+  enginePills.forEach(pill => {
+    pill.addEventListener("click", () => {
+      const selected = pill.getAttribute("data-engine");
+      updatePopupEnginePills(selected);
+      chrome.storage.local.set({ engine: selected });
+    });
+  });
 
   // Temayı algıla ve uygula
   if (theme === "dark") {

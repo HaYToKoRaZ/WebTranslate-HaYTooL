@@ -56,8 +56,32 @@ document.addEventListener("DOMContentLoaded", async () => {
     chrome.storage.local.set({ targetLang: targetLangInput.value }, showSavedToast);
   });
 
-  // Çeviri motoru değiştiğinde anında kaydet
+  // Çeviri motoru kartları etkileşimi
+  const engineCards = document.querySelectorAll(".engine-card");
+  function updateEngineCards(activeEngine) {
+    engineCards.forEach(card => {
+      if (card.getAttribute("data-engine") === activeEngine) {
+        card.classList.add("active");
+      } else {
+        card.classList.remove("active");
+      }
+    });
+  }
+
+  updateEngineCards(engineSelect.value);
+
+  engineCards.forEach(card => {
+    card.addEventListener("click", () => {
+      const selectedEngine = card.getAttribute("data-engine");
+      engineSelect.value = selectedEngine;
+      updateEngineCards(selectedEngine);
+      chrome.storage.local.set({ engine: selectedEngine }, showSavedToast);
+    });
+  });
+
+  // Çeviri motoru inputu doğrudan değişirse (geriye uyumluluk)
   engineSelect.addEventListener("change", () => {
+    updateEngineCards(engineSelect.value);
     chrome.storage.local.set({ engine: engineSelect.value }, showSavedToast);
   });
 

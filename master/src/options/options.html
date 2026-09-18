@@ -86,17 +86,56 @@
         </select>
       </div>
 
-      <!-- 2. Çeviri Motoru -->
-      <div class="setting-item">
-        <div class="setting-info">
-          <label class="setting-label" for="engine" data-i18n="translationEngine">Çeviri Motoru</label>
+      <!-- 2. Çeviri Motoru (Favicon İkonlu Seçenek Kartları) -->
+      <div class="setting-item column-layout">
+        <div class="setting-info full-width">
+          <label class="setting-label" data-i18n="translationEngine">Çeviri Motoru</label>
           <span class="setting-desc" data-i18n="engineDesc">Sayfa ve metin çevirisinde kullanılacak servis sağlayıcı.</span>
         </div>
-        <select id="engine" class="setting-control select-input">
-          <option value="google" data-i18n="engineGoogle" selected>Google Translate (Varsayılan - Hızlı & Kapsamlı)</option>
-          <option value="mymemory" data-i18n="engineMyMemory">MyMemory Translator (Çok Dilli Hafıza)</option>
-          <option value="lingva" data-i18n="engineLingva">Lingva Translate (Gizlilik Odaklı Alternatif)</option>
-        </select>
+        
+        <input type="hidden" id="engine" value="google">
+        <div class="engine-grid" id="engine-grid">
+          <!-- Google Translate -->
+          <button type="button" class="engine-card active" data-engine="google">
+            <div class="engine-icon-wrap">
+              <img src="../assets/icons/engine-google.png" alt="Google Translate" class="engine-favicon">
+            </div>
+            <div class="engine-meta">
+              <div class="engine-name-row">
+                <span class="engine-name">Google Translate</span>
+                <span class="engine-badge" data-i18n="engineDefaultBadge">Varsayılan</span>
+              </div>
+              <span class="engine-sub" data-i18n="engineGoogleSub">Hızlı, kapsamlı ve yüksek doğruluk</span>
+            </div>
+          </button>
+
+          <!-- MyMemory Translator -->
+          <button type="button" class="engine-card" data-engine="mymemory">
+            <div class="engine-icon-wrap">
+              <img src="../assets/icons/engine-mymemory.png" alt="MyMemory" class="engine-favicon">
+            </div>
+            <div class="engine-meta">
+              <div class="engine-name-row">
+                <span class="engine-name">MyMemory Translator</span>
+              </div>
+              <span class="engine-sub" data-i18n="engineMyMemorySub">Geniş çok dilli çeviri hafızası</span>
+            </div>
+          </button>
+
+          <!-- Lingva Translate -->
+          <button type="button" class="engine-card" data-engine="lingva">
+            <div class="engine-icon-wrap">
+              <img src="../assets/icons/engine-lingva.png" alt="Lingva" class="engine-favicon">
+            </div>
+            <div class="engine-meta">
+              <div class="engine-name-row">
+                <span class="engine-name">Lingva Translate</span>
+                <span class="engine-badge engine-badge-alt">Gizlilik</span>
+              </div>
+              <span class="engine-sub" data-i18n="engineLingvaSub">Açık kaynak & gizlilik odaklı alternatif</span>
+            </div>
+          </button>
+        </div>
       </div>
 
       <!-- 3. Seçili Metin HUD Balonu -->

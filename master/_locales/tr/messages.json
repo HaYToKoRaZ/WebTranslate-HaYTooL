@@ -147,6 +147,22 @@
     "message": "Lingva Translate (Gizlilik Odaklı Alternatif)",
     "description": "Lingva Çeviri motoru"
   },
+  "engineDefaultBadge": {
+    "message": "Varsayılan",
+    "description": "Varsayılan rozeti"
+  },
+  "engineGoogleSub": {
+    "message": "Hızlı, kapsamlı ve yüksek doğruluk",
+    "description": "Google motor açıklaması"
+  },
+  "engineMyMemorySub": {
+    "message": "Geniş çok dilli çeviri hafızası",
+    "description": "MyMemory motor açıklaması"
+  },
+  "engineLingvaSub": {
+    "message": "Açık kaynak & gizlilik odaklı alternatif",
+    "description": "Lingva motor açıklaması"
+  },
   "optionsSubheading": {
     "message": "Kişiselleştirme ve Çeviri Tercihleri",
     "description": "Ayarlar alt başlığı"
