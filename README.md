@@ -7,11 +7,30 @@
 **Lightning Fast Full-Page & Selection Web Translator**  
 *Işık Hızında Web Sayfası ve Seçili Metin Çevirmeni*
 
-[![Web Store Ready](https://img.shields.io/badge/Web_Store-Ready-4285F4?style=flat-square)](https://github.com/HaYToKoRaZ/WebTranslate-HaYTooL)
+[![Web Store Ready](https://img.shields.io/badge/Web_Store-Ready-4285F4?style=flat-square)](https://github.com/HaYToKoRaZ/WebTranslate-HaYTooL/releases/latest)
+[![Latest Release](https://img.shields.io/github/v/release/HaYToKoRaZ/WebTranslate-HaYTooL?label=Download%20ZIP&color=10b981&style=flat-square)](https://github.com/HaYToKoRaZ/WebTranslate-HaYTooL/releases/latest)
 [![License: MIT](https://img.shields.io/badge/License-MIT-emerald?style=flat-square)](LICENSE)
 [![Manifest V3](https://img.shields.io/badge/Manifest-V3-orange?style=flat-square)](https://developer.chrome.com/docs/extensions/mv3/intro/)
 
-[🌐 **Live Website & Demo**](https://haytokoraz.github.io/WebTranslate-HaYTooL/) | [🇹🇷 **Türkçe Açıklama**](#-türkçe-açıklama)
+[🌐 **Canlı Web Sitesi (Live Demo)**](https://haytokoraz.github.io/WebTranslate-HaYTooL/) | [📦 **Son Sürümü İndir (Releases)**](https://github.com/HaYToKoRaZ/WebTranslate-HaYTooL/releases/latest) | [🇹🇷 **Türkçe Açıklama**](#-türkçe-açıklama)
+
+<br />
+
+### 🛒 Supported Browsers & Store Downloads
+<p align="center">
+  <a href="https://github.com/HaYToKoRaZ/WebTranslate-HaYTooL/releases/latest" title="Chrome Web Store (Yakında / Releases)">
+    <img src="master/src/assets/badges/chrome.svg" alt="Chrome Web Store" width="36" height="36" style="margin: 0 8px;" />
+  </a>
+  <a href="https://github.com/HaYToKoRaZ/WebTranslate-HaYTooL/releases/latest" title="Microsoft Edge Add-ons (Yakında / Releases)">
+    <img src="master/src/assets/badges/edge.svg" alt="Microsoft Edge" width="36" height="36" style="margin: 0 8px;" />
+  </a>
+  <a href="https://github.com/HaYToKoRaZ/WebTranslate-HaYTooL/releases/latest" title="Helium Browser (Yakında / Releases)">
+    <img src="master/src/assets/badges/helium.png" alt="Helium Browser" width="36" height="36" style="margin: 0 8px;" />
+  </a>
+</p>
+<p align="center">
+  <sub><i>*Mağaza inceleme süreçleri tamamlanana kadar <a href="https://github.com/HaYToKoRaZ/WebTranslate-HaYTooL/releases/latest"><b>Releases Sayfasından Son Sürüm ZIP Paketini</b></a> indirip tarayıcınıza yükleyebilirsiniz.</i></sub>
+</p>
 
 </div>
 
