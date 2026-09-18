@@ -11,42 +11,118 @@
     .legal-content {
       max-width: 800px;
       margin: 40px auto 80px;
-      background: rgba(17, 24, 39, 0.75);
+      background: var(--bg-card);
       border: 1px solid var(--border);
       padding: 40px;
       border-radius: 16px;
       backdrop-filter: blur(16px);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
     }
-    .legal-content h1 { font-size: 28px; margin-bottom: 20px; color: #fff; }
-    .legal-content h2 { font-size: 20px; margin: 24px 0 12px; color: var(--accent); }
+    .legal-header-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 24px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--border);
+    }
+    .legal-content h1 { font-size: 26px; margin-bottom: 8px; color: var(--text); }
+    .legal-content h2 { font-size: 18px; margin: 24px 0 10px; color: var(--accent); }
     .legal-content p, .legal-content li { color: var(--text-muted); font-size: 14px; line-height: 1.7; }
     .legal-content ul { padding-left: 20px; margin-bottom: 16px; }
+    .back-link {
+      color: var(--accent);
+      text-decoration: none;
+      font-size: 13.5px;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: opacity 0.2s;
+    }
+    .back-link:hover {
+      opacity: 0.8;
+      text-decoration: underline;
+    }
   </style>
 </head>
 <body>
   <div class="container">
     <div class="legal-content">
-      <a href="index.html" style="color: var(--accent); text-decoration: none; font-size: 13px; font-weight: 600;">← Ana Sayfaya Dön</a>
-      <h1 style="margin-top: 20px;">Gizlilik Politikası (Privacy Policy)</h1>
-      <p><strong>Son Güncelleme:</strong> 18 Eylül 2026</p>
-      
-      <h2>1. Genel Bakış</h2>
-      <p>WebTranslate HaYTooL ("biz", "eklenti"), kullanıcı gizliliğini temel prensip olarak benimser. Bu eklenti yalnızca kullanıcının talep ettiği web sayfalarını ve metin parçalarını çevirmek amacıyla tasarlanmıştır.</p>
+      <div class="legal-header-row">
+        <a href="index.html" class="back-link" data-i18n="privBack">← Ana Sayfaya Dön</a>
+        
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <!-- Dil Seçici Butonları -->
+          <div class="lang-switch-group">
+            <button type="button" class="lang-btn active" onclick="setLanguage('tr')" title="Türkçe">
+              <svg viewBox="0 0 1200 800" class="flag-svg">
+                <rect width="1200" height="800" fill="#E30A17" />
+                <circle cx="425" cy="400" r="200" fill="#FFFFFF" />
+                <circle cx="475" cy="400" r="160" fill="#E30A17" />
+                <polygon fill="#FFFFFF" points="583.33,400 706.87,440.14 659.73,319.86 659.73,480.14 706.87,359.86" />
+              </svg>
+            </button>
+            <button type="button" class="lang-btn" onclick="setLanguage('en')" title="English">
+              <svg viewBox="0 0 60 30" class="flag-svg">
+                <clipPath id="s1"><path d="M0,0 v30 h60 v-30 z" /></clipPath>
+                <clipPath id="t1"><path d="M30,15 h30 v15 z v15 h-30 z h-30 v-15 z v-15 h30 z" /></clipPath>
+                <g clip-path="url(#s1)">
+                  <path d="M0,0 v30 h60 v-30 z" fill="#012169" />
+                  <path d="M0,0 L60,30 M60,0 L0,30" stroke="#fff" stroke-width="6" />
+                  <path d="M0,0 L60,30 M60,0 L0,30" clip-path="url(#t1)" stroke="#C8102E" stroke-width="4" />
+                  <path d="M30,0 v30 M0,15 h60" stroke="#fff" stroke-width="10" />
+                  <path d="M30,0 v30 M0,15 h60" stroke="#C8102E" stroke-width="6" />
+                </g>
+              </svg>
+            </button>
+          </div>
 
-      <h2>2. Toplanan Bilgiler & İzinler</h2>
-      <p>Eklentimiz hiçbir kişisel veriyi, tarama geçmişinizi, şifrelerinizi veya kimlik bilgilerinizi toplamaz ve harici sunucularımıza aktarmaz.</p>
+          <!-- Tema Değiştirici -->
+          <button type="button" id="theme-toggle" class="theme-toggle-pill" title="Koyu / Açık Tema Değiştir">
+            <span class="theme-icon-wrap">
+              <svg id="moon-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+              </svg>
+              <svg id="sun-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="display:none;">
+                <circle cx="12" cy="12" r="5"></circle>
+                <line x1="12" y1="1" x2="12" y2="3"></line>
+                <line x1="12" y1="21" x2="12" y2="23"></line>
+                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                <line x1="1" y1="12" x2="3" y2="12"></line>
+                <line x1="21" y1="12" x2="23" y2="12"></line>
+                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+              </svg>
+            </span>
+            <span id="theme-text" class="theme-label" data-i18n="themeDark">Koyu Tema</span>
+          </button>
+        </div>
+      </div>
+
+      <h1 data-i18n="privTitle">Gizlilik Politikası (Privacy Policy)</h1>
+      <p><strong data-i18n="privUpdatedLabel">Son Güncelleme:</strong> <span data-i18n="privUpdated">19 Eylül 2026</span></p>
+      
+      <h2 data-i18n="privSec1Title">1. Genel Bakış</h2>
+      <p data-i18n="privSec1Desc">WebTranslate HaYTooL ("biz", "eklenti"), kullanıcı gizliliğini temel prensip olarak benimser. Bu eklenti yalnızca kullanıcının talep ettiği web sayfalarını ve metin parçalarını çevirmek amacıyla tasarlanmıştır.</p>
+
+      <h2 data-i18n="privSec2Title">2. Toplanan Bilgiler & İzinler</h2>
+      <p data-i18n="privSec2Desc">Eklentimiz hiçbir kişisel veriyi, tarama geçmişinizi, şifrelerinizi veya kimlik bilgilerinizi toplamaz ve harici sunucularımıza aktarmaz.</p>
       <ul>
-        <li><strong>contextMenus:</strong> Sayfada sağ tık menüsünde "Bu Sayfayı Çevir" ve "Seçili Metni Çevir" seçeneklerini sunmak için kullanılır.</li>
-        <li><strong>storage:</strong> Yalnızca seçtiğiniz hedef dil ve tema gibi yerel tercihlerinizi tarayıcınızda saklamak için kullanılır.</li>
-        <li><strong>activeTab & scripting:</strong> Sadece siz sağ tıkladığınızda veya butona bastığınızda o anki aktif sekmede çeviri motorunu çalıştırmak için kullanılır.</li>
+        <li><strong data-i18n="privPerm1Name">contextMenus:</strong> <span data-i18n="privPerm1Desc">Sayfada sağ tık menüsünde "Bu Sayfayı Çevir" ve "Seçili Metni Çevir" seçeneklerini sunmak için kullanılır.</span></li>
+        <li><strong data-i18n="privPerm2Name">storage:</strong> <span data-i18n="privPerm2Desc">Yalnızca seçtiğiniz hedef dil, tema ve son hızlı çeviri taslağınız gibi yerel tercihlerinizi tarayıcınızda saklamak için kullanılır.</span></li>
+        <li><strong data-i18n="privPerm3Name">activeTab & scripting:</strong> <span data-i18n="privPerm3Desc">Sadece siz sağ tıkladığınızda veya butona bastığınızda o anki aktif sekmede çeviri motorunu çalıştırmak için kullanılır.</span></li>
       </ul>
 
-      <h2>3. Çeviri İstekleri</h2>
-      <p>Çevrilmesini istediğiniz metinler doğrudan resmi Google Translate uç noktalarına şifreli (HTTPS) olarak anlık iletilir ve sonuç tarayıcınızda gösterilir. Hiçbir çeviri kaydı tutulmaz.</p>
+      <h2 data-i18n="privSec3Title">3. Çeviri İstekleri & 6 Motor Güvenliği</h2>
+      <p data-i18n="privSec3Desc">Çevrilmesini istediğiniz metinler doğrudan seçtiğiniz resmi sağlayıcılara (Google, DeepL, Bing, DuckDuckGo, MyMemory, Lingva) şifreli (HTTPS) olarak anlık iletilir ve sonuç tarayıcınızda görüntülenir. Hiçbir çeviri kaydı veya arama günlüğü tarafımızca tutulmaz.</p>
 
-      <h2>4. İletişim</h2>
-      <p>Sorularınız ve geri bildirimleriniz için <a href="https://github.com/HaYToKoRaZ/WebTranslate-HaYTooL" target="_blank">GitHub Repository</a> üzerinden bizimle iletişime geçebilirsiniz.</p>
+      <h2 data-i18n="privSec4Title">4. İletişim & Açık Kaynak</h2>
+      <p><span data-i18n="privSec4Desc">Sorularınız, katkılarınız ve geri bildirimleriniz için</span> <a href="https://github.com/HaYToKoRaZ/WebTranslate-HaYTooL" target="_blank" style="color: var(--accent);">GitHub Repository</a> <span data-i18n="privSec4End">üzerinden bizimle iletişime geçebilirsiniz.</span></p>
     </div>
   </div>
+
+  <script src="main.js"></script>
 </body>
 </html>
