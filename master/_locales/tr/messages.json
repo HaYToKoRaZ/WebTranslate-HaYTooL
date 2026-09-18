@@ -192,11 +192,11 @@
     "description": "Ayarlar alt başlığı"
   },
   "websiteLink": {
-    "message": "🌐 Tanıtım Sitesi",
+    "message": "🌐 Web Sitesi",
     "description": "Tanıtım sitesi bağlantısı"
   },
   "portalLink": {
-    "message": "✨ HaYTooL Portal",
+    "message": "✨ Portal",
     "description": "Portal bağlantısı"
   },
   "engineDesc": {
