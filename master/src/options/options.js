@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   const defaults = {
     appLang: "tr",
     targetLang: "tr",
-    engine: "lingva",
+    engine: "google",
     theme: "system",
     showSelectionHUD: true,
     showContextMenu: true
@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   const current = await chrome.storage.local.get(defaults);
   appLangInput.value = current.appLang || "tr";
   targetLangInput.value = current.targetLang || "tr";
-  engineSelect.value = current.engine || "lingva";
+  engineSelect.value = current.engine || "google";
   themeSelect.value = current.theme || "system";
   showSelectionHUDCheck.checked = current.showSelectionHUD;
   showContextMenuCheck.checked = current.showContextMenu;

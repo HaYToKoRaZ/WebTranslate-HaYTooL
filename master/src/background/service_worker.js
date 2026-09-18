@@ -9,7 +9,7 @@ const DEFAULT_SETTINGS = {
   theme: "system",
   showSelectionHUD: true,
   showContextMenu: true,
-  engine: "lingva"
+  engine: "google"
 };
 
 const LANG_NAMES = {
@@ -186,30 +186,87 @@ async function translateText(text, targetLang = "tr", engine = "google") {
       console.warn("MyMemory failed, fallback to Google:", e);
     }
   } else if (engine === "lingva") {
-    try {
-      const url = `https://lingva.ml/api/v1/auto/${encodeURIComponent(targetLang)}/${encodeURIComponent(text)}`;
-      const response = await fetch(url);
-      if (response.ok) {
-        const data = await response.json();
-        if (data && data.translation) {
-          return data.translation;
+    // Lingva genel aynalarını sırayla dene
+    const lingvaInstances = [
+      `https://lingva.ml/api/v1/auto/${encodeURIComponent(targetLang)}/${encodeURIComponent(text)}`,
+      `https://lingva.lunar.icu/api/v1/auto/${encodeURIComponent(targetLang)}/${encodeURIComponent(text)}`
+    ];
+    for (const url of lingvaInstances) {
+      try {
+        const response = await fetch(url);
+        if (response.ok) {
+          const data = await response.json();
+          if (data && data.translation) {
+            return data.translation;
+          }
         }
+      } catch (e) {
+        // Sonraki aynayı dene
       }
-    } catch (e) {
-      console.warn("Lingva failed, fallback to Google:", e);
     }
   }
 
-  // Varsayılan & Güçlü Motor: Google Translate
-  const url = `https://translate.googleapis.com/translate_a/single?client=gtx&sl=auto&tl=${encodeURIComponent(targetLang)}&dt=t&q=${encodeURIComponent(text)}`;
-  const response = await fetch(url);
-  if (!response.ok) throw new Error("Translation fetch failed: " + response.status);
-  
-  const data = await response.json();
-  if (data && data[0]) {
-    return data[0].map(item => item[0]).join("");
+  // 1. Google Translate Uç Noktası (Resmi Chrome Uzantı API'si - En Hızlı ve Kararlı)
+  try {
+    const url1 = `https://translate.googleapis.com/translate_a/t?client=dict-chrome-ex&sl=auto&tl=${encodeURIComponent(targetLang)}&q=${encodeURIComponent(text)}`;
+    const res1 = await fetch(url1);
+    if (res1.ok) {
+      const data1 = await res1.json();
+      if (Array.isArray(data1) && data1[0]) {
+        if (Array.isArray(data1[0])) {
+          return data1[0][0] || text;
+        }
+        return data1[0];
+      }
+    }
+  } catch (e) {
+    console.warn("Google endpoint 1 failed, trying fallback 2:", e);
   }
-  return "";
+
+  // 2. Google Translate Uç Noktası (clients5 Ayna)
+  try {
+    const url2 = `https://clients5.google.com/translate_a/t?client=dict-chrome-ex&sl=auto&tl=${encodeURIComponent(targetLang)}&q=${encodeURIComponent(text)}`;
+    const res2 = await fetch(url2);
+    if (res2.ok) {
+      const data2 = await res2.json();
+      if (Array.isArray(data2) && data2[0]) {
+        if (Array.isArray(data2[0])) {
+          return data2[0][0] || text;
+        }
+        return data2[0];
+      }
+    }
+  } catch (e) {
+    console.warn("Google endpoint 2 failed, trying fallback 3:", e);
+  }
+
+  // 3. Google Translate Uç Noktası (Klasik GTX / at)
+  try {
+    const url3 = `https://translate.googleapis.com/translate_a/single?client=at&sl=auto&tl=${encodeURIComponent(targetLang)}&dt=t&q=${encodeURIComponent(text)}`;
+    const res3 = await fetch(url3);
+    if (res3.ok) {
+      const data3 = await res3.json();
+      if (data3 && data3[0]) {
+        return data3[0].map(item => item[0]).join("");
+      }
+    }
+  } catch (e) {
+    console.warn("Google endpoint 3 failed:", e);
+  }
+
+  // 4. Son Çare: MyMemory
+  try {
+    const fallbackUrl = `https://api.mymemory.translated.net/get?q=${encodeURIComponent(text)}&langpair=autodetect|${encodeURIComponent(targetLang)}`;
+    const fbRes = await fetch(fallbackUrl);
+    if (fbRes.ok) {
+      const fbData = await fbRes.json();
+      if (fbData && fbData.responseData && fbData.responseData.translatedText) {
+        return fbData.responseData.translatedText;
+      }
+    }
+  } catch (e) { }
+
+  return text;
 }
 
 // Content Script ve Popup'tan Gelen Mesaj Köprüsü

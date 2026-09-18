@@ -136,7 +136,7 @@
     "description": "Translation engine setting"
   },
   "engineGoogle": {
-    "message": "Google Translate (Fast & Comprehensive)",
+    "message": "Google Translate (Default - Fast & Comprehensive)",
     "description": "Google engine"
   },
   "engineMyMemory": {
@@ -144,7 +144,7 @@
     "description": "MyMemory engine"
   },
   "engineLingva": {
-    "message": "Lingva Translate (Default - Privacy Focused & Fast)",
+    "message": "Lingva Translate (Privacy Focused Alternative)",
     "description": "Lingva engine"
   },
   "optionsSubheading": {

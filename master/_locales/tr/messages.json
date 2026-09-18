@@ -136,7 +136,7 @@
     "description": "Çeviri motoru"
   },
   "engineGoogle": {
-    "message": "Google Translate (Hızlı & Kapsamlı)",
+    "message": "Google Translate (Varsayılan - Hızlı & Kapsamlı)",
     "description": "Google Çeviri motoru"
   },
   "engineMyMemory": {
@@ -144,7 +144,7 @@
     "description": "MyMemory Çeviri motoru"
   },
   "engineLingva": {
-    "message": "Lingva Translate (Varsayılan - Gizlilik Odaklı & Hızlı)",
+    "message": "Lingva Translate (Gizlilik Odaklı Alternatif)",
     "description": "Lingva Çeviri motoru"
   },
   "optionsSubheading": {

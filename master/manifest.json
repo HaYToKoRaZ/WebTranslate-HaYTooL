@@ -44,8 +44,10 @@
   "host_permissions": [
     "https://translate.googleapis.com/*",
     "https://translate.google.com/*",
+    "https://clients5.google.com/*",
     "https://api.mymemory.translated.net/*",
-    "https://lingva.ml/*"
+    "https://lingva.ml/*",
+    "https://lingva.lunar.icu/*"
   ],
   "web_accessible_resources": [
     {
