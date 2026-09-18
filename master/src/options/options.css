@@ -79,6 +79,14 @@ body {
   display: flex;
   align-items: center;
   gap: 16px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 0.15s ease, opacity 0.15s ease;
+}
+
+.brand-group:hover {
+  opacity: 0.92;
+  transform: translateY(-1px);
 }
 
 .logo {
@@ -86,6 +94,11 @@ body {
   height: 44px;
   border-radius: 10px;
   box-shadow: 0 4px 14px rgba(56, 189, 248, 0.25);
+  transition: transform 0.2s ease;
+}
+
+.brand-group:hover .logo {
+  transform: scale(1.05);
 }
 
 .heading {
@@ -93,6 +106,11 @@ body {
   font-weight: 700;
   color: #fff;
   letter-spacing: -0.3px;
+  transition: color 0.2s ease;
+}
+
+.brand-group:hover .heading {
+  color: var(--accent);
 }
 
 .title-row {
