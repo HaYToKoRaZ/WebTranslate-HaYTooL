@@ -11,6 +11,18 @@
   let isPageTranslated = false;
   let originalHtmlLang = document.documentElement.lang;
 
+  // CSS'i sayfaya dinamik ekle (Manifest content_scripts kaldırılsa bile garantili çalışır)
+  function ensureStylesInjected() {
+    if (document.getElementById("haytool-content-style")) return;
+    const link = document.createElement("link");
+    link.id = "haytool-content-style";
+    link.rel = "stylesheet";
+    link.type = "text/css";
+    link.href = chrome.runtime.getURL("src/content/content.css");
+    (document.head || document.documentElement).appendChild(link);
+  }
+  ensureStylesInjected();
+
   // Kara liste kontrolü
   async function isCurrentDomainBlacklisted() {
     try {

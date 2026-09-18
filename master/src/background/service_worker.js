@@ -209,6 +209,18 @@ chrome.contextMenus.onClicked.addListener(async (info, tab) => {
         originalText: text,
         translatedText: translated,
         targetLang: settings.targetLang
+      }).catch(() => {
+        chrome.scripting.executeScript({
+          target: { tabId: tab.id },
+          files: ["src/content/content.js"]
+        }).then(() => {
+          chrome.tabs.sendMessage(tab.id, {
+            action: "SHOW_SELECTION_RESULT",
+            originalText: text,
+            translatedText: translated,
+            targetLang: settings.targetLang
+          });
+        });
       });
     } catch (e) {
       console.error("Çeviri hatası:", e);
