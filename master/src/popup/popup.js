@@ -282,6 +282,8 @@ document.addEventListener("DOMContentLoaded", async () => {
         resultCard.classList.remove("hidden");
       }
     });
+  }
+
   btnQuickTranslate.addEventListener("click", performQuickTranslate);
   quickInput.addEventListener("keydown", (e) => {
     if (e.key === "Enter" && !e.shiftKey) {
