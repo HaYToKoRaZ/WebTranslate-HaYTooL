@@ -44,15 +44,17 @@
 **WebTranslate HaYTooL** is a lightweight, privacy-friendly browser extension designed to bring native-like page translation and instant selection translation to modern browsers.
 
 ### ✨ Key Features
-- **🌐 One-Click Page Translation:** Right-click anywhere on a webpage and click **"Translate this page"** to seamlessly translate the entire page without breaking the layout.
+- **🌐 One-Click Page Translation with Live Progress HUD:** Right-click anywhere on a webpage and choose **"Translate this page"**. Watch real-time completion with a sleek progress bar (%0-%100) as paragraphs translate on the fly!
 - **🔤 Selection Translation (Floating HUD):** Highlight any text or paragraph, right-click **"Translate selection"**, and an elegant glassmorphic balloon pops up beside your cursor displaying both original and translated text.
 - **🌓 Dark & Light Theme:** Automatically detects system theme upon installation with customizable dark/light modes.
 - **🛡️ 100% Privacy & Zero Telemetry:** No user analytics, no background tracking.
 - **⚡ Super Lightweight:** Built with vanilla modern JavaScript; opens instantly with zero memory bloat.
 - **🌍 45+ Target Languages:** Supports Turkish, English, German, French, Spanish, Russian, Arabic, Japanese, and more.
-- **🚀 Multi-Engine Translation Hub:**
-  - **Google Translate (Default):** High-speed, robust translation with built-in fallbacks.
-  - **MyMemory Translator:** Vast multilingual memory database.
+- **🚀 5 Powerful Translation Engines:**
+  - **Google Translate (Default):** High-speed, robust translation with built-in Chrome extension API endpoints.
+  - **DeepL Translate:** State-of-the-art AI translation quality (optional free/pro API key support).
+  - **Bing / Microsoft Translator:** Microsoft's global translation engine.
+  - **MyMemory Translator:** Vast multilingual human & machine memory database.
   - **Lingva Translate:** Decentralized, privacy-first open-source mirror engine.
 
 ### 📥 Manual Installation (Developer Mode)
@@ -69,14 +71,16 @@
 **WebTranslate HaYTooL**, web sayfalarını ve seçtiğiniz metin parçalarını sayfa düzenini bozmadan anında hedef dilinize çeviren ultra hafif, modern ve gizlilik odaklı bir tarayıcı eklentisidir.
 
 ### ✨ Temel Özellikler
-- **🌐 Tek Tıkla Sayfa Çevirisi:** Sayfada boş bir yere sağ tıklayın ve **"Bu Sayfayı Çevir"** seçeneğini seçin. Sayfa düzeniniz bozulmadan tüm metinler anında hedef dilinize çevrilir.
+- **🌐 Canlı İlerleme Çubuklu Sayfa Çevirisi (Live Progress HUD):** Sayfada sağ tıklayıp **"Bu Sayfayı Çevir"** dediğinizde sayfanın sağ alt köşesinde canlı yüzde çubuğu (%0-%100) belirir; paragraflar çevrildikçe anında sayfaya işlenir ve tamamlandığında garanti bildirim verir!
 - **🔤 Seçili Metin Çevirisi (Floating HUD):** Herhangi bir cümleyi veya kelimeyi seçip sağ tıkladığınızda hemen imlecin yanında zarif cam efektli bir baloncuk belirir.
 - **🌓 Koyu & Açık Tema:** İlk yüklendiğinde işletim sisteminizin açık/koyu temasını otomatik algılar ve uyum sağlar.
 - **🛡️ Sıfır Telemetri & %100 Gizlilik:** Hiçbir geçmiş kaydı tutulmaz veya sunuculara iletilmez.
 - **⚡ Ultra Hafif:** Ağır framework'ler içermez, tarayıcınızı asla yavaşlatmaz.
 - **🌍 45+ Dil Desteği:** Türkçe, İngilizce, Almanca, Fransızca, İspanyolca, Rusça, Arapça ve çok daha fazlası.
-- **🚀 Çoklu Çeviri Motoru Desteği:**
-  - **Google Translate (Varsayılan):** Işık hızında, kesintisiz ve yüksek doğruluklu çeviri motoru.
+- **🚀 5 Güçlü Çeviri Motoru Desteği:**
+  - **Google Translate (Varsayılan):** Işık hızında, kesintisiz ve resmi uzantı uç noktalarıyla en güvenilir motor.
+  - **DeepL Translate:** Dünyanın en doğal yapay zeka çeviri motoru (ücretsiz API Key desteğiyle).
+  - **Bing / Microsoft Translator:** Microsoft'un küresel kurumsal çeviri ağı.
   - **MyMemory Translator:** Geniş dil hafıza bankası ve insan/makine eşleştirmeli çeviri.
   - **Lingva Translate:** Merkeziyetsiz, ayna sunuculu gizlilik odaklı açık kaynak motor.
 

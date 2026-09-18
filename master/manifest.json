@@ -47,7 +47,10 @@
     "https://clients5.google.com/*",
     "https://api.mymemory.translated.net/*",
     "https://lingva.ml/*",
-    "https://lingva.lunar.icu/*"
+    "https://lingva.lunar.icu/*",
+    "https://api-free.deepl.com/*",
+    "https://api.deepl.com/*",
+    "https://www.bing.com/*"
   ],
   "web_accessible_resources": [
     {

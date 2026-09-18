@@ -163,6 +163,26 @@
     "message": "Açık kaynak & gizlilik odaklı alternatif",
     "description": "Lingva motor açıklaması"
   },
+  "engineDeepLSub": {
+    "message": "Doğal yapay zeka çevirisi (API Key ile)",
+    "description": "DeepL motor açıklaması"
+  },
+  "engineBingSub": {
+    "message": "Microsoft küresel çeviri ağı",
+    "description": "Bing motor açıklaması"
+  },
+  "deeplKeyLabel": {
+    "message": "DeepL API Anahtarı (Ücretsiz / Pro)",
+    "description": "DeepL API key etiketi"
+  },
+  "deeplKeyDesc": {
+    "message": "DeepL Free API aylık 500.000 karakter ücretsiz çeviri sunar. Boş bırakılırsa Google motoru devreye girer.",
+    "description": "DeepL API key açıklaması"
+  },
+  "getFreeKey": {
+    "message": "Ücretsiz Anahtar Al ↗",
+    "description": "DeepL linki"
+  },
   "optionsSubheading": {
     "message": "Kişiselleştirme ve Çeviri Tercihleri",
     "description": "Ayarlar alt başlığı"

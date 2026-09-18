@@ -95,7 +95,7 @@
         
         <input type="hidden" id="engine" value="google">
         <div class="engine-grid" id="engine-grid">
-          <!-- Google Translate -->
+          <!-- 1. Google Translate -->
           <button type="button" class="engine-card active" data-engine="google">
             <div class="engine-icon-wrap">
               <img src="../assets/icons/engine-google.png" alt="Google Translate" class="engine-favicon">
@@ -109,7 +109,34 @@
             </div>
           </button>
 
-          <!-- MyMemory Translator -->
+          <!-- 2. DeepL Translate -->
+          <button type="button" class="engine-card" data-engine="deepl">
+            <div class="engine-icon-wrap">
+              <img src="../assets/icons/engine-deepl.png" alt="DeepL" class="engine-favicon">
+            </div>
+            <div class="engine-meta">
+              <div class="engine-name-row">
+                <span class="engine-name">DeepL Translate</span>
+                <span class="engine-badge engine-badge-ai">AI Pro</span>
+              </div>
+              <span class="engine-sub" data-i18n="engineDeepLSub">Doğal yapay zeka çevirisi (API Key ile)</span>
+            </div>
+          </button>
+
+          <!-- 3. Bing / Microsoft Translator -->
+          <button type="button" class="engine-card" data-engine="bing">
+            <div class="engine-icon-wrap">
+              <img src="../assets/icons/engine-bing.png" alt="Bing" class="engine-favicon">
+            </div>
+            <div class="engine-meta">
+              <div class="engine-name-row">
+                <span class="engine-name">Bing Translator</span>
+              </div>
+              <span class="engine-sub" data-i18n="engineBingSub">Microsoft küresel çeviri ağı</span>
+            </div>
+          </button>
+
+          <!-- 4. MyMemory Translator -->
           <button type="button" class="engine-card" data-engine="mymemory">
             <div class="engine-icon-wrap">
               <img src="../assets/icons/engine-mymemory.png" alt="MyMemory" class="engine-favicon">
@@ -122,7 +149,7 @@
             </div>
           </button>
 
-          <!-- Lingva Translate -->
+          <!-- 5. Lingva Translate -->
           <button type="button" class="engine-card" data-engine="lingva">
             <div class="engine-icon-wrap">
               <img src="../assets/icons/engine-lingva.png" alt="Lingva" class="engine-favicon">
@@ -135,6 +162,19 @@
               <span class="engine-sub" data-i18n="engineLingvaSub">Açık kaynak & gizlilik odaklı alternatif</span>
             </div>
           </button>
+        </div>
+
+        <!-- DeepL API Key Kutusu (Opsiyonel / Sadece DeepL seçildiğinde veya isteğe bağlı açılır) -->
+        <div class="deepl-key-card" id="deepl-key-section">
+          <div class="deepl-key-header">
+            <label for="deeplApiKey" class="setting-label" data-i18n="deeplKeyLabel">DeepL API Anahtarı (Ücretsiz / Pro)</label>
+            <a href="https://www.deepl.com/pro-api" target="_blank" class="deepl-link" data-i18n="getFreeKey">Ücretsiz Anahtar Al ↗</a>
+          </div>
+          <div class="deepl-input-row">
+            <input type="password" id="deeplApiKey" class="setting-control select-input text-input" placeholder="Örn: 12345678-abcd-...:fx">
+            <button type="button" id="btn-toggle-key" class="icon-btn-key" title="Göster/Gizle">👁</button>
+          </div>
+          <span class="setting-desc" data-i18n="deeplKeyDesc">DeepL Free API aylık 500.000 karakter ücretsiz çeviri sunar. Boş bırakılırsa Google motoru devreye girer.</span>
         </div>
       </div>
 

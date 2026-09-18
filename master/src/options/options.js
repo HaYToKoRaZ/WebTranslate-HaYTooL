@@ -24,7 +24,8 @@ document.addEventListener("DOMContentLoaded", async () => {
     engine: "google",
     theme: "system",
     showSelectionHUD: true,
-    showContextMenu: true
+    showContextMenu: true,
+    deeplApiKey: ""
   };
 
   const current = await chrome.storage.local.get(defaults);
@@ -34,6 +35,22 @@ document.addEventListener("DOMContentLoaded", async () => {
   themeSelect.value = current.theme || "system";
   showSelectionHUDCheck.checked = current.showSelectionHUD;
   showContextMenuCheck.checked = current.showContextMenu;
+
+  const deeplKeyInput = document.getElementById("deeplApiKey");
+  const btnToggleKey = document.getElementById("btn-toggle-key");
+  if (deeplKeyInput) {
+    deeplKeyInput.value = current.deeplApiKey || "";
+    deeplKeyInput.addEventListener("input", () => {
+      chrome.storage.local.set({ deeplApiKey: deeplKeyInput.value }, showSavedToast);
+    });
+  }
+
+  if (btnToggleKey && deeplKeyInput) {
+    btnToggleKey.addEventListener("click", () => {
+      deeplKeyInput.type = deeplKeyInput.type === "password" ? "text" : "password";
+      btnToggleKey.textContent = deeplKeyInput.type === "password" ? "👁" : "🔒";
+    });
+  }
 
   const versionBadge = document.getElementById("app-version");
   if (versionBadge && chrome.runtime.getManifest) {

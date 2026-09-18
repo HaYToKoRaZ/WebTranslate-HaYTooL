@@ -354,12 +354,86 @@ body {
   border-color: rgba(16, 185, 129, 0.35);
 }
 
+.engine-badge-ai {
+  background: rgba(168, 85, 247, 0.2);
+  color: #c084fc;
+  border-color: rgba(168, 85, 247, 0.4);
+}
+
 .engine-sub {
   font-size: 11px;
   color: var(--text-secondary);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+/* DeepL API Key Card */
+.deepl-key-card {
+  width: 100%;
+  background: rgba(15, 23, 42, 0.45);
+  border: 1px dashed rgba(168, 85, 247, 0.35);
+  border-radius: 12px;
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  transition: all 0.3s ease;
+}
+
+.deepl-key-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.deepl-link {
+  font-size: 11px;
+  color: #c084fc;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.deepl-link:hover {
+  text-decoration: underline;
+}
+
+.deepl-input-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.text-input {
+  flex: 1;
+  font-family: monospace;
+  letter-spacing: 0.5px;
+}
+
+.icon-btn-key {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--border);
+  color: var(--text-secondary);
+  padding: 8px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.icon-btn-key:hover {
+  background: rgba(255, 255, 255, 0.15);
+  color: #fff;
+}
+
+[data-theme="light"] .deepl-key-card {
+  background: #faf5ff;
+  border-color: #d8b4fe;
+}
+
+[data-theme="light"] .icon-btn-key {
+  background: #f1f5f9;
+  border-color: #cbd5e1;
+  color: #475569;
 }
 
 [data-theme="light"] .engine-card {

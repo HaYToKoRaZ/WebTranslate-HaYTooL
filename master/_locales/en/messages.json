@@ -163,6 +163,26 @@
     "message": "Open-source & privacy-focused alternative",
     "description": "Lingva engine subtext"
   },
+  "engineDeepLSub": {
+    "message": "Natural AI translation (Requires API Key)",
+    "description": "DeepL engine subtext"
+  },
+  "engineBingSub": {
+    "message": "Microsoft global translation network",
+    "description": "Bing engine subtext"
+  },
+  "deeplKeyLabel": {
+    "message": "DeepL API Key (Free / Pro)",
+    "description": "DeepL API key label"
+  },
+  "deeplKeyDesc": {
+    "message": "DeepL Free API provides 500,000 characters free monthly. If left blank, Google engine takes over.",
+    "description": "DeepL API key description"
+  },
+  "getFreeKey": {
+    "message": "Get Free Key ↗",
+    "description": "DeepL link"
+  },
   "optionsSubheading": {
     "message": "Customization and Translation Preferences",
     "description": "Options subheading"

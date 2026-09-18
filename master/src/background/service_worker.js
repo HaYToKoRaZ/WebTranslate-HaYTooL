@@ -170,9 +170,97 @@ chrome.contextMenus.onClicked.addListener(async (info, tab) => {
   }
 });
 
-// Çoklu Çeviri Motoru Sağlayıcısı (Google Translate, MyMemory, Lingva)
+// Çoklu Çeviri Motoru Sağlayıcısı (Google, DeepL, Bing, MyMemory, Lingva)
 async function translateText(text, targetLang = "tr", engine = "google") {
-  if (engine === "mymemory") {
+  // 1. DeepL API (Resmi Free veya Pro API Key ile)
+  if (engine === "deepl") {
+    try {
+      const stored = await chrome.storage.local.get({ deeplApiKey: "" });
+      const apiKey = stored.deeplApiKey ? stored.deeplApiKey.trim() : "";
+      if (apiKey) {
+        const isFree = apiKey.endsWith(":fx") || !apiKey.includes(":");
+        const endpoint = isFree ? "https://api-free.deepl.com/v2/translate" : "https://api.deepl.com/v2/translate";
+        
+        const params = new URLSearchParams();
+        params.append("text", text);
+        params.append("target_lang", targetLang.toUpperCase());
+
+        const res = await fetch(endpoint, {
+          method: "POST",
+          headers: {
+            "Authorization": `DeepL-Auth-Key ${apiKey}`,
+            "Content-Type": "application/x-www-form-urlencoded"
+          },
+          body: params.toString()
+        });
+
+        if (res.ok) {
+          const data = await res.json();
+          if (data && data.translations && data.translations[0]) {
+            return data.translations[0].text;
+          }
+        }
+      }
+    } catch (e) {
+      console.warn("DeepL failed, fallback to Google:", e);
+    }
+  }
+
+  // 2. Bing / Microsoft Translator
+  else if (engine === "bing") {
+    try {
+      // Bing translator oturum anahtarlarını al
+      const homeRes = await fetch("https://www.bing.com/translator", {
+        headers: {
+          "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+        }
+      });
+      if (homeRes.ok) {
+        const html = await homeRes.text();
+        const mIg = html.match(/IG:"([A-Za-z0-9]+)"/);
+        const mIid = html.match(/data-iid="([^"]+)"/);
+        const mKey = html.match(/var\s+params_AbusePreventionHelper\s*=\s*\[([0-9]+),\s*"([^"]+)",\s*([0-9]+)\];/);
+
+        const ig = mIg ? mIg[1] : "";
+        const iid = mIid ? mIid[1] : "translator.5028";
+        const key = mKey ? mKey[1] : "";
+        const token = mKey ? mKey[2] : "";
+
+        if (ig && token) {
+          const postUrl = `https://www.bing.com/ttranslatev3?isVertical=1&&IG=${ig}&IID=${iid}`;
+          const formBody = new URLSearchParams({
+            fromLang: "auto-detect",
+            to: targetLang,
+            text: text,
+            tryFetchingGenderDebiasedTranslations: "true",
+            key: key,
+            token: token
+          });
+
+          const transRes = await fetch(postUrl, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/x-www-form-urlencoded",
+              "Referer": "https://www.bing.com/translator"
+            },
+            body: formBody.toString()
+          });
+
+          if (transRes.ok) {
+            const transData = await transRes.json();
+            if (Array.isArray(transData) && transData[0] && transData[0].translations && transData[0].translations[0]) {
+              return transData[0].translations[0].text;
+            }
+          }
+        }
+      }
+    } catch (e) {
+      console.warn("Bing Translator failed, fallback to Google:", e);
+    }
+  }
+
+  // 3. MyMemory Translator
+  else if (engine === "mymemory") {
     try {
       const url = `https://api.mymemory.translated.net/get?q=${encodeURIComponent(text)}&langpair=autodetect|${encodeURIComponent(targetLang)}`;
       const response = await fetch(url);
@@ -185,7 +273,10 @@ async function translateText(text, targetLang = "tr", engine = "google") {
     } catch (e) {
       console.warn("MyMemory failed, fallback to Google:", e);
     }
-  } else if (engine === "lingva") {
+  }
+
+  // 4. Lingva Translate
+  else if (engine === "lingva") {
     // Lingva genel aynalarını sırayla dene
     const lingvaInstances = [
       `https://lingva.ml/api/v1/auto/${encodeURIComponent(targetLang)}/${encodeURIComponent(text)}`,
@@ -206,7 +297,7 @@ async function translateText(text, targetLang = "tr", engine = "google") {
     }
   }
 
-  // 1. Google Translate Uç Noktası (Resmi Chrome Uzantı API'si - En Hızlı ve Kararlı)
+  // 5. Varsayılan & Güvenilir Omurga: Google Translate (Resmi Chrome Uzantı API'si)
   try {
     const url1 = `https://translate.googleapis.com/translate_a/t?client=dict-chrome-ex&sl=auto&tl=${encodeURIComponent(targetLang)}&q=${encodeURIComponent(text)}`;
     const res1 = await fetch(url1);

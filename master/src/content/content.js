@@ -25,10 +25,8 @@
     }
   });
 
-  // Sayfa İçi Tam Sayfa Çeviricisi (CSP Dostu Doğrudan DOM Motoru)
+  // Sayfa İçi Tam Sayfa Çeviricisi (Canlı İlerleme Çubuğu & DOM Motoru)
   async function injectPageTranslator(targetLang = "tr") {
-    showNotificationBadge("🌐 WebTranslate: Sayfa taranıyor ve çevriliyor...");
-
     // Sayfadaki tüm görünür metin düğümlerini topla
     const textNodes = [];
     const walk = document.createTreeWalker(
@@ -66,11 +64,16 @@
       return;
     }
 
+    // Canlı İlerleme HUD'unu başlat
+    const progressHUD = showProgressHUD(textNodes.length);
+
     // Gruplar (batch) halinde arka plana gönderip çevir
     const BATCH_SIZE = 15;
     let translatedCount = 0;
+    const totalBatches = Math.ceil(textNodes.length / BATCH_SIZE);
 
     for (let i = 0; i < textNodes.length; i += BATCH_SIZE) {
+      const currentBatchNum = Math.floor(i / BATCH_SIZE) + 1;
       const batch = textNodes.slice(i, i + BATCH_SIZE);
       const textsToTranslate = batch.map(node => node.nodeValue.trim());
 
@@ -102,9 +105,14 @@
       } catch (e) {
         console.warn("Batch çeviri hatası:", e);
       }
+
+      // Canlı ilerlemeyi güncelle
+      const percent = Math.min(99, Math.round((currentBatchNum / totalBatches) * 100));
+      progressHUD.update(percent, translatedCount, textNodes.length, currentBatchNum, totalBatches);
     }
 
-    showNotificationBadge(`✓ Sayfa çevrildi (${translatedCount} bölüm)`);
+    // Çeviri tamamlandı (%100)
+    progressHUD.complete(translatedCount);
     isPageTranslated = true;
   }
 
@@ -191,6 +199,68 @@
       currentFloatingHUD.remove();
       currentFloatingHUD = null;
     }
+  }
+
+  // Canlı Sayfa Çeviri İlerleme Paneli (Live Progress HUD)
+  function showProgressHUD(totalNodes) {
+    const existing = document.querySelector(".haytool-progress-hud");
+    if (existing) existing.remove();
+
+    const hud = document.createElement("div");
+    hud.className = "haytool-notice-badge haytool-progress-hud";
+    hud.innerHTML = `
+      <div class="haytool-progress-header">
+        <div class="haytool-progress-title">
+          <span class="haytool-spinner"></span>
+          <span>Sayfa Çevriliyor...</span>
+        </div>
+        <span class="haytool-progress-percent">0%</span>
+      </div>
+      <div class="haytool-progress-track">
+        <div class="haytool-progress-fill" style="width: 0%;"></div>
+      </div>
+      <div class="haytool-progress-sub">
+        <span class="haytool-status-label">Başlatılıyor...</span>
+        <span class="haytool-count-label">0 / ${totalNodes}</span>
+      </div>
+    `;
+
+    document.body.appendChild(hud);
+
+    const fillEl = hud.querySelector(".haytool-progress-fill");
+    const percentEl = hud.querySelector(".haytool-progress-percent");
+    const statusLabel = hud.querySelector(".haytool-status-label");
+    const countLabel = hud.querySelector(".haytool-count-label");
+    const titleEl = hud.querySelector(".haytool-progress-title");
+
+    return {
+      update: (percent, currentCount, total, currentBatch, totalBatches) => {
+        if (fillEl) fillEl.style.width = `${percent}%`;
+        if (percentEl) percentEl.textContent = `${percent}%`;
+        if (statusLabel) statusLabel.textContent = `Grup ${currentBatch}/${totalBatches}`;
+        if (countLabel) countLabel.textContent = `${currentCount} / ${total}`;
+      },
+      complete: (totalDone) => {
+        if (fillEl) {
+          fillEl.style.width = "100%";
+          fillEl.style.background = "linear-gradient(90deg, #10b981, #34d399)";
+        }
+        if (percentEl) {
+          percentEl.textContent = "100%";
+          percentEl.style.color = "#34d399";
+        }
+        if (titleEl) {
+          titleEl.innerHTML = `<span style="color:#34d399;font-weight:bold;font-size:15px;">✓</span> <span style="color:#34d399;">Tamamlandı!</span>`;
+        }
+        if (statusLabel) statusLabel.textContent = "Sayfa tamamen çevrildi";
+        if (countLabel) countLabel.textContent = `${totalDone} bölüm`;
+
+        setTimeout(() => {
+          hud.classList.add("fade-out");
+          setTimeout(() => hud.remove(), 400);
+        }, 2200);
+      }
+    };
   }
 
   // Bildirim rozeti

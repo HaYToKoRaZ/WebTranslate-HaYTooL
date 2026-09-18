@@ -167,20 +167,22 @@ body {
 .popup-engine-pills {
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 4px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
 }
 
 .engine-pill {
   background: #090d16;
   border: 1px solid var(--border-color);
   color: var(--text-muted);
-  padding: 5px 8px;
-  border-radius: 8px;
-  font-size: 11px;
+  padding: 4px 7px;
+  border-radius: 6px;
+  font-size: 10.5px;
   font-weight: 500;
   display: inline-flex;
   align-items: center;
-  gap: 6px;
+  gap: 5px;
   cursor: pointer;
   outline: none;
   transition: all 0.2s ease;
