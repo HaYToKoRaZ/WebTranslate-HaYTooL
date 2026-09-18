@@ -71,11 +71,69 @@ document.addEventListener("DOMContentLoaded", async () => {
     document.documentElement.setAttribute("data-theme", isSystemDark ? "dark" : "light");
   }
 
-  // Dil seçimi değiştiğinde kaydet
-  selectTargetLang.addEventListener("change", () => {
-    const newLang = selectTargetLang.value;
-    chrome.storage.local.set({ targetLang: newLang });
-  });
+  // Özel Bayraklı Açılır Menü Mantığı
+  const customContainer = document.getElementById("custom-lang-container");
+  const customTrigger = document.getElementById("custom-lang-trigger");
+  const customDropdown = document.getElementById("custom-lang-dropdown");
+  const selectedFlagImg = document.getElementById("selected-flag-img");
+  const selectedLangText = document.getElementById("selected-lang-text");
+  const customOptions = document.querySelectorAll(".custom-option");
+
+  function setCustomLanguage(langCode) {
+    if (selectTargetLang) selectTargetLang.value = langCode;
+    let foundOpt = null;
+    customOptions.forEach(opt => {
+      if (opt.getAttribute("data-value") === langCode) {
+        opt.classList.add("selected");
+        foundOpt = opt;
+      } else {
+        opt.classList.remove("selected");
+      }
+    });
+
+    if (foundOpt && selectedFlagImg && selectedLangText) {
+      selectedFlagImg.src = `../assets/flags/${langCode}.svg`;
+      const name = foundOpt.querySelector(".opt-name")?.textContent || langCode.toUpperCase();
+      const sub = foundOpt.querySelector(".opt-sub")?.textContent || "";
+      selectedLangText.textContent = sub ? `${name} (${sub})` : name;
+    }
+    chrome.storage.local.set({ targetLang: langCode });
+  }
+
+  setCustomLanguage(targetLang);
+
+  if (customTrigger && customDropdown) {
+    customTrigger.addEventListener("click", (e) => {
+      e.stopPropagation();
+      const isHidden = customDropdown.classList.contains("hidden");
+      if (isHidden) {
+        customDropdown.classList.remove("hidden");
+        customTrigger.classList.add("active");
+        customTrigger.setAttribute("aria-expanded", "true");
+      } else {
+        customDropdown.classList.add("hidden");
+        customTrigger.classList.remove("active");
+        customTrigger.setAttribute("aria-expanded", "false");
+      }
+    });
+
+    customOptions.forEach(opt => {
+      opt.addEventListener("click", (e) => {
+        e.stopPropagation();
+        const val = opt.getAttribute("data-value");
+        setCustomLanguage(val);
+        customDropdown.classList.add("hidden");
+        customTrigger.classList.remove("active");
+        customTrigger.setAttribute("aria-expanded", "false");
+      });
+    });
+
+    document.addEventListener("click", () => {
+      customDropdown.classList.add("hidden");
+      customTrigger.classList.remove("active");
+      customTrigger.setAttribute("aria-expanded", "false");
+    });
+  }
 
   // Ayarlar ikonuna tıklama
   btnSettings.addEventListener("click", () => {

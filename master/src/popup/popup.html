@@ -32,25 +32,100 @@
           <label for="select-target-lang" class="field-label" data-i18n="targetLanguage">Hedef Dil</label>
           <span class="detected-badge" id="detected-badge" title="Sistem Dili">Sistem</span>
         </div>
-        <div class="select-wrapper">
-          <select id="select-target-lang" class="select-box">
-            <option value="tr">🇹🇷 Türkçe (Turkish)</option>
-            <option value="en">🇬🇧 English (İngilizce)</option>
-            <option value="az">🇦🇿 Azərbaycan (Azerice)</option>
-            <option value="de">🇩🇪 Deutsch (Almanca)</option>
-            <option value="fr">🇫🇷 Français (Fransızca)</option>
-            <option value="es">🇪🇸 Español (İspanyolca)</option>
-            <option value="it">🇮🇹 Italiano (İtalyanca)</option>
-            <option value="pt">🇵🇹 Português (Portekizce)</option>
-            <option value="ru">🇷🇺 Русский (Rusça)</option>
-            <option value="uk">🇺🇦 Українська (Ukraynaca)</option>
-            <option value="pl">🇵🇱 Polski (Lehçe)</option>
-            <option value="nl">🇳🇱 Nederlands (Felemenkçe)</option>
-            <option value="ar">🇸🇦 العربية (Arapça)</option>
-            <option value="ja">🇯🇵 日本語 (Japonca)</option>
-            <option value="ko">🇰🇷 한국어 (Korece)</option>
-            <option value="zh">🇨🇳 中文 (Çince)</option>
-          </select>
+        <div class="custom-select-container" id="custom-lang-container">
+          <button type="button" class="custom-select-trigger" id="custom-lang-trigger" aria-haspopup="listbox" aria-expanded="false">
+            <span class="trigger-content">
+              <img src="../assets/flags/tr.svg" alt="TR" class="lang-flag-img" id="selected-flag-img">
+              <span class="selected-lang-text" id="selected-lang-text">Türkçe (Turkish)</span>
+            </span>
+            <svg class="select-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </button>
+          <div class="custom-select-dropdown hidden" id="custom-lang-dropdown" role="listbox">
+            <div class="custom-option" data-value="tr" role="option">
+              <img src="../assets/flags/tr.svg" alt="TR" class="lang-flag-img">
+              <span class="opt-name">Türkçe</span>
+              <span class="opt-sub">Turkish</span>
+            </div>
+            <div class="custom-option" data-value="en" role="option">
+              <img src="../assets/flags/en.svg" alt="EN" class="lang-flag-img">
+              <span class="opt-name">English</span>
+              <span class="opt-sub">İngilizce</span>
+            </div>
+            <div class="custom-option" data-value="az" role="option">
+              <img src="../assets/flags/az.svg" alt="AZ" class="lang-flag-img">
+              <span class="opt-name">Azərbaycan</span>
+              <span class="opt-sub">Azerbaycan Türkçesi</span>
+            </div>
+            <div class="custom-option" data-value="de" role="option">
+              <img src="../assets/flags/de.svg" alt="DE" class="lang-flag-img">
+              <span class="opt-name">Deutsch</span>
+              <span class="opt-sub">Almanca</span>
+            </div>
+            <div class="custom-option" data-value="fr" role="option">
+              <img src="../assets/flags/fr.svg" alt="FR" class="lang-flag-img">
+              <span class="opt-name">Français</span>
+              <span class="opt-sub">Fransızca</span>
+            </div>
+            <div class="custom-option" data-value="es" role="option">
+              <img src="../assets/flags/es.svg" alt="ES" class="lang-flag-img">
+              <span class="opt-name">Español</span>
+              <span class="opt-sub">İspanyolca</span>
+            </div>
+            <div class="custom-option" data-value="it" role="option">
+              <img src="../assets/flags/it.svg" alt="IT" class="lang-flag-img">
+              <span class="opt-name">Italiano</span>
+              <span class="opt-sub">İtalyanca</span>
+            </div>
+            <div class="custom-option" data-value="pt" role="option">
+              <img src="../assets/flags/pt.svg" alt="PT" class="lang-flag-img">
+              <span class="opt-name">Português</span>
+              <span class="opt-sub">Portekizce</span>
+            </div>
+            <div class="custom-option" data-value="ru" role="option">
+              <img src="../assets/flags/ru.svg" alt="RU" class="lang-flag-img">
+              <span class="opt-name">Русский</span>
+              <span class="opt-sub">Rusça</span>
+            </div>
+            <div class="custom-option" data-value="uk" role="option">
+              <img src="../assets/flags/uk.svg" alt="UK" class="lang-flag-img">
+              <span class="opt-name">Українська</span>
+              <span class="opt-sub">Ukraynaca</span>
+            </div>
+            <div class="custom-option" data-value="pl" role="option">
+              <img src="../assets/flags/pl.svg" alt="PL" class="lang-flag-img">
+              <span class="opt-name">Polski</span>
+              <span class="opt-sub">Lehçe</span>
+            </div>
+            <div class="custom-option" data-value="nl" role="option">
+              <img src="../assets/flags/nl.svg" alt="NL" class="lang-flag-img">
+              <span class="opt-name">Nederlands</span>
+              <span class="opt-sub">Felemenkçe</span>
+            </div>
+            <div class="custom-option" data-value="ar" role="option">
+              <img src="../assets/flags/ar.svg" alt="AR" class="lang-flag-img">
+              <span class="opt-name">العربية</span>
+              <span class="opt-sub">Arapça</span>
+            </div>
+            <div class="custom-option" data-value="ja" role="option">
+              <img src="../assets/flags/ja.svg" alt="JA" class="lang-flag-img">
+              <span class="opt-name">日本語</span>
+              <span class="opt-sub">Japonca</span>
+            </div>
+            <div class="custom-option" data-value="ko" role="option">
+              <img src="../assets/flags/ko.svg" alt="KO" class="lang-flag-img">
+              <span class="opt-name">한국어</span>
+              <span class="opt-sub">Korece</span>
+            </div>
+            <div class="custom-option" data-value="zh" role="option">
+              <img src="../assets/flags/zh.svg" alt="ZH" class="lang-flag-img">
+              <span class="opt-name">中文</span>
+              <span class="opt-sub">Çince</span>
+            </div>
+          </div>
+          <!-- Gizli input / geriye uyumluluk select -->
+          <input type="hidden" id="select-target-lang" value="tr">
         </div>
       </div>
 

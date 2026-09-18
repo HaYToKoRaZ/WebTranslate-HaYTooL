@@ -158,27 +158,157 @@ body {
   letter-spacing: 0.2px;
 }
 
-.select-wrapper {
+/* Özel Bayrak Destekli Dil Seçici */
+.custom-select-container {
+  position: relative;
   width: 100%;
 }
 
-.select-box {
+.custom-select-trigger {
   width: 100%;
   background: #090d16;
   border: 1px solid var(--border-color);
   color: var(--text-main);
-  padding: 8px 10px;
-  border-radius: 8px;
+  padding: 8px 12px;
+  border-radius: 9px;
   font-size: 12.5px;
   font-weight: 500;
   cursor: pointer;
   outline: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   transition: all 0.2s ease;
+  user-select: none;
 }
 
-.select-box:focus {
+.custom-select-trigger:hover {
+  border-color: rgba(56, 189, 248, 0.4);
+  background: rgba(15, 23, 42, 0.9);
+}
+
+.custom-select-trigger.active {
   border-color: var(--accent);
   box-shadow: 0 0 0 2px var(--accent-glow);
+}
+
+.trigger-content {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  overflow: hidden;
+}
+
+.lang-flag-img {
+  width: 20px;
+  height: 15px;
+  object-fit: cover;
+  border-radius: 2px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  flex-shrink: 0;
+}
+
+.selected-lang-text {
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--text-main);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.select-chevron {
+  color: var(--text-muted);
+  transition: transform 0.2s ease;
+  flex-shrink: 0;
+}
+
+.custom-select-trigger.active .select-chevron {
+  transform: rotate(180deg);
+  color: var(--accent);
+}
+
+.custom-select-dropdown {
+  position: absolute;
+  top: calc(100% + 5px);
+  left: 0;
+  right: 0;
+  background: #0b1120;
+  border: 1px solid rgba(56, 189, 248, 0.3);
+  border-radius: 10px;
+  max-height: 190px;
+  overflow-y: auto;
+  z-index: 1000;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(16px);
+  padding: 4px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.custom-select-dropdown.hidden {
+  display: none;
+}
+
+/* Custom Scrollbar */
+.custom-select-dropdown::-webkit-scrollbar {
+  width: 5px;
+}
+.custom-select-dropdown::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+}
+
+.custom-option {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 7px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.custom-option:hover {
+  background: rgba(56, 189, 248, 0.12);
+}
+
+.custom-option.selected {
+  background: rgba(56, 189, 248, 0.2);
+  font-weight: 600;
+}
+
+.custom-option .opt-name {
+  font-size: 12px;
+  color: var(--text-main);
+  font-weight: 500;
+}
+
+.custom-option .opt-sub {
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-left: auto;
+}
+
+[data-theme="light"] .custom-select-trigger {
+  background: #ffffff;
+  border-color: #cbd5e1;
+  color: #0f172a;
+}
+
+[data-theme="light"] .custom-select-dropdown {
+  background: #ffffff;
+  border-color: #94a3b8;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+[data-theme="light"] .custom-option:hover {
+  background: #f1f5f9;
+}
+
+[data-theme="light"] .custom-option.selected {
+  background: #e0f2fe;
 }
 
 /* Çeviri Motoru Seçici - 3x2 Temiz & Ferah Izgara */
