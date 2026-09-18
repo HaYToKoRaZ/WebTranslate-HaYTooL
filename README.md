@@ -50,6 +50,10 @@
 - **🛡️ 100% Privacy & Zero Telemetry:** No user analytics, no background tracking.
 - **⚡ Super Lightweight:** Built with vanilla modern JavaScript; opens instantly with zero memory bloat.
 - **🌍 45+ Target Languages:** Supports Turkish, English, German, French, Spanish, Russian, Arabic, Japanese, and more.
+- **🚀 Multi-Engine Translation Hub:**
+  - **Google Translate (Default):** High-speed, robust translation with built-in fallbacks.
+  - **MyMemory Translator:** Vast multilingual memory database.
+  - **Lingva Translate:** Decentralized, privacy-first open-source mirror engine.
 
 ### 📥 Manual Installation (Developer Mode)
 1. Clone or download this repository.
@@ -71,6 +75,10 @@
 - **🛡️ Sıfır Telemetri & %100 Gizlilik:** Hiçbir geçmiş kaydı tutulmaz veya sunuculara iletilmez.
 - **⚡ Ultra Hafif:** Ağır framework'ler içermez, tarayıcınızı asla yavaşlatmaz.
 - **🌍 45+ Dil Desteği:** Türkçe, İngilizce, Almanca, Fransızca, İspanyolca, Rusça, Arapça ve çok daha fazlası.
+- **🚀 Çoklu Çeviri Motoru Desteği:**
+  - **Google Translate (Varsayılan):** Işık hızında, kesintisiz ve yüksek doğruluklu çeviri motoru.
+  - **MyMemory Translator:** Geniş dil hafıza bankası ve insan/makine eşleştirmeli çeviri.
+  - **Lingva Translate:** Merkeziyetsiz, ayna sunuculu gizlilik odaklı açık kaynak motor.
 
 ---
 
