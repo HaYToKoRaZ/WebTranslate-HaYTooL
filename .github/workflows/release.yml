@@ -1,0 +1,60 @@
+name: Release Extension Package
+
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - 'master/**'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build-and-release:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Extract Version from Manifest
+        id: get_version
+        run: |
+          VERSION=$(jq -r '.version' master/manifest.json)
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+          echo "Extracted Version: $VERSION"
+
+      - name: Create WebStore Distribution ZIP
+        run: |
+          mkdir -p dist
+          cd master
+          zip -r ../dist/WebTranslate-HaYTooL-v${{ steps.get_version.outputs.version }}-WebStore.zip . -x "*.git*" "*.DS_Store"
+          cd ..
+          echo "Package created: dist/WebTranslate-HaYTooL-v${{ steps.get_version.outputs.version }}-WebStore.zip"
+
+      - name: Create or Update GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: "v${{ steps.get_version.outputs.version }}"
+          name: "WebTranslate HaYTooL v${{ steps.get_version.outputs.version }}"
+          body: |
+            ### 🌐 WebTranslate HaYTooL - Otomatik Sürüm Dağıtımı
+
+            WebTranslate HaYTooL tarayıcı çeviri eklentisinin son sürüm paketidir.
+
+            #### 📦 İndirilebilir Paketler:
+            - **WebTranslate-HaYTooL-v${{ steps.get_version.outputs.version }}-WebStore.zip**: Chrome, Chromium, Edge ve Helium tarayıcılarında doğrudan açılıp yüklenebilir veya mağazalara yüklenebilir hazır üretim paketi.
+
+            #### 🚀 Kurulum (Geliştirici / Manuel Yükleme):
+            1. Yukarıdaki `.zip` dosyasını indirin ve bir klasöre çıkartın.
+            2. Tarayıcınızda `chrome://extensions` veya `edge://extensions` adresine gidin.
+            3. Sağ üstteki **Geliştirici Modu**'nu (Developer Mode) açın.
+            4. **Paketlenmemiş öğe yükle** (Load unpacked) butonuna tıklayıp çıkarttığınız klasörü seçin.
+          files: |
+            dist/*.zip
+          draft: false
+          prerelease: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
