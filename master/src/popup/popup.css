@@ -546,6 +546,126 @@ textarea:focus {
   word-break: break-word;
 }
 
+/* Quick Translate Header & Swap Button */
+.quick-translate-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 2px;
+}
+
+.quick-lang-indicators {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.lang-tag {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-muted);
+  background: rgba(255, 255, 255, 0.05);
+  padding: 2px 7px;
+  border-radius: 6px;
+}
+
+.lang-tag.active {
+  color: #38bdf8;
+  background: rgba(56, 189, 248, 0.12);
+  border: 1px solid rgba(56, 189, 248, 0.25);
+}
+
+.swap-lang-btn {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--border-color);
+  color: var(--text-muted);
+  width: 24px;
+  height: 24px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.swap-lang-btn:hover {
+  background: rgba(56, 189, 248, 0.15);
+  border-color: var(--accent);
+  color: #38bdf8;
+  transform: rotate(180deg);
+}
+
+.char-count {
+  font-size: 10px;
+  color: var(--text-muted);
+}
+
+/* Arena Launch Button */
+.arena-launch-btn {
+  background: linear-gradient(135deg, rgba(30, 41, 59, 0.8), rgba(15, 23, 42, 0.95));
+  border: 1px solid rgba(56, 189, 248, 0.25);
+  border-radius: 12px;
+  padding: 10px 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  color: var(--text-main);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.arena-launch-btn:hover {
+  background: linear-gradient(135deg, rgba(30, 41, 59, 0.95), rgba(2, 132, 199, 0.2));
+  border-color: var(--accent);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(56, 189, 248, 0.2);
+}
+
+.arena-btn-content {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.arena-btn-icon {
+  font-size: 18px;
+}
+
+.arena-btn-text {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.arena-btn-title {
+  font-size: 12.5px;
+  font-weight: 700;
+  color: #fff;
+}
+
+.arena-btn-desc {
+  font-size: 10px;
+  color: var(--text-muted);
+}
+
+[data-theme="light"] .arena-launch-btn {
+  background: #ffffff;
+  border-color: #cbd5e1;
+  color: #0f172a;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+}
+
+[data-theme="light"] .arena-launch-btn:hover {
+  border-color: #0284c7;
+  background: #f0f9ff;
+}
+
+[data-theme="light"] .arena-btn-title {
+  color: #0f172a;
+}
+
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(-4px); }
   to { opacity: 1; transform: translateY(0); }

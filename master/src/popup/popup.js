@@ -178,6 +178,54 @@ document.addEventListener("DOMContentLoaded", async () => {
     window.close();
   });
 
+  // Swap (⇄) Dilleri Değiştirme Mantığı
+  const btnSwapLang = document.getElementById("btn-swap-lang");
+  const quickSourceTag = document.getElementById("quick-source-tag");
+  const quickTargetTag = document.getElementById("quick-target-tag");
+  const charCount = document.getElementById("char-count");
+  const btnOpenArena = document.getElementById("btn-open-arena");
+
+  function updateQuickLangTags(target) {
+    if (quickTargetTag) quickTargetTag.textContent = target.toUpperCase();
+  }
+  updateQuickLangTags(targetLang);
+
+  if (quickInput && charCount) {
+    quickInput.addEventListener("input", () => {
+      charCount.textContent = quickInput.value.length;
+    });
+  }
+
+  if (btnSwapLang) {
+    btnSwapLang.addEventListener("click", () => {
+      const currentTarget = selectTargetLang.value || "tr";
+      // Hedef Türkçe ise İngilizce yap; hedef İngilizce (veya başka dil) ise Türkçe yap
+      const newTarget = currentTarget === "tr" ? "en" : "tr";
+      setCustomLanguage(newTarget);
+      updateQuickLangTags(newTarget);
+
+      // Metin kutusunda veya sonuç kutusunda metin varsa yer değiştir
+      if (resultText && resultText.textContent && quickInput) {
+        const tempText = quickInput.value;
+        quickInput.value = resultText.textContent;
+        resultText.textContent = tempText;
+        if (charCount) charCount.textContent = quickInput.value.length;
+        // Ters yönde anında çevir
+        performQuickTranslate();
+      }
+    });
+  }
+
+  // 6 Motorlu Arena Karşılaştırma Sayfasını Aç
+  if (btnOpenArena) {
+    btnOpenArena.addEventListener("click", () => {
+      const textToPass = quickInput && quickInput.value.trim() ? encodeURIComponent(quickInput.value.trim()) : "";
+      const arenaUrl = chrome.runtime.getURL(`src/arena/arena.html${textToPass ? `?text=${textToPass}` : ""}`);
+      chrome.tabs.create({ url: arenaUrl });
+      window.close();
+    });
+  }
+
   // Hızlı Metin Çevirisi
   async function performQuickTranslate() {
     const text = quickInput.value.trim();

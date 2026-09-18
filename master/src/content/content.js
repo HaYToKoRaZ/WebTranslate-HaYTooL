@@ -14,7 +14,7 @@
   // Background servisinden gelen komutları dinle
   chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
     if (request.action === "TRANSLATE_PAGE") {
-      injectPageTranslator(request.targetLang || "tr");
+      injectPageTranslator(request.targetLang || "tr", request.engine || null);
       sendResponse({ status: "started" });
     } else if (request.action === "RESTORE_PAGE") {
       restoreOriginalPage();
@@ -26,7 +26,7 @@
   });
 
   // Sayfa İçi Tam Sayfa Çeviricisi (Canlı İlerleme Çubuğu & DOM Motoru)
-  async function injectPageTranslator(targetLang = "tr") {
+  async function injectPageTranslator(targetLang = "tr", specificEngine = null) {
     // Sayfadaki tüm görünür metin düğümlerini topla
     const textNodes = [];
     const walk = document.createTreeWalker(
@@ -64,8 +64,10 @@
       return;
     }
 
+    const startTime = performance.now();
+
     // Canlı İlerleme HUD'unu başlat
-    const progressHUD = showProgressHUD(textNodes.length);
+    const progressHUD = showProgressHUD(textNodes.length, specificEngine);
 
     // Gruplar (batch) halinde arka plana gönderip çevir
     const BATCH_SIZE = 15;
@@ -85,7 +87,8 @@
           chrome.runtime.sendMessage({
             action: "QUICK_TRANSLATE",
             text: combinedText,
-            targetLang: targetLang
+            targetLang: targetLang,
+            engine: specificEngine
           }, resolve);
         });
 
@@ -111,8 +114,10 @@
       progressHUD.update(percent, translatedCount, textNodes.length, currentBatchNum, totalBatches);
     }
 
+    const durationSec = ((performance.now() - startTime) / 1000).toFixed(1);
+
     // Çeviri tamamlandı (%100)
-    progressHUD.complete(translatedCount);
+    progressHUD.complete(translatedCount, durationSec);
     isPageTranslated = true;
   }
 
@@ -202,9 +207,19 @@
   }
 
   // Canlı Sayfa Çeviri İlerleme Paneli (Live Progress HUD)
-  function showProgressHUD(totalNodes) {
+  function showProgressHUD(totalNodes, specificEngine = null) {
     const existing = document.querySelector(".haytool-progress-hud");
     if (existing) existing.remove();
+
+    const engineNames = {
+      google: "Google Translate",
+      deepl: "DeepL Translate",
+      bing: "Bing Translator",
+      duckduckgo: "DuckDuckGo",
+      mymemory: "MyMemory",
+      lingva: "Lingva"
+    };
+    const engineLabel = specificEngine && engineNames[specificEngine] ? ` (${engineNames[specificEngine]})` : "";
 
     const hud = document.createElement("div");
     hud.className = "haytool-notice-badge haytool-progress-hud";
@@ -212,7 +227,7 @@
       <div class="haytool-progress-header">
         <div class="haytool-progress-title">
           <span class="haytool-spinner"></span>
-          <span>Sayfa Çevriliyor...</span>
+          <span>Sayfa Çevriliyor${engineLabel}...</span>
         </div>
         <span class="haytool-progress-percent">0%</span>
       </div>
@@ -240,7 +255,7 @@
         if (statusLabel) statusLabel.textContent = `Grup ${currentBatch}/${totalBatches}`;
         if (countLabel) countLabel.textContent = `${currentCount} / ${total}`;
       },
-      complete: (totalDone) => {
+      complete: (totalDone, durationSec = null) => {
         if (fillEl) {
           fillEl.style.width = "100%";
           fillEl.style.background = "linear-gradient(90deg, #10b981, #34d399)";
@@ -249,16 +264,17 @@
           percentEl.textContent = "100%";
           percentEl.style.color = "#34d399";
         }
+        const timeText = durationSec ? ` (${durationSec}s)` : "";
         if (titleEl) {
-          titleEl.innerHTML = `<span style="color:#34d399;font-weight:bold;font-size:15px;">✓</span> <span style="color:#34d399;">Tamamlandı!</span>`;
+          titleEl.innerHTML = `<span style="color:#34d399;font-weight:bold;font-size:15px;">✓</span> <span style="color:#34d399;">Tamamlandı${timeText}!</span>`;
         }
-        if (statusLabel) statusLabel.textContent = "Sayfa tamamen çevrildi";
+        if (statusLabel) statusLabel.textContent = `Çevrildi${engineLabel}`;
         if (countLabel) countLabel.textContent = `${totalDone} bölüm`;
 
         setTimeout(() => {
           hud.classList.add("fade-out");
           setTimeout(() => hud.remove(), 400);
-        }, 2200);
+        }, 3000);
       }
     };
   }

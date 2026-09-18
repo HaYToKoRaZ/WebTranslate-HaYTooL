@@ -434,4 +434,38 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
     });
     return true;
   }
+
+  if (request.action === "OPEN_ENGINE_TAB") {
+    chrome.tabs.create({ url: request.url, active: false }, (newTab) => {
+      if (!newTab || !newTab.id) return;
+      
+      const listener = (tabId, changeInfo) => {
+        if (tabId === newTab.id && changeInfo.status === "complete") {
+          chrome.tabs.onUpdated.removeListener(listener);
+          // Belirlenen motorla tam sayfa çevirisi başlat
+          setTimeout(() => {
+            chrome.tabs.sendMessage(newTab.id, {
+              action: "TRANSLATE_PAGE",
+              targetLang: request.targetLang || "tr",
+              engine: request.engine
+            }).catch(() => {
+              chrome.scripting.executeScript({
+                target: { tabId: newTab.id },
+                files: ["src/content/content.js"]
+              }).then(() => {
+                chrome.tabs.sendMessage(newTab.id, {
+                  action: "TRANSLATE_PAGE",
+                  targetLang: request.targetLang || "tr",
+                  engine: request.engine
+                });
+              });
+            });
+          }, 800);
+        }
+      };
+      chrome.tabs.onUpdated.addListener(listener);
+    });
+    sendResponse({ status: "opening" });
+    return true;
+  }
 });

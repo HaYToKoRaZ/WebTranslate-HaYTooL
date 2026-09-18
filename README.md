@@ -50,6 +50,8 @@
 - **🛡️ 100% Privacy & Zero Telemetry:** No user analytics, no background tracking.
 - **⚡ Super Lightweight:** Built with vanilla modern JavaScript; opens instantly with zero memory bloat.
 - **🌍 45+ Target Languages:** Supports Turkish, English, German, French, Spanish, Russian, Arabic, Japanese, and more.
+- **🏁 HaYTooL Engine Arena (Benchmark & Speed Test):** Benchmark all 6 translation engines side-by-side in real-time! Compare millisecond speeds, translation outputs, and easily pick your default engine with one click.
+- **🔄 Bidirectional Language Swap (⇄):** Seamlessly flip source and target languages with a single click in the popup to translate Turkish to English, German to Turkish, and vice versa.
 - **🚀 6 Powerful Translation Engines:**
   - **Google Translate (Default):** High-speed, robust translation with built-in Chrome extension API endpoints.
   - **DeepL Translate:** State-of-the-art AI translation quality (optional free/pro API key support).
@@ -78,6 +80,8 @@
 - **🛡️ Sıfır Telemetri & %100 Gizlilik:** Hiçbir geçmiş kaydı tutulmaz veya sunuculara iletilmez.
 - **⚡ Ultra Hafif:** Ağır framework'ler içermez, tarayıcınızı asla yavaşlatmaz.
 - **🌍 45+ Dil Desteği:** Türkçe, İngilizce, Almanca, Fransızca, İspanyolca, Rusça, Arapça ve çok daha fazlası.
+- **🏁 HaYTooL Engine Arena (Hız & Kalite Kıyaslama Arenası):** 6 çeviri motorunu aynı anda yan yana yarıştırın! Milisaniye hızlarını ve çeviri kalitelerini karşılaştırıp tek tıkla en beğendiğiniz motoru varsayılan yapın.
+- **🔄 Çift Yönlü Dil Değiştirme (Swap ⇄):** Popup'ta tek tıkla hedef ve kaynak dili tersine çevirerek Türkçe'den İngilizce'ye ya da tersine ışık hızında çeviri yapın.
 - **🚀 6 Güçlü Çeviri Motoru Desteği:**
   - **Google Translate (Varsayılan):** Işık hızında, kesintisiz ve resmi uzantı uç noktalarıyla en güvenilir motor.
   - **DeepL Translate:** Dünyanın en doğal yapay zeka çeviri motoru (ücretsiz API Key desteğiyle).

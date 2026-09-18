@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HaYTooL Engine Arena - 6 Motorlu Karşılaştırma & Hız Testi</title>
+  <link rel="stylesheet" href="arena.css">
+</head>
+<body>
+  <div class="arena-container">
+    <!-- Header -->
+    <header class="arena-header">
+      <div class="brand">
+        <img src="../assets/icons/icon48.png" alt="Logo" class="logo">
+        <div>
+          <div class="title-row">
+            <h1>HaYTooL Engine Arena</h1>
+            <span class="arena-badge">Benchmark & Quality Test</span>
+          </div>
+          <p class="subtitle">6 Çeviri Motorunu Aynı Anda Yarıştırın, Hızlarını ve Kalitelerini Karşılaştırın</p>
+        </div>
+      </div>
+      <div class="header-actions">
+        <button id="btn-compare-page" class="secondary-btn" title="Aktif Web Sayfasını 6 Sekmede Farklı Motorlarla Aç">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+            <line x1="8" y1="21" x2="16" y2="21"></line>
+            <line x1="12" y1="17" x2="12" y2="21"></line>
+          </svg>
+          <span>Sayfayı 6 Sekmede Canlı Aç</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- Input Section -->
+    <section class="input-card">
+      <div class="input-header">
+        <label for="benchmark-text" class="input-label">Test Edilecek Metin:</label>
+        <div class="target-lang-group">
+          <label for="arena-target-lang">Hedef Dil:</label>
+          <select id="arena-target-lang" class="select-box">
+            <option value="tr">🇹🇷 Türkçe (Turkish)</option>
+            <option value="en">🇬🇧 English (İngilizce)</option>
+            <option value="az">🇦🇿 Azərbaycan</option>
+            <option value="de">🇩🇪 Deutsch</option>
+            <option value="fr">🇫🇷 Français</option>
+            <option value="es">🇪🇸 Español</option>
+            <option value="it">🇮🇹 Italiano</option>
+            <option value="pt">🇵🇹 Português</option>
+            <option value="ru">🇷🇺 Русский</option>
+            <option value="uk">🇺🇦 Українська</option>
+            <option value="pl">🇵🇱 Polski</option>
+            <option value="nl">🇳🇱 Nederlands</option>
+            <option value="ar">🇸🇦 العربية</option>
+            <option value="ja">🇯🇵 日本語</option>
+            <option value="ko">🇰🇷 한국어</option>
+            <option value="zh">🇨🇳 中文</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="textarea-wrap">
+        <textarea id="benchmark-text" rows="3" placeholder="Karşılaştırmak istediğiniz bir cümle veya paragraf yazın..."></textarea>
+      </div>
+
+      <div class="actions-row">
+        <div class="sample-buttons">
+          <span>Örnek Metinler:</span>
+          <button type="button" class="sample-btn" data-sample="technology">Teknoloji</button>
+          <button type="button" class="sample-btn" data-sample="literature">Edebiyat</button>
+          <button type="button" class="sample-btn" data-sample="casual">Günlük Konuşma</button>
+        </div>
+        <button id="btn-start-benchmark" class="primary-btn">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <polygon points="5 3 19 12 5 21 5 3"></polygon>
+          </svg>
+          <span>6 Motoru Yarıştır (Başlat)</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- Results Arena Grid (6 Cards) -->
+    <section class="arena-grid" id="arena-grid">
+      <!-- 1. Google Translate -->
+      <div class="engine-card" data-engine="google">
+        <div class="card-header">
+          <div class="engine-info">
+            <img src="../assets/icons/engine-google.png" alt="Google" class="engine-icon">
+            <div>
+              <h3>Google Translate</h3>
+              <span class="engine-tag">Varsayılan Motor</span>
+            </div>
+          </div>
+          <div class="speed-badge" id="speed-google">
+            <span class="speed-time">Bekleniyor</span>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="output-text" id="output-google">Hazır...</div>
+        </div>
+        <div class="card-footer">
+          <span class="status-indicator" id="status-google">⚪ Hazır</span>
+          <button class="set-default-btn" data-engine="google" title="Bu motoru eklentide varsayılan yap">Varsayılan Yap</button>
+        </div>
+      </div>
+
+      <!-- 2. DeepL Translate -->
+      <div class="engine-card" data-engine="deepl">
+        <div class="card-header">
+          <div class="engine-info">
+            <img src="../assets/icons/engine-deepl.png" alt="DeepL" class="engine-icon">
+            <div>
+              <h3>DeepL Translate</h3>
+              <span class="engine-tag tag-ai">AI Nöral Çeviri</span>
+            </div>
+          </div>
+          <div class="speed-badge" id="speed-deepl">
+            <span class="speed-time">Bekleniyor</span>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="output-text" id="output-deepl">Hazır...</div>
+        </div>
+        <div class="card-footer">
+          <span class="status-indicator" id="status-deepl">⚪ Hazır</span>
+          <button class="set-default-btn" data-engine="deepl" title="Bu motoru eklentide varsayılan yap">Varsayılan Yap</button>
+        </div>
+      </div>
+
+      <!-- 3. Bing Translator -->
+      <div class="engine-card" data-engine="bing">
+        <div class="card-header">
+          <div class="engine-info">
+            <img src="../assets/icons/engine-bing.png" alt="Bing" class="engine-icon">
+            <div>
+              <h3>Bing Translator</h3>
+              <span class="engine-tag">Microsoft Küresel Ağ</span>
+            </div>
+          </div>
+          <div class="speed-badge" id="speed-bing">
+            <span class="speed-time">Bekleniyor</span>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="output-text" id="output-bing">Hazır...</div>
+        </div>
+        <div class="card-footer">
+          <span class="status-indicator" id="status-bing">⚪ Hazır</span>
+          <button class="set-default-btn" data-engine="bing" title="Bu motoru eklentide varsayılan yap">Varsayılan Yap</button>
+        </div>
+      </div>
+
+      <!-- 4. DuckDuckGo Translate -->
+      <div class="engine-card" data-engine="duckduckgo">
+        <div class="card-header">
+          <div class="engine-info">
+            <img src="../assets/icons/engine-duckduckgo.png" alt="DuckDuckGo" class="engine-icon">
+            <div>
+              <h3>DuckDuckGo</h3>
+              <span class="engine-tag tag-privacy">Gizlilik Odaklı</span>
+            </div>
+          </div>
+          <div class="speed-badge" id="speed-duckduckgo">
+            <span class="speed-time">Bekleniyor</span>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="output-text" id="output-duckduckgo">Hazır...</div>
+        </div>
+        <div class="card-footer">
+          <span class="status-indicator" id="status-duckduckgo">⚪ Hazır</span>
+          <button class="set-default-btn" data-engine="duckduckgo" title="Bu motoru eklentide varsayılan yap">Varsayılan Yap</button>
+        </div>
+      </div>
+
+      <!-- 5. MyMemory Translator -->
+      <div class="engine-card" data-engine="mymemory">
+        <div class="card-header">
+          <div class="engine-info">
+            <img src="../assets/icons/engine-mymemory.png" alt="MyMemory" class="engine-icon">
+            <div>
+              <h3>MyMemory</h3>
+              <span class="engine-tag">Çok Dilli Hafıza Bankası</span>
+            </div>
+          </div>
+          <div class="speed-badge" id="speed-mymemory">
+            <span class="speed-time">Bekleniyor</span>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="output-text" id="output-mymemory">Hazır...</div>
+        </div>
+        <div class="card-footer">
+          <span class="status-indicator" id="status-mymemory">⚪ Hazır</span>
+          <button class="set-default-btn" data-engine="mymemory" title="Bu motoru eklentide varsayılan yap">Varsayılan Yap</button>
+        </div>
+      </div>
+
+      <!-- 6. Lingva Translate -->
+      <div class="engine-card" data-engine="lingva">
+        <div class="card-header">
+          <div class="engine-info">
+            <img src="../assets/icons/engine-lingva.png" alt="Lingva" class="engine-icon">
+            <div>
+              <h3>Lingva Translate</h3>
+              <span class="engine-tag tag-privacy">Açık Kaynak Ayna</span>
+            </div>
+          </div>
+          <div class="speed-badge" id="speed-lingva">
+            <span class="speed-time">Bekleniyor</span>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="output-text" id="output-lingva">Hazır...</div>
+        </div>
+        <div class="card-footer">
+          <span class="status-indicator" id="status-lingva">⚪ Hazır</span>
+          <button class="set-default-btn" data-engine="lingva" title="Bu motoru eklentide varsayılan yap">Varsayılan Yap</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Notification Toast -->
+    <div id="toast" class="toast hidden"></div>
+  </div>
+
+  <script src="arena.js"></script>
+</body>
+</html>
