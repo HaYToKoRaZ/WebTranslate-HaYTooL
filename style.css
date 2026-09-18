@@ -412,6 +412,49 @@ body {
   letter-spacing: 0.2px;
 }
 
+/* Desteklenen Tarayıcılar Satırı */
+.supported-browsers-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 18px;
+  flex-wrap: wrap;
+}
+
+.browsers-label {
+  font-size: 12px;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.browser-badge-list {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(255, 255, 255, 0.04);
+  padding: 6px 14px;
+  border-radius: 20px;
+  border: 1px solid var(--border);
+}
+
+[data-theme="light"] .browser-badge-list {
+  background: rgba(0, 0, 0, 0.03);
+}
+
+.browser-badge-list a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.8;
+  transition: all 0.2s ease;
+}
+
+.browser-badge-list a:hover {
+  opacity: 1;
+  transform: scale(1.15);
+}
+
 /* Features */
 .features-section, .how-section {
   padding: 70px 0;
