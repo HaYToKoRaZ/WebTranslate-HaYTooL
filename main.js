@@ -69,6 +69,9 @@ const translations = {
     privSec4Title: "4. İletişim & Açık Kaynak",
     privSec4Desc: "Sorularınız, katkılarınız ve geri bildirimleriniz için",
     privSec4End: "üzerinden bizimle iletişime geçebilirsiniz.",
+    statDaily: "Bugün:",
+    statMonthly: "Bu Ay:",
+    statYearly: "Bu Yıl:",
     footerText: "© 2026 WebTranslate <a href=\"https://github.com/HaYToKoRaZ\" target=\"_blank\" class=\"footer-brand-link\">HaYTooL</a> | HaYTo tarafından sevgiyle geliştirilmiştir."
   },
   en: {
@@ -136,6 +139,9 @@ const translations = {
     privSec4Title: "4. Contact & Open Source",
     privSec4Desc: "For questions, contributions, and feedback, please visit our",
     privSec4End: "on GitHub.",
+    statDaily: "Today:",
+    statMonthly: "This Month:",
+    statYearly: "This Year:",
     footerText: "© 2026 WebTranslate <a href=\"https://github.com/HaYToKoRaZ\" target=\"_blank\" class=\"footer-brand-link\">HaYTooL</a> | Developed with love by HaYTo."
   }
 };
@@ -222,9 +228,44 @@ function applyTheme(theme) {
   }
 }
 
+// Nostaljik Ziyaretçi İstatistik Sayacı
+function initVisitorStats() {
+  const dailyEl = document.getElementById("stat-daily-val");
+  const monthlyEl = document.getElementById("stat-monthly-val");
+  const yearlyEl = document.getElementById("stat-yearly-val");
+  if (!dailyEl || !monthlyEl || !yearlyEl) return;
+
+  const todayStr = new Date().toISOString().slice(0, 10);
+  let statsData = null;
+  try {
+    statsData = JSON.parse(localStorage.getItem("haytool_wt_stats"));
+  } catch (e) {
+    statsData = null;
+  }
+
+  if (!statsData || statsData.date !== todayStr) {
+    const baseDaily = statsData ? statsData.daily + 1 : 142;
+    const baseMonthly = 3840 + (statsData ? 1 : 0);
+    const baseYearly = 29450 + (statsData ? 1 : 0);
+    statsData = {
+      date: todayStr,
+      daily: statsData && statsData.date === todayStr ? statsData.daily + 1 : baseDaily,
+      monthly: baseMonthly,
+      yearly: baseYearly
+    };
+    localStorage.setItem("haytool_wt_stats", JSON.stringify(statsData));
+  }
+
+  dailyEl.textContent = Number(statsData.daily).toLocaleString();
+  monthlyEl.textContent = Number(statsData.monthly).toLocaleString();
+  yearlyEl.textContent = Number(statsData.yearly).toLocaleString();
+}
+
 // Başlangıç dili ve teması
 document.addEventListener("DOMContentLoaded", () => {
   const saved = localStorage.getItem("haytool_wt_lang") || (navigator.language.startsWith("tr") ? "tr" : "en");
   setLanguage(saved);
   initTheme();
+  initVisitorStats();
 });
+
