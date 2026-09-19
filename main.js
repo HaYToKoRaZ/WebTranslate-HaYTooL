@@ -228,38 +228,78 @@ function applyTheme(theme) {
   }
 }
 
-// Nostaljik Ziyaretçi İstatistik Sayacı
-function initVisitorStats() {
+// Nostaljik Ziyaretçi İstatistik Sayacı (Sıfırdan ve Tekil Giriş Korumalı)
+async function initVisitorStats() {
   const dailyEl = document.getElementById("stat-daily-val");
   const monthlyEl = document.getElementById("stat-monthly-val");
   const yearlyEl = document.getElementById("stat-yearly-val");
   if (!dailyEl || !monthlyEl || !yearlyEl) return;
 
-  const todayStr = new Date().toISOString().slice(0, 10);
+  const now = new Date();
+  const todayStr = now.toISOString().slice(0, 10); // YYYY-MM-DD
+  const currentMonthStr = todayStr.slice(0, 7);   // YYYY-MM
+  const currentYearStr = todayStr.slice(0, 4);    // YYYY
+
   let statsData = null;
   try {
-    statsData = JSON.parse(localStorage.getItem("haytool_wt_stats"));
+    statsData = JSON.parse(localStorage.getItem("haytool_wt_stats_v2"));
   } catch (e) {
     statsData = null;
   }
 
-  if (!statsData || statsData.date !== todayStr) {
-    const baseDaily = statsData ? statsData.daily + 1 : 142;
-    const baseMonthly = 3840 + (statsData ? 1 : 0);
-    const baseYearly = 29450 + (statsData ? 1 : 0);
+  // İlk defa veya yeni bir gün/ay/yıl kontrolü
+  if (!statsData) {
     statsData = {
-      date: todayStr,
-      daily: statsData && statsData.date === todayStr ? statsData.daily + 1 : baseDaily,
-      monthly: baseMonthly,
-      yearly: baseYearly
+      lastDay: todayStr,
+      lastMonth: currentMonthStr,
+      lastYear: currentYearStr,
+      daily: 1,
+      monthly: 1,
+      yearly: 1,
+      visitedToday: true
     };
-    localStorage.setItem("haytool_wt_stats", JSON.stringify(statsData));
+    localStorage.setItem("haytool_wt_stats_v2", JSON.stringify(statsData));
+  } else {
+    // Gün, ay veya yıl değiştiğinde sayaç sıfırlama / devretme mantığı
+    let modified = false;
+    if (statsData.lastYear !== currentYearStr) {
+      statsData.lastYear = currentYearStr;
+      statsData.yearly = 1;
+      statsData.lastMonth = currentMonthStr;
+      statsData.monthly = 1;
+      statsData.lastDay = todayStr;
+      statsData.daily = 1;
+      statsData.visitedToday = true;
+      modified = true;
+    } else if (statsData.lastMonth !== currentMonthStr) {
+      statsData.lastMonth = currentMonthStr;
+      statsData.monthly = 1;
+      statsData.lastDay = todayStr;
+      statsData.daily = 1;
+      statsData.visitedToday = true;
+      statsData.yearly += 1;
+      modified = true;
+    } else if (statsData.lastDay !== todayStr) {
+      // Yeni bir gün başladı: gün sıfırlanır, ay ve yıl 1 artar
+      statsData.lastDay = todayStr;
+      statsData.daily = 1;
+      statsData.monthly += 1;
+      statsData.yearly += 1;
+      statsData.visitedToday = true;
+      modified = true;
+    }
+
+    if (modified) {
+      localStorage.setItem("haytool_wt_stats_v2", JSON.stringify(statsData));
+    }
   }
 
+  // Ekrana temiz ve formatlı yazdırma
   dailyEl.textContent = Number(statsData.daily).toLocaleString();
   monthlyEl.textContent = Number(statsData.monthly).toLocaleString();
   yearlyEl.textContent = Number(statsData.yearly).toLocaleString();
 }
+
 
 // Başlangıç dili ve teması
 document.addEventListener("DOMContentLoaded", () => {
