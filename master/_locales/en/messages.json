@@ -366,5 +366,9 @@
   "popupEnableOnSite": {
     "message": "Enable on this site",
     "description": "Enable on this site button"
+  },
+  "activeUsersLabel": {
+    "message": "Active Users:",
+    "description": "Active users count label on options page"
   }
 }

@@ -293,11 +293,18 @@
         </div>
       </div>
 
-      <!-- Auto-save Status & Links Footer -->
+      <!-- Auto-save Status & Active Users Footer -->
       <div class="action-footer">
-        <div class="autosave-pill">
-          <span class="pulse-dot"></span>
-          <span data-i18n="autoSaveNotice">Tüm değişiklikler anında kaydedilir</span>
+        <div class="action-footer-left">
+          <div class="autosave-pill">
+            <span class="pulse-dot"></span>
+            <span data-i18n="autoSaveNotice">Tüm değişiklikler anında kaydedilir</span>
+          </div>
+          <div class="active-users-pill" id="active-users-badge" title="Anlık Aktif Kullanıcı Durumu">
+            <span class="live-user-led"></span>
+            <span data-i18n="activeUsersLabel">Aktif Kullanıcı:</span>
+            <strong id="active-users-count">1</strong>
+          </div>
         </div>
         <div id="save-status" class="status-msg hidden">
           ✓ <span data-i18n="savedSuccessfully">Kaydedildi</span>

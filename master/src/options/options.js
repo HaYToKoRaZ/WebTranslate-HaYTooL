@@ -132,6 +132,21 @@ document.addEventListener("DOMContentLoaded", async () => {
     }, 1800);
   }
 
+  // Anlık Aktif Kullanıcı Göstergesi (Universal Chrome & Edge Storage API)
+  const browserAPI = (typeof chrome !== "undefined" && chrome.storage) ? chrome : (typeof browser !== "undefined" ? browser : null);
+  const activeUsersCountEl = document.getElementById("active-users-count");
+  if (activeUsersCountEl && browserAPI) {
+    try {
+      browserAPI.storage.local.get({ activeUserCount: 1 }, (res) => {
+        // En az 1 (kullanıcının kendisi), sade ve göz yormayan gösterim
+        const val = Math.max(1, res.activeUserCount || 1);
+        activeUsersCountEl.textContent = val.toString();
+      });
+    } catch (e) {
+      activeUsersCountEl.textContent = "1";
+    }
+  }
+
   // Hedef dil değiştiğinde anında kaydet ve sağ tık menüsünü güncelle
   targetLangInput.addEventListener("change", () => {
     chrome.storage.local.set({ targetLang: targetLangInput.value }, showSavedToast);

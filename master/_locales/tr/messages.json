@@ -366,5 +366,9 @@
   "popupEnableOnSite": {
     "message": "Bu sitede etkinleştir",
     "description": "Bu sitede aç butonu"
+  },
+  "activeUsersLabel": {
+    "message": "Aktif Kullanıcı:",
+    "description": "Ayarlar sayfasında yer alan aktif kullanıcı sayısı etiketi"
   }
 }

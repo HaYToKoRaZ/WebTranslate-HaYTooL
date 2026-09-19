@@ -615,6 +615,13 @@ input:checked + .slider:before {
   padding-top: 8px;
 }
 
+.action-footer-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
 .autosave-pill {
   display: inline-flex;
   align-items: center;
@@ -627,9 +634,49 @@ input:checked + .slider:before {
   border-radius: 20px;
 }
 
+/* Anlık Aktif Kullanıcı Göstergesi */
+.active-users-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 12.5px;
+  color: var(--text-secondary);
+  background: rgba(16, 185, 129, 0.06);
+  border: 1px solid rgba(16, 185, 129, 0.2);
+  padding: 8px 14px;
+  border-radius: 20px;
+  transition: all 0.2s ease;
+}
+
+.active-users-pill:hover {
+  border-color: rgba(16, 185, 129, 0.4);
+  background: rgba(16, 185, 129, 0.1);
+}
+
+.live-user-led {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #10b981;
+  box-shadow: 0 0 6px #10b981;
+  animation: pulseAnimation 2s infinite ease-in-out;
+}
+
+.active-users-pill strong {
+  color: #38bdf8;
+  font-weight: 700;
+  letter-spacing: 0.2px;
+}
+
 [data-theme="light"] .autosave-pill {
   background: rgba(0, 0, 0, 0.04);
   color: #64748b;
+}
+
+[data-theme="light"] .active-users-pill {
+  background: rgba(16, 185, 129, 0.08);
+  border-color: rgba(16, 185, 129, 0.3);
+  color: #334155;
 }
 
 .pulse-dot {
