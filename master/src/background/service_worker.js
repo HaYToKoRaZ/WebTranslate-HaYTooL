@@ -137,14 +137,14 @@ async function setupContextMenus(targetLang = "tr", showMenu = true, appLang = "
     });
 
     // 3. Uzantı simgesine sağ tıklandığında açılan menü (action context)
-    const websiteTitle = chrome.i18n.getMessage("contextOpenWebsite") || (uiLang === "tr" ? "🌐 WebTranslate Web Sitesi" : "🌐 WebTranslate Website");
+    const websiteTitle = uiLang === "tr" ? "🌐 WebTranslate Web Sitesi" : "🌐 WebTranslate Website";
     safeCreate({
       id: "open_website",
       title: websiteTitle,
       contexts: ["action"]
     });
 
-    const portalTitle = chrome.i18n.getMessage("contextOpenPortal") || (uiLang === "tr" ? "✨ HaYTooL Portal (Diğer Uygulamalar)" : "✨ HaYTooL Portal (Other Apps)");
+    const portalTitle = uiLang === "tr" ? "✨ HaYTooL Portal (Diğer Uygulamalar)" : "✨ HaYTooL Portal (Other Apps)";
     safeCreate({
       id: "open_portal",
       title: portalTitle,
