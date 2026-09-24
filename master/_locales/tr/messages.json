@@ -31,8 +31,12 @@
     "message": "⚙️ Çeviri Ayarları",
     "description": "Sağ tık ayarlar menüsü"
   },
+  "contextOpenWebsite": {
+    "message": "🌐 WebTranslate Web Sitesi",
+    "description": "Sağ tık eklenti web sitesi bağlantısı"
+  },
   "contextOpenPortal": {
-    "message": "✨ HaYTooL Portal (Web Sitemiz)",
+    "message": "✨ HaYTooL Portal (Diğer Uygulamalar)",
     "description": "Sağ tık web portal bağlantısı"
   },
   "popupTitle": {

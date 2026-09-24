@@ -31,8 +31,12 @@
     "message": "⚙️ Translation Settings",
     "description": "Right click settings menu"
   },
+  "contextOpenWebsite": {
+    "message": "🌐 WebTranslate Website",
+    "description": "Right click extension website link"
+  },
   "contextOpenPortal": {
-    "message": "✨ HaYTooL Portal (Website)",
+    "message": "✨ HaYTooL Portal (Other Apps)",
     "description": "Right click web portal link"
   },
   "popupTitle": {

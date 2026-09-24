@@ -109,9 +109,9 @@ async function setupContextMenus(targetLang = "tr", showMenu = true, appLang = "
     const uiLang = (appLang === "en" || appLang === "tr") ? appLang : (chrome.i18n.getUILanguage().startsWith("tr") ? "tr" : "en");
     const langDisplay = (LANG_NAMES[targetLang] && LANG_NAMES[targetLang][uiLang]) || targetLang.toUpperCase();
 
-    const pageTitle = uiLang === "tr" ? `🌐 Bu Sayfayı Çevir (${langDisplay})` : `🌐 Translate this page (${langDisplay})`;
-    const selectionTitle = uiLang === "tr" ? `🔤 Seçili Metni Çevir (${langDisplay})` : `🔤 Translate selection (${langDisplay})`;
-    const optionsTitle = chrome.i18n.getMessage("contextOptions") || "⚙️ Çeviri Ayarları";
+    const pageTitle = uiLang === "tr" ? `Bu Sayfayı Çevir (${langDisplay})` : `Translate this page (${langDisplay})`;
+    const selectionTitle = uiLang === "tr" ? `Seçili Metni Çevir (${langDisplay})` : `Translate selection (${langDisplay})`;
+    const optionsTitle = chrome.i18n.getMessage("contextOptions") || "Çeviri Ayarları";
 
     const safeCreate = (options) => {
       chrome.contextMenus.create(options, () => {
@@ -137,7 +137,14 @@ async function setupContextMenus(targetLang = "tr", showMenu = true, appLang = "
     });
 
     // 3. Uzantı simgesine sağ tıklandığında açılan menü (action context)
-    const portalTitle = uiLang === "tr" ? "✨ HaYTooL Portal (Web Sitemiz)" : "✨ HaYTooL Portal (Website)";
+    const websiteTitle = chrome.i18n.getMessage("contextOpenWebsite") || (uiLang === "tr" ? "🌐 WebTranslate Web Sitesi" : "🌐 WebTranslate Website");
+    safeCreate({
+      id: "open_website",
+      title: websiteTitle,
+      contexts: ["action"]
+    });
+
+    const portalTitle = chrome.i18n.getMessage("contextOpenPortal") || (uiLang === "tr" ? "✨ HaYTooL Portal (Diğer Uygulamalar)" : "✨ HaYTooL Portal (Other Apps)");
     safeCreate({
       id: "open_portal",
       title: portalTitle,
@@ -150,6 +157,11 @@ async function setupContextMenus(targetLang = "tr", showMenu = true, appLang = "
 
 // Menü Tıklama Olayları
 chrome.contextMenus.onClicked.addListener(async (info, tab) => {
+  if (info.menuItemId === "open_website") {
+    chrome.tabs.create({ url: "https://haytokoraz.github.io/WebTranslate-HaYTooL/" });
+    return;
+  }
+
   if (info.menuItemId === "open_portal") {
     chrome.tabs.create({ url: "https://haytokoraz.github.io/" });
     return;
@@ -526,3 +538,31 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
     return true;
   }
 });
+
+// HaYTooL Pulse
+(function() {
+  const PULSE_URL = 'https://hayto-telemetry.korazhayto.workers.dev/api/ping';
+  const APP_ID = 'webtranslate';
+  const sessionId = 'ext_' + Math.random().toString(36).substring(2, 15);
+  let isFirst = true;
+
+  async function sendPulse() {
+    try {
+      await fetch(PULSE_URL, {
+        method: 'POST',
+        mode: 'cors',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ app: APP_ID, session_id: sessionId, is_new_session: isFirst })
+      });
+      isFirst = false;
+    } catch (e) {}
+  }
+
+  sendPulse();
+  if (typeof chrome !== 'undefined' && chrome.alarms) {
+    chrome.alarms.create('pulse_alarm', { periodInMinutes: 2 });
+    chrome.alarms.onAlarm.addListener(a => { if (a.name === 'pulse_alarm') sendPulse(); });
+  } else {
+    setInterval(sendPulse, 2 * 60 * 1000);
+  }
+})();
