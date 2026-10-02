@@ -7,12 +7,15 @@
 **Lightning Fast Full-Page & Selection Web Translator**  
 *Işık Hızında Web Sayfası ve Seçili Metin Çevirmeni*
 
-[![GitHub Release](https://img.shields.io/github/v/release/HaYToKoRaZ/WebTranslate-HaYTooL?color=38bdf8&style=flat-square&logo=github)](https://github.com/HaYToKoRaZ/WebTranslate-HaYTooL/releases/latest)
-[![Latest Release Downloads](https://img.shields.io/github/downloads/HaYToKoRaZ/WebTranslate-HaYTooL/latest/total?color=success&label=Latest%20Release%20Downloads)](https://github.com/HaYToKoRaZ/WebTranslate-HaYTooL/releases/latest)
-[![Total Downloads](https://img.shields.io/github/downloads/HaYToKoRaZ/WebTranslate-HaYTooL/total?color=2ea44f&label=Total%20Downloads)](https://github.com/HaYToKoRaZ/WebTranslate-HaYTooL/releases)](https://img.shields.io/github/downloads/HaYToKoRaZ/WebTranslate-HaYTooL/total?color=0284c7&style=flat-square&logo=github)](https://github.com/HaYToKoRaZ/WebTranslate-HaYTooL/releases)
-[![Stars](https://img.shields.io/github/stars/HaYToKoRaZ/WebTranslate-HaYTooL?color=eab308&style=flat-square&logo=github)](https://github.com/HaYToKoRaZ/WebTranslate-HaYTooL/stargazers)
-[![License: MIT](https://img.shields.io/badge/License-MIT-emerald?style=flat-square)](LICENSE)
-[![Manifest V3](https://img.shields.io/badge/Manifest-V3-orange?style=flat-square)](https://developer.chrome.com/docs/extensions/mv3/intro/)
+<p align="center">
+  <img src="master/src/assets/badges/status.svg" alt="Status" />
+  <img src="master/src/assets/badges/version.svg" alt="Version" />
+  <img src="master/src/assets/badges/license.svg" alt="License" />
+  <img src="master/src/assets/badges/manifest.svg" alt="Manifest V3" />
+  <a href="https://github.com/HaYToKoRaZ/WebTranslate-HaYTooL/releases/latest"><img src="https://img.shields.io/github/downloads/HaYToKoRaZ/WebTranslate-HaYTooL/latest/total?style=for-the-badge&logo=github&color=2ea44f&label=LATEST%20DOWNLOADS" alt="Latest Release Downloads" /></a>
+  <a href="https://github.com/HaYToKoRaZ/WebTranslate-HaYTooL/releases"><img src="https://img.shields.io/github/downloads/HaYToKoRaZ/WebTranslate-HaYTooL/total?style=for-the-badge&logo=github&color=0969da&label=TOTAL%20DOWNLOADS" alt="Total Downloads" /></a>
+  <a href="https://haytokoraz.github.io/" target="_blank"><img src="master/src/assets/badges/portal.svg" alt="HaYTooL PoRTaL" /></a>
+</p>](https://developer.chrome.com/docs/extensions/mv3/intro/)
 
 [🌐 **Canlı Web Sitesi (Live Demo)**](https://haytokoraz.github.io/WebTranslate-HaYTooL/) | [📦 **Son Sürümü İndir (Releases)**](https://github.com/HaYToKoRaZ/WebTranslate-HaYTooL/releases/latest) | [🇹🇷 **Türkçe Açıklama**](#-türkçe-açıklama)
 
