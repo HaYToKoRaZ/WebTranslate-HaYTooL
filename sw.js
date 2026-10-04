@@ -1,4 +1,4 @@
-const CACHE_NAME = 'webtranslate-haytool-v2.5.6';
+const CACHE_NAME = 'webtranslate-haytool-v3.0.0';
 const STATIC_ASSETS = [
   './',
   'index.html',
