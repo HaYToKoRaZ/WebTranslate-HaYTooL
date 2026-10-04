@@ -180,6 +180,15 @@ function setLanguage(lang) {
   localStorage.setItem("haytool_wt_lang", lang);
   document.documentElement.lang = lang;
 
+  // URL adres çubuğundaki parametreyi senkronize et (?lang=tr veya ?lang=en)
+  try {
+    const url = new URL(window.location.href);
+    if (url.searchParams.get("lang") !== lang) {
+      url.searchParams.set("lang", lang);
+      window.history.replaceState({ lang }, "", url.toString());
+    }
+  } catch (e) {}
+
   // Tema etiketini seçili dile göre senkronize et
   const currentTheme = document.documentElement.getAttribute("data-theme") || "dark";
   applyTheme(currentTheme);
@@ -310,5 +319,14 @@ document.addEventListener("DOMContentLoaded", () => {
   setLanguage(saved);
   initTheme();
   initVisitorStats();
+
+  // Tarayıcı Geri/İleri butonları tıklandığında dili güncelle
+  window.addEventListener("popstate", () => {
+    const params = new URLSearchParams(window.location.search);
+    const pLang = params.get("lang");
+    if (pLang === "tr" || pLang === "en") {
+      setLanguage(pLang);
+    }
+  });
 });
 
