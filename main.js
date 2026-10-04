@@ -328,5 +328,12 @@ document.addEventListener("DOMContentLoaded", () => {
       setLanguage(pLang);
     }
   });
+
+  // Service Worker Registration for Instant Cache & Offline Capability
+  if ('serviceWorker' in navigator && window.location.protocol.startsWith('http')) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('./sw.js').catch(() => {});
+    });
+  }
 });
 
