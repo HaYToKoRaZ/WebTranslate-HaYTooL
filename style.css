@@ -290,6 +290,12 @@ body {
   box-shadow: 0 0 8px rgba(2, 132, 199, 0.15);
 }
 
+#sun-icon { display: none; }
+#moon-icon { display: block; }
+[data-theme="light"] #sun-icon { display: block !important; }
+[data-theme="light"] #moon-icon { display: none !important; }
+
+
 .github-btn {
   display: flex;
   align-items: center;
@@ -352,11 +358,13 @@ body {
   position: relative;
   max-width: 720px;
   width: 100%;
+  aspect-ratio: 800 / 446;
   margin: 0 auto 40px;
   border-radius: 20px;
   overflow: hidden;
   box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(56, 189, 248, 0.2);
   transition: transform 0.3s ease;
+  contain: layout paint;
 }
 
 .cat-showcase-wrap:hover {
@@ -366,7 +374,8 @@ body {
 
 .cat-img {
   width: 100%;
-  height: auto;
+  height: 100%;
+  aspect-ratio: 800 / 446;
   display: block;
   object-fit: cover;
 }

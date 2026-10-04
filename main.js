@@ -215,26 +215,13 @@ function initTheme() {
 
 function applyTheme(theme) {
   document.documentElement.setAttribute("data-theme", theme);
-  const moonIcon = document.getElementById("moon-icon");
-  const sunIcon = document.getElementById("sun-icon");
   const themeText = document.getElementById("theme-text");
   const currentLang = localStorage.getItem("haytool_wt_lang") || "tr";
   const dict = translations[currentLang] || translations.tr;
 
-  if (theme === "light") {
-    if (moonIcon) moonIcon.style.display = "none";
-    if (sunIcon) sunIcon.style.display = "block";
-    if (themeText) {
-      themeText.textContent = dict.themeLight || "Açık Tema";
-      themeText.setAttribute("data-i18n", "themeLight");
-    }
-  } else {
-    if (moonIcon) moonIcon.style.display = "block";
-    if (sunIcon) sunIcon.style.display = "none";
-    if (themeText) {
-      themeText.textContent = dict.themeDark || "Koyu Tema";
-      themeText.setAttribute("data-i18n", "themeDark");
-    }
+  if (themeText) {
+    themeText.textContent = (theme === "light") ? (dict.themeLight || "Açık Tema") : (dict.themeDark || "Koyu Tema");
+    themeText.setAttribute("data-i18n", theme === "light" ? "themeLight" : "themeDark");
   }
 }
 
