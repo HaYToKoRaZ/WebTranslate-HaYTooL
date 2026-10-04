@@ -148,6 +148,7 @@ const translations = {
 
 function setLanguage(lang) {
   if (!translations[lang]) return;
+  const currentLang = document.documentElement.lang;
 
   // Buton aktifliği
   document.querySelectorAll(".lang-btn").forEach(btn => {
@@ -155,6 +156,15 @@ function setLanguage(lang) {
   });
   const activeBtn = document.querySelector(`.lang-btn[onclick="setLanguage('${lang}')"]`);
   if (activeBtn) activeBtn.classList.add("active");
+
+  localStorage.setItem("haytool_wt_lang", lang);
+
+  // Eğer sayfa zaten bu dildeyse gereksiz tüm DOM ağacını dolaşıp reflow tetikleme
+  if (currentLang === lang && document.documentElement.hasAttribute("data-i18n-initialized")) {
+    return;
+  }
+  document.documentElement.lang = lang;
+  document.documentElement.setAttribute("data-i18n-initialized", "true");
 
   // Metinleri değiştir
   const dict = translations[lang];
@@ -176,9 +186,6 @@ function setLanguage(lang) {
       elem.setAttribute("title", dict[key]);
     }
   });
-
-  localStorage.setItem("haytool_wt_lang", lang);
-  document.documentElement.lang = lang;
 
   // URL adres çubuğundaki parametreyi senkronize et (?lang=tr veya ?lang=en)
   try {
