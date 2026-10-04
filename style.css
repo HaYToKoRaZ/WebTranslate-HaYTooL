@@ -3,7 +3,9 @@
   --bg-card: rgba(17, 24, 39, 0.7);
   --border: rgba(255, 255, 255, 0.08);
   --text: #f8fafc;
-  --text-muted: #94a3b8;
+  --text-muted: #cbd5e1;
+  --link-color: #38bdf8;
+  --stat-lbl-color: #cbd5e1;
   --accent: #38bdf8;
   --accent-glow: rgba(56, 189, 248, 0.25);
   --nav-bg: rgba(11, 15, 25, 0.85);
@@ -14,7 +16,9 @@
   --bg-card: rgba(255, 255, 255, 0.95);
   --border: rgba(0, 0, 0, 0.08);
   --text: #0f172a;
-  --text-muted: #64748b;
+  --text-muted: #475569;
+  --link-color: #0369a1;
+  --stat-lbl-color: #334155;
   --accent: #0284c7;
   --accent-glow: rgba(2, 132, 199, 0.2);
   --nav-bg: rgba(248, 250, 252, 0.92);
@@ -573,7 +577,7 @@ body {
 }
 
 .footer-content a {
-  color: var(--accent);
+  color: var(--link-color);
   text-decoration: underline;
   text-underline-offset: 3px;
   text-decoration-thickness: 1.5px;
@@ -586,9 +590,17 @@ body {
   opacity: 0.85;
 }
 
+.footer-brand-link {
+  color: var(--link-color) !important;
+}
+
 .footer-links {
   display: flex;
   gap: 20px;
+}
+
+.footer-links a {
+  color: var(--link-color) !important;
 }
 
 /* Nostaljik Sayaç Hapı (Retro Stats Pill) */
@@ -632,6 +644,11 @@ body {
   50% { opacity: 0.4; transform: scale(0.85); }
 }
 
+.stat-lbl {
+  color: var(--stat-lbl-color);
+  font-weight: 500;
+}
+
 .retro-stat-item strong {
   color: #38bdf8;
   font-weight: 700;
@@ -639,7 +656,7 @@ body {
 }
 
 [data-theme="light"] .retro-stat-item strong {
-  color: #0284c7;
+  color: #0369a1;
 }
 
 .stat-sep {
