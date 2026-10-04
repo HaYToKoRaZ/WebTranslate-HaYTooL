@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>404 - Page Not Found | WebTranslate HaYTooL</title>
-  <meta name="description" content="The page you are looking for does not exist. Return to WebTranslate HaYTooL homepage." />
+  <meta name="description" content="The page you requested could not be found. Return to WebTranslate HaYTooL homepage and resume instant web translations." />
   <meta name="author" content="HaYTo" />
   <meta name="publisher" content="HaYTooL" />
   <meta name="robots" content="noindex, follow" />
@@ -14,149 +14,262 @@
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="WebTranslate HaYTooL" />
   <meta property="og:title" content="404 - Page Not Found | WebTranslate HaYTooL" />
-  <meta property="og:description" content="The page you are looking for does not exist. Return to WebTranslate HaYTooL homepage." />
+  <meta property="og:description" content="The page you requested could not be found. Return to WebTranslate HaYTooL homepage." />
   <meta property="og:image" content="https://haytokoraz.github.io/WebTranslate-HaYTooL/icon.png" />
   <meta property="og:image:width" content="512" />
   <meta property="og:image:height" content="512" />
   <meta property="og:image:alt" content="WebTranslate HaYTooL Logo" />
+  <meta property="og:locale" content="en_US" />
 
   <!-- Twitter Cards -->
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:site" content="@HaYToKoRaZ" />
   <meta name="twitter:creator" content="@HaYToKoRaZ" />
   <meta name="twitter:title" content="404 - Page Not Found | WebTranslate HaYTooL" />
-  <meta name="twitter:description" content="The page you are looking for does not exist. Return to WebTranslate HaYTooL homepage." />
+  <meta name="twitter:description" content="The page you requested could not be found. Return to WebTranslate HaYTooL homepage." />
   <meta name="twitter:image" content="https://haytokoraz.github.io/WebTranslate-HaYTooL/icon.png" />
   <meta name="twitter:image:alt" content="WebTranslate HaYTooL Logo" />
 
   <link rel="icon" type="image/x-icon" href="favicon.ico">
   <link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
   <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <style>
-    .error-container {
-      min-height: calc(100vh - 180px);
+    .error-wrapper {
+      min-height: calc(100vh - 160px);
       display: flex;
-      flex-direction: column;
       align-items: center;
       justify-content: center;
-      text-align: center;
-      padding: 40px 20px;
+      padding: 60px 20px;
+      position: relative;
+      z-index: 2;
     }
     .error-card {
       background: var(--bg-card);
       border: 1px solid var(--border);
-      border-radius: 20px;
-      padding: 50px 30px;
-      max-width: 540px;
+      border-radius: 24px;
+      padding: 50px 40px;
+      max-width: 620px;
       width: 100%;
-      box-shadow: 0 15px 35px rgba(0,0,0,0.3);
-      backdrop-filter: blur(16px);
+      text-align: center;
+      box-shadow: 0 20px 45px rgba(0, 0, 0, 0.4);
+      backdrop-filter: blur(20px);
+      position: relative;
+      overflow: hidden;
     }
-    .error-badge {
-      display: inline-block;
-      font-size: 5rem;
+    .error-card::before {
+      content: '';
+      position: absolute;
+      top: -100px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 280px;
+      height: 280px;
+      background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
+    .error-card > * {
+      position: relative;
+      z-index: 1;
+    }
+    .error-illustration {
+      margin: 0 auto 20px;
+      width: 120px;
+      height: 120px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background: rgba(56, 189, 248, 0.08);
+      border: 1px solid var(--border);
+      box-shadow: 0 0 30px var(--accent-glow);
+    }
+    .error-code {
+      font-size: 5.5rem;
       font-weight: 800;
+      font-family: 'Space Grotesk', sans-serif;
       line-height: 1;
       margin-bottom: 12px;
-      background: linear-gradient(135deg, var(--primary) 0%, #38ef7d 100%);
+      letter-spacing: -2px;
+      background: linear-gradient(135deg, var(--accent) 0%, #38ef7d 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
     .error-title {
-      font-size: 1.6rem;
+      font-size: 1.8rem;
       font-weight: 700;
-      color: var(--text-main);
-      margin-bottom: 14px;
+      color: var(--text);
+      margin-bottom: 12px;
+      letter-spacing: -0.5px;
     }
     .error-desc {
       color: var(--text-muted);
-      font-size: 1rem;
+      font-size: 1.05rem;
       line-height: 1.6;
-      margin-bottom: 30px;
+      margin-bottom: 32px;
     }
     .error-actions {
       display: flex;
-      gap: 14px;
+      gap: 16px;
       justify-content: center;
       flex-wrap: wrap;
     }
-    .btn-return {
+    .btn-primary-action {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
-      background: var(--primary);
-      color: #0d1117;
-      padding: 12px 24px;
-      border-radius: 10px;
-      font-weight: 600;
+      gap: 10px;
+      background: linear-gradient(135deg, var(--accent) 0%, #0ea5e9 100%);
+      color: #0b0f19;
+      font-weight: 700;
+      font-size: 0.95rem;
+      padding: 13px 26px;
+      border-radius: 12px;
       text-decoration: none;
-      transition: all 0.2s ease;
+      transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: 0 4px 15px var(--accent-glow);
     }
-    .btn-return:hover {
-      filter: brightness(1.1);
+    .btn-primary-action:hover {
       transform: translateY(-2px);
+      box-shadow: 0 8px 25px var(--accent-glow);
+      filter: brightness(1.08);
     }
-    .btn-outline {
+    .btn-secondary-action {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
+      gap: 10px;
       background: transparent;
-      color: var(--text-main);
+      color: var(--text);
       border: 1px solid var(--border);
-      padding: 12px 24px;
-      border-radius: 10px;
       font-weight: 600;
+      font-size: 0.95rem;
+      padding: 13px 24px;
+      border-radius: 12px;
       text-decoration: none;
-      transition: all 0.2s ease;
+      transition: all 0.25s ease;
     }
-    .btn-outline:hover {
-      background: var(--bg-hover);
+    .btn-secondary-action:hover {
+      background: rgba(255, 255, 255, 0.05);
+      border-color: var(--accent);
       transform: translateY(-2px);
+    }
+    [data-theme="light"] .btn-primary-action {
+      color: #ffffff;
+    }
+    [data-theme="light"] .btn-secondary-action:hover {
+      background: rgba(0, 0, 0, 0.04);
+    }
+    .quick-links {
+      margin-top: 32px;
+      padding-top: 24px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    .quick-links a {
+      color: var(--link-color);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    .quick-links a:hover {
+      text-decoration: underline;
     }
   </style>
 </head>
 <body>
+  <div class="glow glow-1"></div>
+  <div class="glow glow-2"></div>
+
+  <!-- Navbar -->
   <nav class="navbar" aria-label="Main Navigation">
-    <div class="nav-container">
-      <a href="index.html" class="brand">
-        <picture>
-          <source srcset="icon.webp" type="image/webp">
-          <img src="icon.png" alt="WebTranslate HaYTooL Logo" width="32" height="32" class="brand-logo" />
-        </picture>
-        <span>WebTranslate <span class="highlight">HaYTooL</span></span>
+    <div class="container nav-content">
+      <a href="index.html" class="logo" style="text-decoration: none;">
+        <span class="logo-badge">
+          <picture>
+            <source srcset="icon.webp" type="image/webp">
+            <img src="icon.png" alt="WebTranslate HaYTooL Logo" width="28" height="28" style="vertical-align: middle;" />
+          </picture>
+        </span>
+        <span class="logo-text">WebTranslate<span> HaYTooL</span></span>
       </a>
-      <div class="nav-links">
-        <a href="index.html">Home</a>
-        <a href="index.html#features">Features</a>
-        <a href="privacy.html">Privacy</a>
+
+      <div class="nav-right">
+        <!-- Theme Toggle -->
+        <button type="button" class="theme-toggle-btn" id="theme-toggle" aria-label="Toggle dark/light theme" onclick="toggleTheme()">
+          <span class="theme-icon-dark">🌙</span>
+          <span class="theme-icon-light">☀️</span>
+        </button>
       </div>
     </div>
   </nav>
 
-  <main id="main-content" class="error-container">
+  <!-- 404 Main Landmark -->
+  <main id="main-content" class="error-wrapper">
     <div class="error-card">
-      <div class="error-badge">404</div>
-      <h1 class="error-title">Page Not Found / Sayfa Bulunamadı</h1>
+      <div class="error-illustration">
+        <picture>
+          <source srcset="cat.webp" type="image/webp">
+          <img src="cat.jpg" alt="WebTranslate Cat Mascot" width="96" height="96" style="border-radius: 50%; object-fit: cover;" />
+        </picture>
+      </div>
+
+      <div class="error-code">404</div>
+      <h1 class="error-title">Page Lost in Translation</h1>
       <p class="error-desc">
-        Aradığınız sayfa silinmiş, taşınmış veya hiç var olmamış olabilir. Çevirinin gücünden yararlanmaya ana sayfadan devam edebilirsiniz.
+        The link you followed might be broken, or the page may have been moved. Don't worry, our translator cat is on the case!
       </p>
+
       <div class="error-actions">
-        <a href="index.html" class="btn-return">
-          <span>🏠 Return to Homepage</span>
+        <a href="index.html" class="btn-primary-action">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+            <polyline points="9 22 9 12 15 12 15 22"/>
+          </svg>
+          <span>Back to Homepage</span>
         </a>
-        <a href="https://github.com/HaYToKoRaZ/WebTranslate-HaYTooL" target="_blank" rel="nofollow noopener" class="btn-outline">
-          <span>🐙 GitHub Repository</span>
+        <a href="https://github.com/HaYToKoRaZ/WebTranslate-HaYTooL" target="_blank" rel="nofollow noopener noreferrer" class="btn-secondary-action">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+          </svg>
+          <span>View on GitHub</span>
         </a>
+      </div>
+
+      <div class="quick-links">
+        <a href="index.html#features">Features</a>
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="https://haytokoraz.github.io/" target="_blank" rel="nofollow noopener noreferrer">HaYTooL Portal</a>
       </div>
     </div>
   </main>
 
+  <!-- Footer -->
   <footer class="footer">
     <div class="container footer-content">
-      <p>© 2026 WebTranslate HaYTooL | Developed with love by <a href="https://github.com/HaYToKoRaZ" target="_blank" rel="nofollow noopener" class="footer-brand-link">HaYTo</a>.</p>
+      <p>© 2026 WebTranslate HaYTooL | Developed with love by <a href="https://github.com/HaYToKoRaZ" target="_blank" rel="nofollow noopener noreferrer" class="footer-brand-link">HaYTo</a>.</p>
     </div>
   </footer>
+
+  <script>
+    function getTheme() {
+      return localStorage.getItem('hayto_theme') || 'dark';
+    }
+    function applyTheme(theme) {
+      document.documentElement.setAttribute('data-theme', theme);
+      localStorage.setItem('hayto_theme', theme);
+    }
+    function toggleTheme() {
+      const cur = document.documentElement.getAttribute('data-theme') || 'dark';
+      applyTheme(cur === 'light' ? 'dark' : 'light');
+    }
+    applyTheme(getTheme());
+  </script>
 </body>
 </html>
