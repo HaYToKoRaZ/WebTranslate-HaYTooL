@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://haytokoraz.github.io/WebTranslate-HaYTooL/sitemap.xml
