@@ -79,7 +79,10 @@
   <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+  </noscript>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -359,7 +362,7 @@
     </div>
   </footer>
 
-  <script src="main.js"></script>
+  <script src="main.js" defer></script>
   <script>
   (function() {
     var PULSE_URL = 'https://hayto-telemetry.korazhayto.workers.dev/api/ping';
@@ -391,8 +394,18 @@
         }).catch(function() {});
       } catch(e) {}
     }
-    sendPulse();
-    setInterval(sendPulse, 2 * 60 * 1000);
+
+    // Defer ping completely out of the critical rendering path
+    if ('requestIdleCallback' in window) {
+      window.requestIdleCallback(function() {
+        setTimeout(sendPulse, 2500);
+      });
+    } else {
+      window.addEventListener('load', function() {
+        setTimeout(sendPulse, 2500);
+      });
+    }
+    setInterval(sendPulse, 3 * 60 * 1000);
   })();
   </script>
 </body>
