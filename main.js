@@ -188,10 +188,6 @@ function setLanguage(lang) {
       window.history.replaceState({ lang }, "", url.toString());
     }
   } catch (e) {}
-
-  // Tema etiketini seçili dile göre senkronize et
-  const currentTheme = document.documentElement.getAttribute("data-theme") || "dark";
-  applyTheme(currentTheme);
 }
 
 // Tema Yönetimi (Koyu / Açık & Otomatik Sistem Algılama)
@@ -303,9 +299,11 @@ document.addEventListener("DOMContentLoaded", () => {
   const urlParams = new URLSearchParams(window.location.search);
   const langParam = urlParams.get("lang");
   const saved = (langParam === "tr" || langParam === "en") ? langParam : (localStorage.getItem("haytool_wt_lang") || (navigator.language.startsWith("tr") ? "tr" : "en"));
-  setLanguage(saved);
   initTheme();
-  initVisitorStats();
+  requestAnimationFrame(() => {
+    setLanguage(saved);
+    initVisitorStats();
+  });
 
   // Tarayıcı Geri/İleri butonları tıklandığında dili güncelle
   window.addEventListener("popstate", () => {
