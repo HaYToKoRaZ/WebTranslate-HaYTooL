@@ -131,6 +131,50 @@
     "message": "Show floating translation tooltip on text selection",
     "description": "Floating HUD setting"
   },
+  "hudPositionHeading": {
+    "message": "Page Translation HUD Position",
+    "description": "HUD position heading"
+  },
+  "hudPositionDesc": {
+    "message": "Screen placement of the translation progress and restoration badge.",
+    "description": "HUD position description"
+  },
+  "hudPosCenter": {
+    "message": "Screen Center (Default)",
+    "description": "Center position"
+  },
+  "hudPosTopLeft": {
+    "message": "Top Left",
+    "description": "Top left position"
+  },
+  "hudPosTopCenter": {
+    "message": "Top Center",
+    "description": "Top center position"
+  },
+  "hudPosTopRight": {
+    "message": "Top Right",
+    "description": "Top right position"
+  },
+  "hudPosCenterLeft": {
+    "message": "Center Left",
+    "description": "Center left position"
+  },
+  "hudPosCenterRight": {
+    "message": "Center Right",
+    "description": "Center right position"
+  },
+  "hudPosBottomLeft": {
+    "message": "Bottom Left",
+    "description": "Bottom left position"
+  },
+  "hudPosBottomCenter": {
+    "message": "Bottom Center",
+    "description": "Bottom center position"
+  },
+  "hudPosBottomRight": {
+    "message": "Bottom Right",
+    "description": "Bottom right position"
+  },
   "showContextMenu": {
     "message": "Show in browser right-click context menu",
     "description": "Context menu setting"

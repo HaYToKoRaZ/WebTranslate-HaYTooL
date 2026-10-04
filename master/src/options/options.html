@@ -10,7 +10,7 @@
   <div class="options-wrapper">
     <!-- Header -->
     <header class="options-header">
-      <a href="https://haytokoraz.github.io/" target="_blank" class="brand-group" id="brand-link" title="HaYTooL Portal Web Sitesini Ziyaret Et">
+      <a href="https://haytokoraz.github.io/WebTranslate-HaYTooL/" target="_blank" class="brand-group" id="brand-link" title="WebTranslate HaYTooL Web Sitesini Ziyaret Et">
         <img src="../assets/icons/icon48.png" alt="Logo" class="logo">
         <div>
           <div class="title-row">
@@ -208,6 +208,25 @@
           <input type="checkbox" id="showSelectionHUD" checked>
           <span class="slider round"></span>
         </label>
+      </div>
+
+      <!-- 3.1. Sayfa Çeviri Bildirim (HUD) Konumu -->
+      <div class="setting-item">
+        <div class="setting-info">
+          <label class="setting-label" for="hudPosition" data-i18n="hudPositionHeading">Sayfa Çeviri Bildirim (HUD) Konumu</label>
+          <span class="setting-desc" data-i18n="hudPositionDesc">Çeviri ilerleme ve geri alma rozetinin ekrandaki konumu.</span>
+        </div>
+        <select id="hudPosition" class="setting-control select-input">
+          <option value="center" data-i18n="hudPosCenter">Ekranın Ortası (Varsayılan)</option>
+          <option value="top-left" data-i18n="hudPosTopLeft">Üst Sol</option>
+          <option value="top-center" data-i18n="hudPosTopCenter">Üst Orta</option>
+          <option value="top-right" data-i18n="hudPosTopRight">Üst Sağ</option>
+          <option value="center-left" data-i18n="hudPosCenterLeft">Orta Sol</option>
+          <option value="center-right" data-i18n="hudPosCenterRight">Orta Sağ</option>
+          <option value="bottom-left" data-i18n="hudPosBottomLeft">Alt Sol</option>
+          <option value="bottom-center" data-i18n="hudPosBottomCenter">Alt Orta</option>
+          <option value="bottom-right" data-i18n="hudPosBottomRight">Alt Sağ</option>
+        </select>
       </div>
 
       <!-- 4. Sağ Tık Menüsü -->

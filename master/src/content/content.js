@@ -10,6 +10,8 @@
   let currentFloatingHUD = null;
   let isPageTranslated = false;
   let originalHtmlLang = document.documentElement.lang;
+  let originalPageTitle = document.title;
+  const translatedNodesRegistry = new Set();
 
   // CSS'i sayfaya dinamik ekle (Manifest content_scripts kaldırılsa bile garantili çalışır)
   function ensureStylesInjected() {
@@ -101,8 +103,17 @@
 
     const startTime = performance.now();
 
+    // Kullanıcının HUD konum tercihini al (Varsayılan: center)
+    let hudPosition = "center";
+    try {
+      const stored = await chrome.storage.local.get({ hudPosition: "center" });
+      if (stored && stored.hudPosition) {
+        hudPosition = stored.hudPosition;
+      }
+    } catch (e) {}
+
     // Canlı İlerleme HUD'unu başlat
-    const progressHUD = showProgressHUD(textNodes.length, specificEngine);
+    const progressHUD = showProgressHUD(textNodes.length, specificEngine, hudPosition);
 
     // Gruplar (batch) halinde arka plana gönderip çevir
     const BATCH_SIZE = 15;
@@ -144,9 +155,10 @@
             }
 
             if (partText) {
-              if (!node.__haytool_original) {
+              if (node.__haytool_original === undefined) {
                 node.__haytool_original = node.nodeValue;
               }
+              translatedNodesRegistry.add(node);
               node.nodeValue = partText;
             }
           });
@@ -168,9 +180,38 @@
     isPageTranslated = true;
   }
 
-  // Orijinal sayfayı geri getir
+  // Orijinal sayfayı sıfır yenileme (0ms) ile geri getir
   function restoreOriginalPage() {
-    window.location.reload();
+    let restoredCount = 0;
+    translatedNodesRegistry.forEach((node) => {
+      try {
+        if (node && node.__haytool_original !== undefined) {
+          node.nodeValue = node.__haytool_original;
+          restoredCount++;
+        }
+      } catch (e) {
+        // Hata durumunda yoksay
+      }
+    });
+
+    translatedNodesRegistry.clear();
+
+    // HTML lang ve title etiketini geri yükle
+    if (originalHtmlLang) {
+      document.documentElement.lang = originalHtmlLang;
+    }
+    if (originalPageTitle) {
+      document.title = originalPageTitle;
+    }
+
+    // Aktif ilerleme HUD'unu kaldır
+    const activeHUD = document.querySelector(".haytool-progress-hud");
+    if (activeHUD) {
+      activeHUD.remove();
+    }
+
+    isPageTranslated = false;
+    showNotificationBadge("Sayfa orijinal haline geri getirildi.");
   }
 
   // Sağ tık veya seçim sonrası Floating HUD (Şık Glassmorphic Baloncuk)
@@ -254,7 +295,7 @@
   }
 
   // Canlı Sayfa Çeviri İlerleme Paneli (Live Progress HUD)
-  function showProgressHUD(totalNodes, specificEngine = null) {
+  function showProgressHUD(totalNodes, specificEngine = null, hudPosition = "center") {
     const existing = document.querySelector(".haytool-progress-hud");
     if (existing) existing.remove();
 
@@ -269,7 +310,7 @@
     const engineLabel = specificEngine && engineNames[specificEngine] ? ` (${engineNames[specificEngine]})` : "";
 
     const hud = document.createElement("div");
-    hud.className = "haytool-notice-badge haytool-progress-hud";
+    hud.className = `haytool-notice-badge haytool-progress-hud haytool-pos-${hudPosition}`;
     hud.innerHTML = `
       <div class="haytool-progress-header">
         <div class="haytool-progress-title">
@@ -333,42 +374,89 @@
 
         // 2. HUD'u Şık ve Kalıcı Sonuç Rozetine Dönüştür
         if (titleEl) {
-          titleEl.innerHTML = `<span style="color:#34d399;font-weight:bold;font-size:15px;">✓</span> <span style="color:#34d399;font-weight:700;">${engineNames[specificEngine] || "Çeviri"}</span>`;
+          titleEl.innerHTML = `<span style="color:#34d399;font-weight:bold;font-size:15px;">✓</span> <span style="color:#34d399;font-weight:700;">${engineNames[specificEngine] || "Çeviri Tamamlandı"}</span>`;
         }
         if (statusLabel) {
-          statusLabel.innerHTML = `<span style="color:#38bdf8;font-weight:700;font-size:12px;">⚡ Süre: ${durationSec || '0.5'} saniye</span>`;
+          statusLabel.innerHTML = `<span style="color:#38bdf8;font-weight:700;font-size:12px;">⚡ Süre: ${durationSec || '0.5'}s</span>`;
         }
         if (countLabel) {
           countLabel.textContent = `${totalDone} bölüm`;
         }
 
-        // Çoklu sekme modunda (specificEngine varsa) hemen kaybolmasın, kullanıcı inceleyene kadar (veya kapat butonuna basana kadar) ekranda kalsın!
-        if (specificEngine) {
-          hud.style.borderColor = "rgba(16, 185, 129, 0.4)";
-          hud.style.boxShadow = "0 12px 30px rgba(0, 0, 0, 0.6), 0 0 20px rgba(16, 185, 129, 0.25)";
-          // 40 saniye sonra yavaşça kaybolur, kapatmak isterse '×' butonu var
-          setTimeout(() => {
-            if (hud && hud.parentNode) {
-              hud.classList.add("fade-out");
-              setTimeout(() => hud.remove(), 400);
-            }
-          }, 40000);
-        } else {
-          setTimeout(() => {
-            if (hud && hud.parentNode) {
-              hud.classList.add("fade-out");
-              setTimeout(() => hud.remove(), 400);
-            }
-          }, 3500);
+        // 3. 'Orijinali Göster' Geri Alma Butonunu Ekle
+        if (!hud.querySelector(".haytool-hud-restore-btn")) {
+          const restoreRow = document.createElement("div");
+          restoreRow.className = "haytool-hud-restore-row";
+          restoreRow.innerHTML = `
+            <button type="button" class="haytool-hud-restore-btn">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/>
+                <path d="M3 3v5h5"/>
+              </svg>
+              <span>Orijinali Göster</span>
+            </button>
+          `;
+          hud.appendChild(restoreRow);
+
+          const restoreBtn = restoreRow.querySelector(".haytool-hud-restore-btn");
+          if (restoreBtn) {
+            restoreBtn.addEventListener("click", () => {
+              restoreOriginalPage();
+            });
+          }
         }
+
+        // 4. Birkaç saniye sonra şık, kompakt simge durumuna (Floating Pill) geçiş yap
+        const collapseToPill = () => {
+          if (!hud || !hud.parentNode || !isPageTranslated) return;
+          hud.classList.remove("fade-out");
+          hud.classList.add("haytool-hud-collapsed");
+          hud.style.borderColor = "";
+          hud.style.boxShadow = "";
+
+          hud.innerHTML = `
+            <div class="haytool-collapsed-icon">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/>
+                <path d="M3 3v5h5"/>
+              </svg>
+            </div>
+            <span class="haytool-collapsed-text">Orijinali Göster</span>
+            <button type="button" class="haytool-collapsed-close" title="Rozeti Kapat">×</button>
+          `;
+
+          // Kompakt rozete tıklandığında sayfayı geri getir
+          hud.onclick = (e) => {
+            if (e.target.closest(".haytool-collapsed-close")) {
+              e.stopPropagation();
+              hud.classList.add("fade-out");
+              setTimeout(() => hud.remove(), 250);
+              return;
+            }
+            restoreOriginalPage();
+          };
+        };
+
+        // 4.5 saniye sonra kompakt hap (pill) rozetine küçül
+        setTimeout(() => {
+          if (hud && hud.parentNode && !hud.classList.contains("haytool-hud-collapsed")) {
+            collapseToPill();
+          }
+        }, 4500);
       }
     };
   }
 
   // Bildirim rozeti
-  function showNotificationBadge(msg) {
+  async function showNotificationBadge(msg) {
+    let hudPosition = "center";
+    try {
+      const stored = await chrome.storage.local.get({ hudPosition: "center" });
+      if (stored && stored.hudPosition) hudPosition = stored.hudPosition;
+    } catch (e) {}
+
     const badge = document.createElement("div");
-    badge.className = "haytool-notice-badge";
+    badge.className = `haytool-notice-badge haytool-pos-${hudPosition}`;
     badge.textContent = msg;
     document.body.appendChild(badge);
     setTimeout(() => {

@@ -10,6 +10,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   const targetLangInput = document.getElementById("targetLang");
   const engineSelect = document.getElementById("engine");
   const showSelectionHUDCheck = document.getElementById("showSelectionHUD");
+  const hudPositionSelect = document.getElementById("hudPosition");
   const showContextMenuCheck = document.getElementById("showContextMenu");
   const btnSave = document.getElementById("btn-save");
   const themeSelect = document.getElementById("theme");
@@ -31,7 +32,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   if (brandLink) {
     brandLink.addEventListener("click", (e) => {
       e.preventDefault();
-      chrome.tabs.create({ url: "https://haytokoraz.github.io/" });
+      chrome.tabs.create({ url: "https://haytokoraz.github.io/WebTranslate-HaYTooL/" });
     });
   }
 
@@ -51,6 +52,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     engine: "google",
     theme: "system",
     showSelectionHUD: true,
+    hudPosition: "center",
     showContextMenu: true,
     deeplApiKey: "",
     blacklistDomains: []
@@ -62,6 +64,9 @@ document.addEventListener("DOMContentLoaded", async () => {
   engineSelect.value = current.engine || "google";
   themeSelect.value = current.theme || "system";
   showSelectionHUDCheck.checked = current.showSelectionHUD;
+  if (hudPositionSelect) {
+    hudPositionSelect.value = current.hudPosition || "center";
+  }
   showContextMenuCheck.checked = current.showContextMenu;
 
   const blacklistTextarea = document.getElementById("blacklistDomains");
@@ -220,6 +225,12 @@ document.addEventListener("DOMContentLoaded", async () => {
   showSelectionHUDCheck.addEventListener("change", () => {
     chrome.storage.local.set({ showSelectionHUD: showSelectionHUDCheck.checked }, showSavedToast);
   });
+
+  if (hudPositionSelect) {
+    hudPositionSelect.addEventListener("change", () => {
+      chrome.storage.local.set({ hudPosition: hudPositionSelect.value }, showSavedToast);
+    });
+  }
 
   showContextMenuCheck.addEventListener("change", () => {
     chrome.storage.local.set({ showContextMenu: showContextMenuCheck.checked }, showSavedToast);

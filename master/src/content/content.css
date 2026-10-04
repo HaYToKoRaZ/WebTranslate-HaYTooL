@@ -23,8 +23,6 @@ body {
 /* Bildirim ve İlerleme HUD'u */
 .haytool-notice-badge {
   position: fixed;
-  bottom: 24px;
-  right: 24px;
   background: rgba(15, 23, 42, 0.92);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
@@ -42,13 +40,128 @@ body {
   gap: 8px;
   min-width: 260px;
   max-width: 340px;
+  transition: opacity 0.3s ease, transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), top 0.3s ease, bottom 0.3s ease, left 0.3s ease, right 0.3s ease;
+}
+
+/* 9 Farklı Konum Belirleyicisi (Default: Center) */
+.haytool-notice-badge.haytool-pos-center {
+  top: 50%;
+  left: 50%;
+  bottom: auto;
+  right: auto;
+  transform: translate(-50%, -50%);
+  animation: haytool-scale-in 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.haytool-notice-badge.haytool-pos-top-left {
+  top: 24px;
+  left: 24px;
+  bottom: auto;
+  right: auto;
+  transform: none;
+  animation: haytool-slide-down 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.haytool-notice-badge.haytool-pos-top-center {
+  top: 24px;
+  left: 50%;
+  bottom: auto;
+  right: auto;
+  transform: translateX(-50%);
+  animation: haytool-slide-down 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.haytool-notice-badge.haytool-pos-top-right {
+  top: 24px;
+  right: 24px;
+  bottom: auto;
+  left: auto;
+  transform: none;
+  animation: haytool-slide-down 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.haytool-notice-badge.haytool-pos-center-left {
+  top: 50%;
+  left: 24px;
+  bottom: auto;
+  right: auto;
+  transform: translateY(-50%);
+  animation: haytool-scale-in 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.haytool-notice-badge.haytool-pos-center-right {
+  top: 50%;
+  right: 24px;
+  bottom: auto;
+  left: auto;
+  transform: translateY(-50%);
+  animation: haytool-scale-in 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.haytool-notice-badge.haytool-pos-bottom-left {
+  bottom: 24px;
+  left: 24px;
+  top: auto;
+  right: auto;
+  transform: none;
   animation: haytool-slide-up 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.haytool-notice-badge.haytool-pos-bottom-center {
+  bottom: 24px;
+  left: 50%;
+  top: auto;
+  right: auto;
+  transform: translateX(-50%);
+  animation: haytool-slide-up 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.haytool-notice-badge.haytool-pos-bottom-right {
+  bottom: 24px;
+  right: 24px;
+  top: auto;
+  left: auto;
+  transform: none;
+  animation: haytool-slide-up 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes haytool-scale-in {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.92);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+@keyframes haytool-slide-down {
+  from {
+    opacity: 0;
+    transform: translateY(-15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .haytool-notice-badge.fade-out {
   opacity: 0;
-  transform: translateY(12px);
+  pointer-events: none;
+}
+
+.haytool-notice-badge.haytool-pos-center.fade-out {
+  transform: translate(-50%, -50%) scale(0.92);
+}
+
+.haytool-notice-badge.haytool-pos-top-center.fade-out {
+  transform: translate(-50%, -10px);
+}
+
+.haytool-notice-badge.haytool-pos-bottom-center.fade-out {
+  transform: translate(-50%, 10px);
 }
 
 .haytool-progress-header {
@@ -95,6 +208,119 @@ body {
   color: #94a3b8;
   display: flex;
   justify-content: space-between;
+}
+
+.haytool-hud-restore-row {
+  margin-top: 4px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.haytool-hud-restore-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: rgba(56, 189, 248, 0.12);
+  color: #38bdf8;
+  border: 1px solid rgba(56, 189, 248, 0.3);
+  border-radius: 6px;
+  padding: 4px 8px;
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.haytool-hud-restore-btn:hover {
+  background: rgba(56, 189, 248, 0.24);
+  color: #f8fafc;
+  border-color: #38bdf8;
+  transform: translateY(-1px);
+}
+
+.haytool-hud-restore-btn:active {
+  transform: translateY(0);
+}
+
+/* Küçük Kompakt Rozet (Collapsed Floating Badge) */
+.haytool-notice-badge.haytool-hud-collapsed {
+  min-width: auto;
+  max-width: none;
+  padding: 8px 14px;
+  border-radius: 9999px;
+  cursor: pointer;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+  background: rgba(15, 23, 42, 0.88);
+  border: 1px solid rgba(56, 189, 248, 0.4);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.6), 0 0 16px rgba(56, 189, 248, 0.25);
+  user-select: none;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Eğer kullanıcı merkezi pozisyonlar seçtiyse, küçüldüğünde ekranın ortasını kapatmamak için alt ortaya veya alt kenara yumuşakça taşınır */
+.haytool-notice-badge.haytool-hud-collapsed.haytool-pos-center {
+  top: auto;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.haytool-notice-badge.haytool-hud-collapsed.haytool-pos-center-left {
+  top: auto;
+  bottom: 24px;
+  left: 24px;
+  transform: none;
+}
+
+.haytool-notice-badge.haytool-hud-collapsed.haytool-pos-center-right {
+  top: auto;
+  bottom: 24px;
+  right: 24px;
+  transform: none;
+}
+
+.haytool-notice-badge.haytool-hud-collapsed:hover {
+  background: rgba(15, 23, 42, 0.96);
+  border-color: #38bdf8;
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 14px 30px -5px rgba(0, 0, 0, 0.7), 0 0 22px rgba(56, 189, 248, 0.4);
+}
+
+.haytool-collapsed-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #38bdf8;
+}
+
+.haytool-collapsed-text {
+  font-size: 12px;
+  font-weight: 600;
+  color: #f1f5f9;
+  letter-spacing: 0.2px;
+}
+
+.haytool-collapsed-close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  color: #94a3b8;
+  font-size: 13px;
+  margin-left: 2px;
+  padding: 2px 4px;
+  cursor: pointer;
+  border-radius: 50%;
+  line-height: 1;
+  transition: color 0.15s, background 0.15s;
+}
+
+.haytool-collapsed-close:hover {
+  color: #f87171;
+  background: rgba(239, 68, 68, 0.15);
 }
 
 .haytool-spinner {

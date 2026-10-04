@@ -131,6 +131,50 @@
     "message": "Metin seçildiğinde hızlı çeviri balonunu göster",
     "description": "Seçim HUD ayarı"
   },
+  "hudPositionHeading": {
+    "message": "Sayfa Çeviri Bildirim (HUD) Konumu",
+    "description": "HUD konumu başlığı"
+  },
+  "hudPositionDesc": {
+    "message": "Çeviri ilerleme ve geri alma rozetinin ekrandaki konumu.",
+    "description": "HUD konumu açıklaması"
+  },
+  "hudPosCenter": {
+    "message": "Ekranın Ortası (Varsayılan)",
+    "description": "Orta konum"
+  },
+  "hudPosTopLeft": {
+    "message": "Üst Sol",
+    "description": "Üst sol konum"
+  },
+  "hudPosTopCenter": {
+    "message": "Üst Orta",
+    "description": "Üst orta konum"
+  },
+  "hudPosTopRight": {
+    "message": "Üst Sağ",
+    "description": "Üst sağ konum"
+  },
+  "hudPosCenterLeft": {
+    "message": "Orta Sol",
+    "description": "Orta sol konum"
+  },
+  "hudPosCenterRight": {
+    "message": "Orta Sağ",
+    "description": "Orta sağ konum"
+  },
+  "hudPosBottomLeft": {
+    "message": "Alt Sol",
+    "description": "Alt sol konum"
+  },
+  "hudPosBottomCenter": {
+    "message": "Alt Orta",
+    "description": "Alt orta konum"
+  },
+  "hudPosBottomRight": {
+    "message": "Alt Sağ",
+    "description": "Alt sağ konum"
+  },
   "showContextMenu": {
     "message": "Tarayıcı sağ tık menüsünde göster",
     "description": "Sağ tık menü ayarı"
