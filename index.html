@@ -189,9 +189,11 @@
       <!-- Web Sayfalarını Gezen Akıllı Çizgi-Sanatı Kedi Görsel Vitrini -->
       <div class="cat-showcase-wrap">
         <picture>
-          <source type="image/webp" srcset="cat-400.webp 400w, cat.webp 800w" sizes="(max-width: 600px) 364px, 800px">
-          <source type="image/jpeg" srcset="cat-400.jpg 400w, cat.jpg 800w" sizes="(max-width: 600px) 364px, 800px">
-          <img src="cat.jpg" alt="Web Sitelerini Gezen Çevirmen Kedi - WebTranslate HaYTooL" class="cat-img" width="800" height="446" fetchpriority="high" decoding="async" />
+          <source type="image/webp" media="(max-width: 480px)" srcset="cat-400.webp">
+          <source type="image/webp" media="(max-width: 768px)" srcset="cat-600.webp">
+          <source type="image/webp" srcset="cat.webp">
+          <source type="image/jpeg" media="(max-width: 480px)" srcset="cat-400.jpg">
+          <img src="cat-400.webp" srcset="cat-400.webp 400w, cat-600.webp 600w, cat.webp 800w" sizes="(max-width: 480px) 364px, (max-width: 768px) 600px, 800px" alt="Web Sitelerini Gezen Çevirmen Kedi - WebTranslate HaYTooL" class="cat-img" width="800" height="446" fetchpriority="high" decoding="async" />
         </picture>
         <div class="cat-glow"></div>
       </div>

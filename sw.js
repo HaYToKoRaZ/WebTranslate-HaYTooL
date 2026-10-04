@@ -7,6 +7,7 @@ const STATIC_ASSETS = [
   'style.css',
   'main.js',
   'cat.webp',
+  'cat-600.webp',
   'cat-400.webp',
   'cat.jpg',
   'cat-400.jpg',
