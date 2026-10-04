@@ -574,7 +574,16 @@ body {
 
 .footer-content a {
   color: var(--accent);
-  text-decoration: none;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1.5px;
+  font-weight: 600;
+  transition: color 0.2s ease, text-decoration-color 0.2s ease;
+}
+
+.footer-content a:hover {
+  text-decoration-color: currentColor;
+  opacity: 0.85;
 }
 
 .footer-links {
