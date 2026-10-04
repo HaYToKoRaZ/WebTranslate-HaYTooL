@@ -184,7 +184,8 @@ body {
   align-items: center;
   justify-content: center;
   opacity: 0.6;
-  transition: all 0.2s;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+  will-change: transform, opacity;
 }
 
 .lang-btn.active, .lang-btn:hover {
@@ -245,8 +246,9 @@ body {
   font-family: inherit;
   font-size: 12px;
   font-weight: 600;
-  transition: all 0.25s ease;
+  transition: transform 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
   user-select: none;
+  will-change: transform;
 }
 
 .theme-toggle-pill:hover {
@@ -266,7 +268,8 @@ body {
   background: rgba(56, 189, 248, 0.15);
   color: var(--accent);
   box-shadow: 0 0 10px rgba(56, 189, 248, 0.2);
-  transition: all 0.25s ease;
+  transition: transform 0.25s ease, background-color 0.25s ease;
+  will-change: transform;
 }
 
 .theme-toggle-pill:hover .theme-icon-wrap {
@@ -411,8 +414,9 @@ body {
   border-radius: 12px;
   text-decoration: none;
   color: #fff;
-  transition: all 0.25s ease;
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
   backdrop-filter: blur(10px);
+  will-change: transform;
 }
 
 .store-btn:hover {
@@ -473,7 +477,8 @@ body {
   align-items: center;
   justify-content: center;
   opacity: 0.8;
-  transition: all 0.2s ease;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+  will-change: transform, opacity;
 }
 
 .browser-badge-list a:hover {
@@ -516,7 +521,8 @@ body {
   border: 1px solid var(--border);
   padding: 28px;
   border-radius: 16px;
-  transition: all 0.2s;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+  will-change: transform;
 }
 
 .feature-card:hover {
@@ -638,7 +644,8 @@ body {
   font-size: 11.5px;
   color: var(--text-muted);
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-  transition: all 0.2s ease;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+  will-change: transform;
 }
 
 [data-theme="light"] .retro-stats-pill {
@@ -659,6 +666,7 @@ body {
   background: #10b981;
   box-shadow: 0 0 8px #10b981;
   animation: pulseLed 2s infinite ease-in-out;
+  will-change: opacity, transform;
 }
 
 @keyframes pulseLed {
@@ -722,7 +730,8 @@ button,
 .theme-toggle-pill,
 .lang-btn {
   cursor: pointer;
-  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s ease, opacity 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
+  will-change: transform;
 }
 
 .store-btn:active,
