@@ -32,7 +32,7 @@
 
 [data-theme="light"] .logo,
 [data-theme="light"] .feature-card h3,
-[data-theme="light"] .step-card h4,
+[data-theme="light"] .step-card h3,
 [data-theme="light"] .section-title {
   color: #0f172a;
 }
@@ -544,7 +544,7 @@ body {
   margin-bottom: 16px;
 }
 
-.step-card h4 {
+.step-card h3 {
   font-size: 16px;
   font-weight: 700;
   margin-bottom: 8px;
