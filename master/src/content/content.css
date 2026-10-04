@@ -220,3 +220,19 @@ body {
   padding-top: 6px;
   word-break: break-word;
 }
+
+.haytool-hud-btn:focus-visible {
+  outline: 2px solid #38bdf8 !important;
+  outline-offset: 2px !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .haytool-notice-badge,
+  .haytool-hud,
+  .haytool-progress-fill {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+

@@ -1,22 +1,58 @@
 :root {
   --bg-primary: #090d16;
   --bg-secondary: #0f172a;
-  --bg-card: rgba(30, 41, 59, 0.7);
+  --bg-card: rgba(30, 41, 59, 0.72);
   --border-color: rgba(255, 255, 255, 0.08);
+  --border-focus: #38bdf8;
   --text-main: #f8fafc;
   --text-muted: #94a3b8;
   --accent: #0284c7;
   --accent-hover: #0369a1;
-  --accent-glow: rgba(56, 189, 248, 0.2);
+  --accent-glow: rgba(56, 189, 248, 0.25);
+  --ring-focus: rgba(56, 189, 248, 0.4);
   --success: #10b981;
   --warning: #f59e0b;
   --error: #ef4444;
 }
 
+/* UI/UX Pro Max: Global Reset, Cursor, Focus & Motion */
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+}
+
+button, a, input, select, textarea, [role="button"] {
+  outline: none;
+}
+
+button:focus-visible,
+a:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--border-focus) !important;
+  outline-offset: 2px !important;
+  box-shadow: 0 0 0 4px var(--ring-focus) !important;
+}
+
+button,
+.sample-btn,
+.primary-btn,
+.secondary-btn,
+.set-default-btn,
+.select-box {
+  cursor: pointer;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
 
 body {

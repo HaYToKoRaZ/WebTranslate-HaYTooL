@@ -1,11 +1,13 @@
 :root {
   --bg: #0b0f19;
-  --card-bg: rgba(17, 24, 39, 0.7);
+  --card-bg: rgba(17, 24, 39, 0.72);
   --border: rgba(255, 255, 255, 0.08);
+  --border-focus: #38bdf8;
   --text-primary: #f8fafc;
   --text-secondary: #94a3b8;
   --accent: #0284c7;
   --accent-hover: #0369a1;
+  --ring-focus: rgba(56, 189, 248, 0.4);
   --success: #10b981;
 }
 
@@ -15,10 +17,12 @@
   --bg: #f1f5f9;
   --card-bg: rgba(255, 255, 255, 0.9);
   --border: rgba(0, 0, 0, 0.1);
+  --border-focus: #0284c7;
   --text-primary: #0f172a;
   --text-secondary: #64748b;
   --accent: #0284c7;
   --accent-hover: #0369a1;
+  --ring-focus: rgba(2, 132, 199, 0.25);
   --success: #059669;
 }
 
@@ -45,10 +49,44 @@
   border-color: rgba(0, 0, 0, 0.15);
 }
 
+/* UI/UX Pro Max: Global Reset, Cursor, Focus & Motion */
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+}
+
+button, a, input, select, textarea, [role="button"] {
+  outline: none;
+}
+
+button:focus-visible,
+a:focus-visible,
+select:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--border-focus) !important;
+  outline-offset: 2px !important;
+  box-shadow: 0 0 0 4px var(--ring-focus) !important;
+}
+
+button,
+.header-link,
+.flag-card,
+.switch,
+.brand-group {
+  cursor: pointer;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
 
 body {
