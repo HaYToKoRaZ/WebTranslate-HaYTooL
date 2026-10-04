@@ -72,7 +72,7 @@ const translations = {
     statDaily: "Bugün:",
     statMonthly: "Bu Ay:",
     statYearly: "Bu Yıl:",
-    footerText: "© 2026 WebTranslate <a href=\"https://github.com/HaYToKoRaZ\" target=\"_blank\" class=\"footer-brand-link\">HaYTooL</a> | HaYTo tarafından sevgiyle geliştirilmiştir."
+    footerText: "© 2026 WebTranslate <a href=\"https://github.com/HaYToKoRaZ\" target=\"_blank\" rel=\"nofollow noopener noreferrer\" class=\"footer-brand-link\">HaYTooL</a> | HaYTo tarafından sevgiyle geliştirilmiştir."
   },
   en: {
     navFeatures: "Features",
@@ -142,7 +142,7 @@ const translations = {
     statDaily: "Today:",
     statMonthly: "This Month:",
     statYearly: "This Year:",
-    footerText: "© 2026 WebTranslate <a href=\"https://github.com/HaYToKoRaZ\" target=\"_blank\" class=\"footer-brand-link\">HaYTooL</a> | Developed with love by HaYTo."
+    footerText: "© 2026 WebTranslate <a href=\"https://github.com/HaYToKoRaZ\" target=\"_blank\" rel=\"nofollow noopener noreferrer\" class=\"footer-brand-link\">HaYTooL</a> | Developed with love by HaYTo."
   }
 };
 
