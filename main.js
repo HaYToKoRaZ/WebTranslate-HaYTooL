@@ -148,6 +148,16 @@ const translations = {
 
 function setLanguage(lang) {
   if (!translations[lang]) return;
+
+  // URL adres çubuğundaki parametreyi senkronize et (?lang=tr veya ?lang=en)
+  try {
+    const url = new URL(window.location.href);
+    if (url.searchParams.get("lang") !== lang) {
+      url.searchParams.set("lang", lang);
+      window.history.replaceState({ lang }, "", url.toString());
+    }
+  } catch (e) {}
+
   const currentLang = document.documentElement.lang;
 
   // Buton aktifliği
@@ -186,15 +196,6 @@ function setLanguage(lang) {
       elem.setAttribute("title", dict[key]);
     }
   });
-
-  // URL adres çubuğundaki parametreyi senkronize et (?lang=tr veya ?lang=en)
-  try {
-    const url = new URL(window.location.href);
-    if (url.searchParams.get("lang") !== lang) {
-      url.searchParams.set("lang", lang);
-      window.history.replaceState({ lang }, "", url.toString());
-    }
-  } catch (e) {}
 }
 
 // Tema Yönetimi (Koyu / Açık & Otomatik Sistem Algılama)
