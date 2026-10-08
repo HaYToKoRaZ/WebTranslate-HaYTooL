@@ -2,3 +2,6 @@ User-agent: *
 Allow: /
 
 Sitemap: https://haytokoraz.github.io/WebTranslate-HaYTooL/sitemap.xml
+# Generative AI & LLM Indexing (GEO/AEO)
+# llms.txt: https://haytokoraz.github.io/WebTranslate-HaYTooL/llms.txt
+

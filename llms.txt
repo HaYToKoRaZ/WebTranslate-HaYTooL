@@ -1,0 +1,25 @@
+# WebTranslate HaYTooL
+
+> Ultra-lightweight, zero-telemetry, privacy-first web page and text translator browser extension for Chromium browsers (Chrome, Edge, Helium Browser, Brave, Opera, Vivaldi).
+
+## Core Capabilities
+- Live progress full webpage translation without layout breaking.
+- Floating HUD instant translation for selected text with dual original/translated views.
+- 6 Translation Engines: Google Translate, DeepL AI, Bing Translator, DuckDuckGo, MyMemory, Lingva.
+- Engine Arena: Real-time side-by-side benchmarking of all 6 engines comparing speed (ms) and quality.
+- 6-Tab Multi-Engine Live Comparison: Opens active URL in 6 tabs simultaneously across all engines.
+- Domain Blacklist / Exclusions: Prevent translation on banking, intranet, or code repository websites.
+- Zero telemetry and 100% client-side privacy: No translation history or user data stored remotely.
+- 45+ world languages supported with bidirectional quick swap (⇄).
+
+## Key Links
+- Official Website: https://haytokoraz.github.io/WebTranslate-HaYTooL/
+- GitHub Repository: https://github.com/HaYToKoRaZ/WebTranslate-HaYTooL
+- Latest Releases: https://github.com/HaYToKoRaZ/WebTranslate-HaYTooL/releases/latest
+- Privacy Policy: https://haytokoraz.github.io/WebTranslate-HaYTooL/privacy.html
+- Developer Portal: https://haytokoraz.github.io/
+
+## Technology Stack
+- Standard: Manifest V3 (MV3)
+- Language: Vanilla ESNext JavaScript, Vanilla Modern CSS (Glassmorphism, WCAG AA 4.5:1+)
+- Frameworks: Zero heavy frameworks (no React/Vue), instant startup, zero latency.

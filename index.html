@@ -26,39 +26,54 @@
   <meta property="og:url" content="https://haytokoraz.github.io/WebTranslate-HaYTooL/" />
   <meta property="og:title" content="WebTranslate HaYTooL | Translate Web Pages at Lightning Speed" />
   <meta property="og:description" content="Ultra-lightweight web page and text translator for modern browsers. Translate whole pages seamlessly or selected text instantly with 6 translation engines." />
-  <meta property="og:image" content="https://haytokoraz.github.io/WebTranslate-HaYTooL/icon.png" />
-  <meta property="og:image:width" content="512" />
-  <meta property="og:image:height" content="512" />
-  <meta property="og:image:alt" content="WebTranslate HaYTooL Logo" />
+  <meta property="og:image" content="https://haytokoraz.github.io/WebTranslate-HaYTooL/cat.webp" />
+  <meta property="og:image:width" content="800" />
+  <meta property="og:image:height" content="446" />
+  <meta property="og:image:alt" content="WebTranslate HaYTooL - Multi-Engine Translator Showcase" />
   <meta property="og:locale" content="en_US" />
   <meta property="og:locale:alternate" content="tr_TR" />
 
-  <!-- Twitter Cards -->
-  <meta name="twitter:card" content="summary" />
+  <!-- Twitter Cards (Large Image Summary) -->
+  <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:site" content="@HaYToKoRaZ" />
   <meta name="twitter:creator" content="@HaYToKoRaZ" />
   <meta name="twitter:title" content="WebTranslate HaYTooL | Browser Page & Text Translator" />
   <meta name="twitter:description" content="Ultra-lightweight web page and text translator for modern browsers. Translate whole pages seamlessly or selected text instantly with 6 translation engines." />
-  <meta name="twitter:image" content="https://haytokoraz.github.io/WebTranslate-HaYTooL/icon.png" />
-  <meta name="twitter:image:alt" content="WebTranslate HaYTooL Logo" />
+  <meta name="twitter:image" content="https://haytokoraz.github.io/WebTranslate-HaYTooL/cat.webp" />
+  <meta name="twitter:image:alt" content="WebTranslate HaYTooL - Multi-Engine Translator Showcase" />
 
-  <!-- Structured Data / JSON-LD Schema (SoftwareApplication & Organization) -->
+  <!-- Structured Data / JSON-LD Schema (SoftwareApplication, WebSite, HowTo & FAQPage) -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@graph": [
       {
         "@type": "SoftwareApplication",
+        "@id": "https://haytokoraz.github.io/WebTranslate-HaYTooL/#software",
         "name": "WebTranslate HaYTooL",
-        "operatingSystem": "Windows, macOS, Linux, ChromeOS",
+        "operatingSystem": "Chromium, Windows, macOS, Linux, ChromeOS",
         "applicationCategory": "BrowserExtension",
+        "applicationSubCategory": "Translation Application",
+        "inLanguage": ["tr", "en"],
         "offers": {
           "@type": "Offer",
           "price": "0",
-          "priceCurrency": "USD"
+          "priceCurrency": "USD",
+          "availability": "https://schema.org/InStock"
         },
-        "description": "Web sayfalarını ve seçili metinleri tek tıkla ışık hızında çeviren modern, gizlilik odaklı tarayıcı çevirmeni.",
-        "softwareVersion": "3.0.0",
+        "description": "Ultra-lightweight web page and text translator for modern browsers. Translate whole pages seamlessly or selected text instantly with 6 translation engines.",
+        "softwareVersion": "3.0.6",
+        "downloadUrl": "https://github.com/HaYToKoRaZ/WebTranslate-HaYTooL/releases/latest",
+        "screenshot": "https://haytokoraz.github.io/WebTranslate-HaYTooL/cat.webp",
+        "featureList": [
+          "Live progress full webpage translation",
+          "Floating HUD selection translator",
+          "6 Translation Engines: Google, DeepL, Bing, DuckDuckGo, MyMemory, Lingva",
+          "Engine Arena side-by-side benchmark",
+          "Simultaneous 6-tab multi-engine comparison",
+          "Sensitive domain blacklist/exclusion",
+          "100% Client-side zero telemetry privacy"
+        ],
         "author": {
           "@type": "Person",
           "name": "HaYTo",
@@ -67,9 +82,68 @@
       },
       {
         "@type": "WebSite",
+        "@id": "https://haytokoraz.github.io/WebTranslate-HaYTooL/#website",
         "url": "https://haytokoraz.github.io/WebTranslate-HaYTooL/",
         "name": "WebTranslate HaYTooL",
-        "inLanguage": ["tr", "en"]
+        "description": "Ultra-lightweight web page and text translator browser extension.",
+        "inLanguage": ["tr", "en"],
+        "publisher": {
+          "@type": "Person",
+          "name": "HaYTo"
+        }
+      },
+      {
+        "@type": "HowTo",
+        "@id": "https://haytokoraz.github.io/WebTranslate-HaYTooL/#howto",
+        "name": "How to Translate Web Pages and Text with WebTranslate HaYTooL",
+        "description": "Step-by-step guide to installing and translating web pages and selected text using WebTranslate HaYTooL.",
+        "step": [
+          {
+            "@type": "HowToStep",
+            "name": "Install Extension",
+            "text": "Add WebTranslate HaYTooL to your Chromium browser (Chrome, Edge, Helium) via the latest release package."
+          },
+          {
+            "@type": "HowToStep",
+            "name": "Select Target Language",
+            "text": "Choose your desired target language from the popup or settings page."
+          },
+          {
+            "@type": "HowToStep",
+            "name": "Right-Click & Translate",
+            "text": "Right-click anywhere on the webpage to translate the full page, or select text to view translation in the floating HUD."
+          }
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://haytokoraz.github.io/WebTranslate-HaYTooL/#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Does WebTranslate HaYTooL track or store my data?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. WebTranslate HaYTooL operates with 100% zero telemetry. Your translated text and visited websites are never logged or stored remotely."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Which translation engines are supported?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "WebTranslate HaYTooL supports 6 translation engines: Google Translate, DeepL AI, Bing Translator, DuckDuckGo, MyMemory, and Lingva."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Which browsers are compatible?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "It is built on Manifest V3 standards and is fully compatible with Chromium browsers including Google Chrome, Microsoft Edge, Helium Browser, Brave, Opera, and Vivaldi."
+            }
+          }
+        ]
       }
     ]
   }
@@ -89,7 +163,7 @@
 
   <!-- Inlined Critical CSS for 0ms Zero-Latency First Paint -->
   <style>
-:root{--bg:#0b0f19;--bg-card:rgba(17,24,39,0.7);--border:rgba(255,255,255,0.08);--text:#f8fafc;--text-muted:#cbd5e1;--link-color:#38bdf8;--stat-lbl-color:#cbd5e1;--accent:#38bdf8;--accent-glow:rgba(56,189,248,0.25);--nav-bg:rgba(11,15,25,0.85)}[data-theme="light"]{--bg:#f8fafc;--bg-card:rgba(255,255,255,0.95);--border:rgba(0,0,0,0.08);--text:#0f172a;--text-muted:#475569;--link-color:#0369a1;--stat-lbl-color:#334155;--accent:#0284c7;--accent-glow:rgba(2,132,199,0.2);--nav-bg:rgba(248,250,252,0.92)}[data-theme="light"] .navbar{background:var(--nav-bg);border-bottom:1px solid rgba(0,0,0,0.08);box-shadow:0 4px 20px rgba(0,0,0,0.04)}[data-theme="light"] .footer-brand-link{color:#0284c7}[data-theme="light"] .logo,[data-theme="light"] .feature-card h3,[data-theme="light"] .step-card h3,[data-theme="light"] .section-title{color:#0f172a}[data-theme="light"] .nav-links a{color:#475569}[data-theme="light"] .nav-links a:hover{color:#0284c7}[data-theme="light"] .store-btn{background:rgba(255,255,255,0.95);border-color:rgba(0,0,0,0.1);color:#0f172a}[data-theme="light"] .store-btn:hover{border-color:#0284c7;box-shadow:0 8px 24px rgba(2,132,199,0.15)}[data-theme="light"] .github-btn{background:rgba(0,0,0,0.06);color:#0f172a !important}[data-theme="light"] .theme-toggle-btn{color:#475569;background:rgba(0,0,0,0.05);border-color:rgba(0,0,0,0.1)}*{box-sizing:border-box;margin:0;padding:0}body{background-color:var(--bg);color:var(--text);font-family:'Inter',-apple-system,sans-serif;line-height:1.6;overflow-x:hidden;position:relative}.container{width:100%;max-width:1140px;margin:0 auto;padding:0 24px}.glow{position:absolute;border-radius:50%;filter:blur(120px);z-index:-1;pointer-events:none}.glow-1{width:450px;height:450px;background:radial-gradient(circle,rgba(14,165,233,0.25),transparent 70%);top:-100px;left:10%}.glow-2{width:500px;height:500px;background:radial-gradient(circle,rgba(99,102,241,0.2),transparent 70%);top:300px;right:5%}.navbar{position:sticky;top:0;z-index:100;background:var(--nav-bg);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid var(--border);padding:16px 0;transition:background-color 0.3s ease,border-color 0.3s ease}.nav-content{display:flex;align-items:center;justify-content:space-between}.logo{display:flex;align-items:center;gap:10px;font-family:'Space Grotesk',sans-serif;font-size:18px;font-weight:700;color:#fff;text-decoration:none}.logo-badge{display:flex;align-items:center;justify-content:center}.logo-text span{color:var(--accent)}.nav-right{display:flex;align-items:center;gap:20px}.lang-switcher{display:flex;align-items:center;gap:6px;background:rgba(255,255,255,0.05);padding:4px 6px;border-radius:20px;border:1px solid var(--border)}.lang-btn{background:transparent;border:none;cursor:pointer;padding:4px;border-radius:50%;display:flex;align-items:center;justify-content:center;opacity:0.6;transition:transform 0.2s ease,opacity 0.2s ease;will-change:transform,opacity}.lang-btn.active,.lang-btn:hover{opacity:1;transform:scale(1.1)}.flag-svg{width:20px;height:14px;border-radius:2px}.nav-links{display:flex;align-items:center;gap:16px}.nav-links a{color:var(--text-muted);text-decoration:none;font-size:13px;font-weight:500;transition:color 0.2s}.nav-links a:hover{color:#fff}.portal-btn{background:rgba(14,165,233,0.15);color:#38bdf8 !important;font-weight:600;padding:6px 12px;border-radius:8px;border:1px solid rgba(56,189,248,0.35)}[data-theme="light"] .portal-btn{background:rgba(2,132,199,0.1);color:#0369a1 !important;border-color:rgba(2,132,199,0.3)}.theme-toggle-pill{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.06);border:1px solid var(--border);color:var(--text-muted);padding:5px 12px 5px 6px;border-radius:24px;cursor:pointer;font-family:inherit;font-size:12px;font-weight:600;transition:transform 0.2s ease,background-color 0.2s ease,border-color 0.2s ease;user-select:none;will-change:transform}.theme-toggle-pill:hover{background:rgba(255,255,255,0.12);border-color:rgba(56,189,248,0.4);color:#fff;transform:translateY(-1px)}.theme-icon-wrap{display:flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:50%;background:rgba(56,189,248,0.15);color:var(--accent);box-shadow:0 0 10px rgba(56,189,248,0.2);transition:transform 0.25s ease,background-color 0.25s ease;will-change:transform}.theme-toggle-pill:hover .theme-icon-wrap{transform:rotate(15deg) scale(1.05);background:rgba(56,189,248,0.25)}.theme-label{font-size:12px;letter-spacing:0.2px}[data-theme="light"] .theme-toggle-pill{background:rgba(0,0,0,0.05);border-color:rgba(0,0,0,0.1);color:#475569}[data-theme="light"] .theme-toggle-pill:hover{background:rgba(0,0,0,0.08);border-color:#0284c7;color:#0f172a}[data-theme="light"] .theme-icon-wrap{background:rgba(2,132,199,0.12);color:#0284c7;box-shadow:0 0 8px rgba(2,132,199,0.15)}#sun-icon{display:none}#moon-icon{display:block}[data-theme="light"] #sun-icon{display:block !important}[data-theme="light"] #moon-icon{display:none !important}.github-btn{display:flex;align-items:center;gap:6px;background:rgba(255,255,255,0.08);padding:6px 14px;border-radius:8px;color:#fff !important}.hero{padding:90px 0 60px;text-align:center}.hero-content{display:flex;flex-direction:column;align-items:center}.badge{background:rgba(14,165,233,0.15);color:#38bdf8;border:1px solid rgba(56,189,248,0.4);padding:6px 16px;border-radius:20px;font-size:12.5px;font-weight:700;letter-spacing:0.3px;margin-bottom:24px}[data-theme="light"] .badge{background:rgba(2,132,199,0.12);color:#0369a1;border-color:rgba(2,132,199,0.35)}.hero-title{font-family:'Space Grotesk',sans-serif;font-size:48px;font-weight:800;line-height:1.15;letter-spacing:-1px;margin-bottom:20px;max-width:800px}.gradient-text{background:linear-gradient(135deg,#38bdf8 0%,#818cf8 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent}.hero-subtitle{font-size:17px;color:var(--text-muted);max-width:650px;margin-bottom:30px}.cat-showcase-wrap{position:relative;max-width:720px;width:100%;aspect-ratio:800 / 446;margin:0 auto 40px;border-radius:20px;overflow:hidden;box-shadow:0 20px 40px -10px rgba(0,0,0,0.7),0 0 0 1px rgba(56,189,248,0.2);transition:transform 0.3s ease;contain:layout paint}.cat-showcase-wrap:hover{transform:translateY(-4px);box-shadow:0 25px 50px -10px rgba(0,0,0,0.8),0 0 30px rgba(56,189,248,0.3)}.cat-img{width:100%;height:100%;aspect-ratio:800 / 446;display:block;object-fit:cover}.store-buttons{display:flex;flex-wrap:wrap;justify-content:center;gap:16px}.store-btn{display:flex;align-items:center;gap:12px;background:rgba(17,24,39,0.85);border:1px solid rgba(255,255,255,0.12);padding:12px 22px;border-radius:12px;text-decoration:none;color:#fff;transition:transform 0.25s ease,border-color 0.25s ease,box-shadow 0.25s ease;backdrop-filter:blur(10px);will-change:transform}.store-btn:hover{transform:translateY(-2px);border-color:var(--accent);box-shadow:0 8px 24px rgba(56,189,248,0.2)}.store-text{display:flex;flex-direction:column;text-align:left}.store-sub{font-size:11px;color:var(--text-muted)}.store-name{font-size:14px;font-weight:700;letter-spacing:0.2px}.supported-browsers-row{display:flex;align-items:center;justify-content:center;gap:12px;margin-top:18px;flex-wrap:wrap}.browsers-label{font-size:12px;color:var(--text-muted);font-weight:500}.browser-badge-list{display:inline-flex;align-items:center;gap:10px;background:rgba(255,255,255,0.04);padding:6px 14px;border-radius:20px;border:1px solid var(--border)}[data-theme="light"] .browser-badge-list{background:rgba(0,0,0,0.03)}.browser-badge-list a{display:inline-flex;align-items:center;justify-content:center;opacity:0.8;transition:transform 0.2s ease,opacity 0.2s ease;will-change:transform,opacity}.browser-badge-list a:hover{opacity:1;transform:scale(1.15)}.features-section,.how-section{padding:70px 0}.section-title-wrap{text-align:center;margin-bottom:48px}.section-title{font-family:'Space Grotesk',sans-serif;font-size:32px;font-weight:700;letter-spacing:-0.5px;margin-bottom:8px}.section-subtitle{font-size:15px;color:var(--text-muted)}.features-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px}.feature-card{background:var(--bg-card);backdrop-filter:blur(12px);border:1px solid var(--border);padding:28px;border-radius:16px;transition:transform 0.2s ease,border-color 0.2s ease;will-change:transform}.feature-card:hover{border-color:rgba(56,189,248,0.4);transform:translateY(-3px)}.feature-icon{font-size:28px;margin-bottom:16px}.feature-card h3{font-size:17px;font-weight:700;margin-bottom:8px;color:#fff}.feature-card p{font-size:14px;color:var(--text-muted);line-height:1.5}.steps-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px}.step-card{background:var(--bg-card);border:1px solid var(--border);padding:28px;border-radius:16px;position:relative}.step-number{width:36px;height:36px;background:var(--accent);color:#0b0f19;font-weight:800;border-radius:50%;display:flex;align-items:center;justify-content:center;margin-bottom:16px}.step-card h3{font-size:16px;font-weight:700;margin-bottom:8px}.step-card p{font-size:13px;color:var(--text-muted)}.footer{border-top:1px solid var(--border);padding:36px 0;margin-top:60px}.footer-content{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;font-size:13px;color:var(--text-muted)}.footer-content a{color:var(--link-color);text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:1.5px;font-weight:600;transition:color 0.2s ease,text-decoration-color 0.2s ease}.footer-content a:hover{text-decoration-color:currentColor;opacity:0.85}.footer-brand-link{color:var(--link-color) !important}.footer-links{display:flex;gap:20px}.footer-links a{color:var(--link-color) !important}.retro-stats-pill{display:inline-flex;align-items:center;gap:8px;background:rgba(15,23,42,0.7);border:1px solid rgba(255,255,255,0.1);padding:5px 12px;border-radius:20px;font-family:'Space Grotesk',-apple-system,sans-serif;font-size:11.5px;color:var(--text-muted);box-shadow:0 2px 10px rgba(0,0,0,0.2);transition:transform 0.2s ease,border-color 0.2s ease;will-change:transform}[data-theme="light"] .retro-stats-pill{background:rgba(241,245,249,0.9);border-color:rgba(0,0,0,0.12);box-shadow:0 2px 8px rgba(0,0,0,0.05)}.retro-stats-pill:hover{border-color:rgba(56,189,248,0.4);transform:translateY(-1px)}.retro-led-dot{width:7px;height:7px;border-radius:50%;background:#10b981;box-shadow:0 0 8px #10b981;animation:pulseLed 2s infinite ease-in-out;will-change:opacity,transform}@keyframes pulseLed{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.4;transform:scale(0.85)}}.stat-lbl{color:var(--stat-lbl-color);font-weight:500}.retro-stat-item strong{color:#38bdf8;font-weight:700;letter-spacing:0.3px}[data-theme="light"] .retro-stat-item strong{color:#0369a1}.stat-sep{color:rgba(255,255,255,0.2);font-size:10px}[data-theme="light"] .stat-sep{color:rgba(0,0,0,0.2)}@media (max-width:768px){.hero-title{font-size:34px}.nav-links{display:none}}button,a,input,select,[role="button"]{outline:none}button:focus-visible,a:focus-visible{outline:2px solid var(--accent) !important;outline-offset:2px !important;box-shadow:0 0 0 4px var(--accent-glow) !important}button,.store-btn,.github-btn,.portal-btn,.theme-toggle-pill,.lang-btn{cursor:pointer;transition:transform 0.2s cubic-bezier(0.16,1,0.3,1),opacity 0.2s ease,background-color 0.2s ease,border-color 0.2s ease;will-change:transform}.store-btn:active,.github-btn:active,.portal-btn:active,.theme-toggle-pill:active{transform:scale(0.98)}@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:0.01ms !important;animation-iteration-count:1 !important;transition-duration:0.01ms !important;scroll-behavior:auto !important}}
+:root{--bg:#0b0f19;--bg-card:rgba(17,24,39,0.7);--border:rgba(255,255,255,0.08);--text:#f8fafc;--text-muted:#cbd5e1;--link-color:#38bdf8;--stat-lbl-color:#cbd5e1;--accent:#38bdf8;--accent-glow:rgba(56,189,248,0.25);--nav-bg:rgba(11,15,25,0.85)}[data-theme="light"]{--bg:#f8fafc;--bg-card:rgba(255,255,255,0.95);--border:rgba(0,0,0,0.08);--text:#0f172a;--text-muted:#475569;--link-color:#0369a1;--stat-lbl-color:#334155;--accent:#0284c7;--accent-glow:rgba(2,132,199,0.2);--nav-bg:rgba(248,250,252,0.92)}[data-theme="light"] .navbar{background:var(--nav-bg);border-bottom:1px solid rgba(0,0,0,0.08);box-shadow:0 4px 20px rgba(0,0,0,0.04)}[data-theme="light"] .footer-brand-link{color:#0284c7}[data-theme="light"] .logo,[data-theme="light"] .feature-card h3,[data-theme="light"] .step-card h3,[data-theme="light"] .section-title{color:#0f172a}[data-theme="light"] .nav-links a{color:#475569}[data-theme="light"] .nav-links a:hover{color:#0284c7}[data-theme="light"] .store-btn{background:rgba(255,255,255,0.95);border-color:rgba(0,0,0,0.1);color:#0f172a}[data-theme="light"] .store-btn:hover{border-color:#0284c7;box-shadow:0 8px 24px rgba(2,132,199,0.15)}[data-theme="light"] .github-btn{background:rgba(0,0,0,0.06);color:#0f172a !important}[data-theme="light"] .theme-toggle-btn{color:#475569;background:rgba(0,0,0,0.05);border-color:rgba(0,0,0,0.1)}*{box-sizing:border-box;margin:0;padding:0}body{background-color:var(--bg);color:var(--text);font-family:'Inter',-apple-system,sans-serif;line-height:1.6;overflow-x:hidden;position:relative}.container{width:100%;max-width:1140px;margin:0 auto;padding:0 24px}.glow{position:absolute;border-radius:50%;filter:blur(120px);z-index:-1;pointer-events:none}.glow-1{width:450px;height:450px;background:radial-gradient(circle,rgba(14,165,233,0.25),transparent 70%);top:-100px;left:10%}.glow-2{width:500px;height:500px;background:radial-gradient(circle,rgba(99,102,241,0.2),transparent 70%);top:300px;right:5%}.navbar{position:sticky;top:0;z-index:100;background:var(--nav-bg);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid var(--border);padding:16px 0;transition:background-color 0.3s ease,border-color 0.3s ease}.nav-content{display:flex;align-items:center;justify-content:space-between}.logo{display:flex;align-items:center;gap:10px;font-family:'Space Grotesk',sans-serif;font-size:18px;font-weight:700;color:#fff;text-decoration:none}.logo-badge{display:flex;align-items:center;justify-content:center}.logo-text span{color:var(--accent)}.nav-right{display:flex;align-items:center;gap:20px}.lang-switcher{display:flex;align-items:center;gap:6px;background:rgba(255,255,255,0.05);padding:4px 6px;border-radius:20px;border:1px solid var(--border)}.lang-btn{background:transparent;border:none;cursor:pointer;padding:4px;border-radius:50%;display:flex;align-items:center;justify-content:center;opacity:0.6;transition:transform 0.2s ease,opacity 0.2s ease;will-change:transform,opacity}.lang-btn.active,.lang-btn:hover{opacity:1;transform:scale(1.1)}.flag-svg{width:20px;height:14px;border-radius:2px}.nav-links{display:flex;align-items:center;gap:16px}.nav-links a{color:var(--text-muted);text-decoration:none;font-size:13px;font-weight:500;transition:color 0.2s}.nav-links a:hover{color:#fff}.portal-btn{background:rgba(14,165,233,0.15);color:#38bdf8 !important;font-weight:600;padding:6px 12px;border-radius:8px;border:1px solid rgba(56,189,248,0.35)}[data-theme="light"] .portal-btn{background:rgba(2,132,199,0.1);color:#0369a1 !important;border-color:rgba(2,132,199,0.3)}.theme-toggle-pill{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.06);border:1px solid var(--border);color:var(--text-muted);padding:5px 12px 5px 6px;border-radius:24px;cursor:pointer;font-family:inherit;font-size:12px;font-weight:600;transition:transform 0.2s ease,background-color 0.2s ease,border-color 0.2s ease;user-select:none;will-change:transform}.theme-toggle-pill:hover{background:rgba(255,255,255,0.12);border-color:rgba(56,189,248,0.4);color:#fff;transform:translateY(-1px)}.theme-icon-wrap{display:flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:50%;background:rgba(56,189,248,0.15);color:var(--accent);box-shadow:0 0 10px rgba(56,189,248,0.2);transition:transform 0.25s ease,background-color 0.25s ease;will-change:transform}.theme-toggle-pill:hover .theme-icon-wrap{transform:rotate(15deg) scale(1.05);background:rgba(56,189,248,0.25)}.theme-label{font-size:12px;letter-spacing:0.2px}[data-theme="light"] .theme-toggle-pill{background:rgba(0,0,0,0.05);border-color:rgba(0,0,0,0.1);color:#475569}[data-theme="light"] .theme-toggle-pill:hover{background:rgba(0,0,0,0.08);border-color:#0284c7;color:#0f172a}[data-theme="light"] .theme-icon-wrap{background:rgba(2,132,199,0.12);color:#0284c7;box-shadow:0 0 8px rgba(2,132,199,0.15)}#sun-icon{display:none}#moon-icon{display:block}[data-theme="light"] #sun-icon{display:block !important}[data-theme="light"] #moon-icon{display:none !important}.github-btn{display:flex;align-items:center;gap:6px;background:rgba(255,255,255,0.08);padding:6px 14px;border-radius:8px;color:#fff !important}.hero{padding:90px 0 60px;text-align:center}.hero-content{display:flex;flex-direction:column;align-items:center}.badge{background:rgba(14,165,233,0.15);color:#38bdf8;border:1px solid rgba(56,189,248,0.4);padding:6px 16px;border-radius:20px;font-size:12.5px;font-weight:700;letter-spacing:0.3px;margin-bottom:24px}[data-theme="light"] .badge{background:rgba(2,132,199,0.12);color:#0369a1;border-color:rgba(2,132,199,0.35)}.hero-title{font-family:'Space Grotesk',sans-serif;font-size:48px;font-weight:800;line-height:1.15;letter-spacing:-1px;margin-bottom:20px;max-width:800px}.gradient-text{background:linear-gradient(135deg,#38bdf8 0%,#818cf8 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent}.hero-subtitle{font-size:17px;color:var(--text-muted);max-width:650px;margin-bottom:30px}.cat-showcase-wrap{position:relative;max-width:720px;width:100%;aspect-ratio:800 / 446;margin:0 auto 40px;border-radius:20px;overflow:hidden;box-shadow:0 20px 40px -10px rgba(0,0,0,0.7),0 0 0 1px rgba(56,189,248,0.2);transition:transform 0.3s ease;contain:layout paint}.cat-showcase-wrap:hover{transform:translateY(-4px);box-shadow:0 25px 50px -10px rgba(0,0,0,0.8),0 0 30px rgba(56,189,248,0.3)}.cat-img{width:100%;height:100%;aspect-ratio:800 / 446;display:block;object-fit:cover}.store-buttons{display:flex;flex-wrap:wrap;justify-content:center;gap:16px}.store-btn{display:flex;align-items:center;gap:12px;background:rgba(17,24,39,0.85);border:1px solid rgba(255,255,255,0.12);padding:12px 22px;border-radius:12px;text-decoration:none;color:#fff;transition:transform 0.25s ease,border-color 0.25s ease,box-shadow 0.25s ease;backdrop-filter:blur(10px);will-change:transform}.store-btn:hover{transform:translateY(-2px);border-color:var(--accent);box-shadow:0 8px 24px rgba(56,189,248,0.2)}.store-text{display:flex;flex-direction:column;text-align:left}.store-sub{font-size:11px;color:var(--text-muted)}.store-name{font-size:14px;font-weight:700;letter-spacing:0.2px}.supported-browsers-row{display:flex;align-items:center;justify-content:center;gap:12px;margin-top:18px;flex-wrap:wrap}.browsers-label{font-size:12px;color:var(--text-muted);font-weight:500}.browser-badge-list{display:inline-flex;align-items:center;gap:12px;background:rgba(255,255,255,0.04);padding:6px 14px;border-radius:20px;border:1px solid var(--border)}[data-theme="light"] .browser-badge-list{background:rgba(0,0,0,0.03)}.browser-badge-list a{display:inline-flex;align-items:center;justify-content:center;padding:4px;border-radius:50%;opacity:0.85;transition:transform 0.28s cubic-bezier(0.34,1.56,0.64,1),opacity 0.2s ease,filter 0.28s ease;will-change:transform,filter;line-height:0}.browser-badge-list picture{display:inline-flex;align-items:center;justify-content:center;line-height:0}.browser-badge-list img{display:block;width:22px;height:22px;object-fit:contain}.browser-badge-list a:hover{opacity:1;transform:translateY(-4px) scale(1.35);filter:drop-shadow(0 6px 12px rgba(56,189,248,0.45))}.browser-badge-list a:active{transform:translateY(-1px) scale(1.2)}[data-theme="light"] .browser-badge-list a:hover{filter:drop-shadow(0 6px 12px rgba(2,132,199,0.35))}.feature-icon-box{display:inline-flex;align-items:center;justify-content:center;width:48px;height:48px;border-radius:12px;background:rgba(56,189,248,0.12);border:1px solid rgba(56,189,248,0.25);color:var(--accent);margin-bottom:18px;box-shadow:0 4px 12px rgba(56,189,248,0.15);transition:transform 0.25s ease,background-color 0.25s ease,border-color 0.25s ease}.feature-card:hover .feature-icon-box{transform:scale(1.08) translateY(-2px);background:rgba(56,189,248,0.2);border-color:rgba(56,189,248,0.45)}[data-theme="light"] .feature-icon-box{background:rgba(2,132,199,0.1);border-color:rgba(2,132,199,0.2);color:#0284c7;box-shadow:0 2px 8px rgba(2,132,199,0.08)}.features-section,.how-section{padding:70px 0}.section-title-wrap{text-align:center;margin-bottom:48px}.section-title{font-family:'Space Grotesk',sans-serif;font-size:32px;font-weight:700;letter-spacing:-0.5px;margin-bottom:8px}.section-subtitle{font-size:15px;color:var(--text-muted)}.features-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px}.feature-card{background:var(--bg-card);backdrop-filter:blur(12px);border:1px solid var(--border);padding:28px;border-radius:16px;transition:transform 0.2s ease,border-color 0.2s ease;will-change:transform}.feature-card:hover{border-color:rgba(56,189,248,0.4);transform:translateY(-3px)}.feature-icon{font-size:28px;margin-bottom:16px}.feature-card h3{font-size:17px;font-weight:700;margin-bottom:8px;color:#fff}.feature-card p{font-size:14px;color:var(--text-muted);line-height:1.5}.steps-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px}.step-card{background:var(--bg-card);border:1px solid var(--border);padding:28px;border-radius:16px;position:relative}.step-number{width:36px;height:36px;background:var(--accent);color:#0b0f19;font-weight:800;border-radius:50%;display:flex;align-items:center;justify-content:center;margin-bottom:16px}.step-card h3{font-size:16px;font-weight:700;margin-bottom:8px}.step-card p{font-size:13px;color:var(--text-muted)}.footer{border-top:1px solid var(--border);padding:36px 0;margin-top:60px}.footer-content{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;font-size:13px;color:var(--text-muted)}.footer-content a{color:var(--link-color);text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:1.5px;font-weight:600;transition:color 0.2s ease,text-decoration-color 0.2s ease}.footer-content a:hover{text-decoration-color:currentColor;opacity:0.85}.footer-brand-link{color:var(--link-color) !important}.footer-links{display:flex;gap:20px}.footer-links a{color:var(--link-color) !important}.retro-stats-pill{display:inline-flex;align-items:center;gap:8px;background:rgba(15,23,42,0.7);border:1px solid rgba(255,255,255,0.1);padding:5px 12px;border-radius:20px;font-family:'Space Grotesk',-apple-system,sans-serif;font-size:11.5px;color:var(--text-muted);box-shadow:0 2px 10px rgba(0,0,0,0.2);transition:transform 0.2s ease,border-color 0.2s ease;will-change:transform}[data-theme="light"] .retro-stats-pill{background:rgba(241,245,249,0.9);border-color:rgba(0,0,0,0.12);box-shadow:0 2px 8px rgba(0,0,0,0.05)}.retro-stats-pill:hover{border-color:rgba(56,189,248,0.4);transform:translateY(-1px)}.retro-led-dot{width:7px;height:7px;border-radius:50%;background:#10b981;box-shadow:0 0 8px #10b981;animation:pulseLed 2s infinite ease-in-out;will-change:opacity,transform}@keyframes pulseLed{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.4;transform:scale(0.85)}}.stat-lbl{color:var(--stat-lbl-color);font-weight:500}.retro-stat-item strong{color:#38bdf8;font-weight:700;letter-spacing:0.3px}[data-theme="light"] .retro-stat-item strong{color:#0369a1}.stat-sep{color:rgba(255,255,255,0.2);font-size:10px}[data-theme="light"] .stat-sep{color:rgba(0,0,0,0.2)}@media (max-width:768px){.hero-title{font-size:34px}.nav-links{display:none}}button,a,input,select,[role="button"]{outline:none}button:focus-visible,a:focus-visible{outline:2px solid var(--accent) !important;outline-offset:2px !important;box-shadow:0 0 0 4px var(--accent-glow) !important}button,.store-btn,.github-btn,.portal-btn,.theme-toggle-pill,.lang-btn{cursor:pointer;transition:transform 0.2s cubic-bezier(0.16,1,0.3,1),opacity 0.2s ease,background-color 0.2s ease,border-color 0.2s ease;will-change:transform}.store-btn:active,.github-btn:active,.portal-btn:active,.theme-toggle-pill:active{transform:scale(0.98)}@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:0.01ms !important;animation-iteration-count:1 !important;transition-duration:0.01ms !important;scroll-behavior:auto !important}}
   </style>
 </head>
 <body>
@@ -228,16 +302,16 @@
       <div class="supported-browsers-row">
         <span class="browsers-label" data-i18n="supportedBrowsers">Desteklenen Tarayıcılar:</span>
         <div class="browser-badge-list">
-          <a href="https://github.com/HaYToKoRaZ/WebTranslate-HaYTooL/releases/latest" target="_blank" rel="nofollow noopener noreferrer" data-i18n-title="browserChromeTitle" title="Chrome Web Store (Yakında / Releases)">
-            <img src="chrome.svg" alt="Chrome" width="22" height="22" />
+          <a href="https://chromewebstore.google.com/detail/hmblfojhnndofecfffkmamklcpibhbep" target="_blank" rel="noopener noreferrer" data-i18n-title="browserChromeTitle" title="Chrome Web Store - WebTranslate HaYTooL">
+            <img src="chrome.svg" alt="Chrome Web Store" width="22" height="22" />
           </a>
-          <a href="https://github.com/HaYToKoRaZ/WebTranslate-HaYTooL/releases/latest" target="_blank" rel="nofollow noopener noreferrer" data-i18n-title="browserEdgeTitle" title="Microsoft Edge Add-ons (Yakında / Releases)">
-            <img src="edge.svg" alt="Edge" width="22" height="22" />
+          <a href="https://microsoftedge.microsoft.com/addons/detail/hkhjhlaciakanpanhfckcalfddbgdibf" target="_blank" rel="noopener noreferrer" data-i18n-title="browserEdgeTitle" title="Microsoft Edge Add-ons - WebTranslate HaYTooL">
+            <img src="edge.svg" alt="Microsoft Edge Add-ons" width="22" height="22" />
           </a>
-          <a href="https://github.com/HaYToKoRaZ/WebTranslate-HaYTooL/releases/latest" target="_blank" rel="nofollow noopener noreferrer" data-i18n-title="browserHeliumTitle" title="Helium Browser (Yakında / Releases)">
+          <a href="https://chromewebstore.google.com/detail/hmblfojhnndofecfffkmamklcpibhbep" target="_blank" rel="noopener noreferrer" data-i18n-title="browserHeliumTitle" title="Helium Browser (Chrome Web Store Uyumlu)">
             <picture>
               <source srcset="helium.webp" type="image/webp">
-              <img src="helium.png" alt="Helium" width="22" height="22" loading="lazy" decoding="async" />
+              <img src="helium.png" alt="Helium Browser" width="22" height="22" loading="lazy" decoding="async" />
             </picture>
           </a>
         </div>
@@ -257,61 +331,81 @@
 
       <div class="features-grid">
         <div class="feature-card">
-          <div class="feature-icon">🌐</div>
+          <div class="feature-icon-box">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+          </div>
           <h3 data-i18n="feat1Title">Canlı İlerlemeli Sayfa Çevirisi</h3>
           <p data-i18n="feat1Desc">Sağ tıklayıp "Bu Sayfayı Çevir" demeniz yeterli. Canlı yüzde çubuğuyla sayfa düzenini bozmadan anında hedef dilinize çevirir.</p>
         </div>
 
         <div class="feature-card">
-          <div class="feature-icon">🔤</div>
+          <div class="feature-icon-box">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7V4h16v3"></path><path d="M9 20h6"></path><path d="M12 4v16"></path></svg>
+          </div>
           <h3 data-i18n="feat2Title">Seçili Metin Çevirisi (Floating HUD)</h3>
           <p data-i18n="feat2Desc">Bir kelime veya paragraf seçin; hemen yanında beliren şık cam efektli baloncukta orijinal ve çeviri metnini anında görün.</p>
         </div>
 
         <div class="feature-card">
-          <div class="feature-icon">🚀</div>
+          <div class="feature-icon-box">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+          </div>
           <h3 data-i18n="feat3Title">6 Güçlü Çeviri Motoru</h3>
           <p data-i18n="feat3Desc">Google Translate, DeepL AI, Bing, DuckDuckGo, MyMemory ve Lingva entegrasyonuyla kesintisiz, hızlı ve yüksek kaliteli çeviri sağlar.</p>
         </div>
 
         <div class="feature-card">
-          <div class="feature-icon">🏁</div>
+          <div class="feature-icon-box">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"></path><line x1="4" y1="22" x2="4" y2="15"></line></svg>
+          </div>
           <h3 data-i18n="feat7Title">HaYTooL Engine Arena (Benchmark)</h3>
           <p data-i18n="feat7Desc">6 çeviri motorunu (Google, DeepL, Bing, DDG, MyMemory, Lingva) aynı anda yarıştırın; milisaniye hızlarını ve çevirilerini canlı karşılaştırın.</p>
         </div>
 
         <div class="feature-card">
-          <div class="feature-icon">🔄</div>
+          <div class="feature-icon-box">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3L4 7l4 4"></path><path d="M4 7h16"></path><path d="M16 21l4-4-4-4"></path><path d="M20 17H4"></path></svg>
+          </div>
           <h3 data-i18n="feat8Title">Çift Yönlü Dil Değişimi (Swap ⇄)</h3>
           <p data-i18n="feat8Desc">Tek tıkla kaynak ve hedef dilleri yer değiştirin; Türkçe'den İngilizce'ye ya da tersine ışık hızında çeviri yapın.</p>
         </div>
 
         <div class="feature-card">
-          <div class="feature-icon">📑</div>
+          <div class="feature-icon-box">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+          </div>
           <h3 data-i18n="feat9Title">Sayfayı 6 Sekmede Canlı Açma</h3>
           <p data-i18n="feat9Desc">Aktif web sayfasını aynı anda 6 farklı sekmede 6 farklı motorla açıp çevirilerini sekme başlığında ve kalıcı göstergede canlı kıyaslayın.</p>
         </div>
 
         <div class="feature-card">
-          <div class="feature-icon">🚫</div>
+          <div class="feature-icon-box">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"></line></svg>
+          </div>
           <h3 data-i18n="feat10Title">Hariç Tutulan Siteler (Blacklist)</h3>
           <p data-i18n="feat10Desc">Banka, intranet veya kod sitelerini ayarlardan tek liste halinde hariç tutun veya popup'tan tek tıkla o sitede çeviriyi kapatın.</p>
         </div>
 
         <div class="feature-card">
-          <div class="feature-icon">🛡️</div>
+          <div class="feature-icon-box">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+          </div>
           <h3 data-i18n="feat4Title">Sıfır Telemetri & %100 Gizlilik</h3>
           <p data-i18n="feat4Desc">Ziyaret ettiğiniz siteler veya çevirdiğiniz metinler asla üçüncü taraf sunucularda saklanmaz. Yalnızca tarayıcınızda çalışır.</p>
         </div>
 
         <div class="feature-card">
-          <div class="feature-icon">🌍</div>
+          <div class="feature-icon-box">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><path d="M2 12h20"></path><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+          </div>
           <h3 data-i18n="feat5Title">45+ Dünya Dili Desteği</h3>
           <p data-i18n="feat5Desc">Türkçe, İngilizce, Almanca, Fransızca, İspanyolca, Rusça, Arapça ve daha fazlası arasında tek tıkla geçiş yapın.</p>
         </div>
 
         <div class="feature-card">
-          <div class="feature-icon">⚡</div>
+          <div class="feature-icon-box">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+          </div>
           <h3 data-i18n="feat6Title">Ultra Hafif & Hızlı</h3>
           <p data-i18n="feat6Desc">Ağır kütüphaneler içermez, sıfır gecikmeyle açılır ve tarayıcınızı asla yormaz.</p>
         </div>
